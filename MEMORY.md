@@ -45,6 +45,9 @@
 27. ✅ Email Signature (email-signature) — done
 28. ✅ Weekly Scorecard (weekly-scorecard) — done
 
+## System Config
+- **OpenClaw Gateway Port:** `30322` (changed 2026-02-27, was 18789)
+
 ## Standing Rules
 - **Session Continuity (ALWAYS FOLLOW):** When Kelly says goodbye, immediately write a `session-handoff.md` file in the workspace root summarizing exactly where we left off — active tasks, open decisions, next steps, anything mid-flight. At the start of every new session, read `session-handoff.md` and open with that context so Kelly never has to re-explain anything.
 
