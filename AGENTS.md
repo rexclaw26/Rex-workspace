@@ -10,12 +10,15 @@ If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out w
 
 Before doing anything else:
 
+0. Read `QUICKREF.md` — **FIRST. ALWAYS.** State snapshot: what's live, what's blocked, what was last done. 30-second read that prevents 90% of context failures.
 1. Read `SOUL.md` — this is who you are
 2. Read `USER.md` — this is who you're helping
 3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
 
 5. Read `tasks/TASK_INDEX.md` — check for active tasks and load their lock files
+
+**Fast-path alternative:** `PROTOCOL-DIGEST.md` consolidates the key rules for quick startup reference. AGENTS.md remains the single source of truth — if they ever conflict, AGENTS.md wins.
 
 ## Chat Verbosity Rule (always active)
 
@@ -39,9 +42,10 @@ Main chat messages must be concise. Use bullets. Details go in files, not chat.
 - `skills/error-journal/SKILL.md` — log every mistake, correction, or near-miss
 - `skills/compliance-audit/SKILL.md` — run daily self-check at end of each session
 - `skills/quality-gatekeeper/SKILL.md` — fires on every plan (3+ steps) and every deliverable before Kelly sees it
+- `skills/context-optimization/SKILL.md` — token budget, subagent sizing, anti-patterns (always active)
 
 **Session startup enforcement:** On first response of every session, confirm with this exact format — listing every file actually read:
-`🟢 Session ready: SOUL ✅ | USER ✅ | memory/YYYY-MM-DD ✅ | MEMORY ✅ | TASK_INDEX ✅ | active tasks: [list or "none"] | laws active`
+`🟢 QUICKREF ✅ | SOUL ✅ | USER ✅ | memory/YYYY-MM-DD ✅ | MEMORY ✅ | TASK_INDEX ✅ | active tasks: [list or "none"] | laws active`
 If a file was missing or skipped, name it as ❌ — do not fabricate a full green row.
 This tells Kelly exactly what context loaded. A generic "memory loaded" line is not acceptable — it provides no verification signal.
 
@@ -253,6 +257,8 @@ Write/update `session-handoff.md` at these triggers — don't wait for goodbye:
 
 Handoff must include: active tasks, open decisions, next steps, anything mid-flight, any pending approvals.
 
+**Also update `QUICKREF.md`** when writing handoff — update "Active Right Now", "Last Session Summary", and "Blockers" sections to match current state.
+
 **Enforcement:** Compliance self-check cannot be logged without a handoff update. They're linked.
 
 **Compliance check timing (rewritten 2026-03-08 — audit fix):** "Session close" is not a reliable trigger — sessions don't have formal close events. The fix:
@@ -311,8 +317,9 @@ If Rex skips `session_status` in the first 3 tool calls of any turn — that is 
 1. Update `Current State` in every active task lock file
 2. Update `tasks/TASK_INDEX.md`
 3. Update `session-handoff.md`
-4. Then signal Kelly: "Compaction pre-flight complete. State locked. Safe to compact."
-5. WAIT — do not compact until Kelly says go.
+4. Update `QUICKREF.md` — Active Right Now, Last Session Summary, Blockers
+5. Then signal Kelly: "Compaction pre-flight complete. State locked. Safe to compact."
+6. WAIT — do not compact until Kelly says go.
 
 ---
 
@@ -446,8 +453,11 @@ After sub-agent PASS, write the full gate results to `memory/gates/YYYY-MM-DD-ga
 
 You wake up fresh each session. These files are your continuity:
 
+- **State snapshot:** `QUICKREF.md` — read first every session. Current state, open tasks, recent decisions.
 - **Daily notes:** `memory/YYYY-MM-DD.md` (create `memory/` if needed) — raw logs of what happened
 - **Long-term:** `MEMORY.md` — your curated memories, like a human's long-term memory
+- **Decision log:** `decisions/YYYY-MM.md` — structured log of every decision Kelly makes. When Kelly decides something (even casually), log it here immediately with date, decision, context, and status (ACTIVE/SUPERSEDED).
+- **Rule lifecycle:** `rule-registry.md` — tracks PR proposal, testing, and retirement. New rules go here first, then to AGENTS.md after 3 successes (except critical safety rules which go to AGENTS.md immediately).
 
 Capture what matters. Decisions, context, things to remember. Skip the secrets unless asked to keep them.
 

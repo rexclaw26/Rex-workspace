@@ -5,6 +5,7 @@ _Last updated: 2026-03-16 13:28 PST_
 
 | ID | Name | Status | Owner | Priority | Lock File |
 |----|------|--------|-------|----------|-----------|
+| TASK-008 | Lex Architecture Integrations | planned — awaiting Kelly approval | Rex | high | tasks/TASK-008-lex-integrations.md |
 | TASK-007 | DC Data Hub — Standalone member dashboard | active — Day 1 ready, waiting on API keys | Rex | high | tasks/TASK-007-dc-data-hub.md |
 | TASK-006 | Build 3 Missing Skills | planned — revisit 2026-03-17 | Rex | high | — |
 | TASK-002 | Calendar Focus Bug Fix (DayPanel) | complete — fixed 2026-03-13 | Rex | medium | tasks/TASK-002-calendar-focus-bug.md |
