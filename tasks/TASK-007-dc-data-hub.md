@@ -19,7 +19,7 @@ Build a standalone public-facing data hub for Discover Crypto members and media 
 ### Tech Stack
 - **Framework:** Next.js 14+ (App Router)
 - **Styling:** Tailwind CSS + shadcn/ui
-- **Hosting:** Vercel (standalone deployment, separate from Mission Control)
+- **Hosting:** Railway (standalone project, separate from feed-adapter — Kelly already has paid Railway account)
 - **Repo:** New standalone repo — `dc-data-hub`
 - **Auth:** Not in v1 — `isPremium` flag baked into component layer for future wiring
 - **Data refresh:** Client-side polling every 5 minutes via React Query / SWR
@@ -107,14 +107,14 @@ Build a standalone public-facing data hub for Discover Crypto members and media 
 - [ ] Quality Gatekeeper OUTPUT REVIEW
 - [ ] Paid upgrade report written and delivered to Kelly
 - [ ] Nansen outreach draft ready for Kelly approval
-- [ ] Production Vercel deploy
+- [ ] Production Railway deploy (new project: dc-data-hub)
 - [ ] Deliver staging URL + repo link to Kelly
 
 ---
 
 ## Files
 - Repo: `dc-data-hub` (new — not created yet)
-- Vercel project: `dc-data-hub` (staging + prod)
+- Railway project: `dc-data-hub` (new project on Kelly's existing Railway account)
 - Watching This Week data: `public/data/watching-this-week.json`
 - API routes: `app/api/` (Next.js server routes)
 

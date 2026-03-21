@@ -676,3 +676,53 @@ Preventive rules added:
 - PR-043 (2026-03-21): For DC Data Hub builds specifically — spec must be split by logical patch group. Max ~5 files per Claude Code session. Use sequential sessions not one mega-session.
 
 Fix applied: Patch spec split into 5 focused patches, each with clear file scope. Build verification step added before user confirmation.
+
+
+--- ERROR ENTRY ---
+Date: 2026-03-21
+Agent: Rex
+Error Type: Planning Failure — Wrong Hosting Platform in Task Spec
+Severity: Medium
+
+What happened:
+TASK-007 (DC Data Hub) was spec'd with Vercel as the hosting platform. Railway was always the correct choice — Kelly has a paid Railway account, the X RSS feed is already deployed there, the data hub's architecture (persistent process, server-side caching, cron-style refresh, 5-min polling across 10 sources) requires a persistent server model that Vercel's serverless functions cannot support cleanly. Kelly had to correct this.
+
+Root cause:
+Vercel was written into the spec during early planning without thinking through the full data refresh architecture. By the time the 10-section polling design was finalized, the hosting decision was already locked in the task file and never revisited. The assumption "Next.js = Vercel" overrode the actual requirements of the build.
+
+What was affected:
+TASK-007 spec was incorrect. If the build had proceeded to deploy without correction, it would have been deployed to the wrong platform — causing architectural rework mid-launch.
+
+How it was caught:
+Kelly flagged it directly.
+
+Corrective action taken:
+1. TASK-007 updated — hosting changed to Railway throughout the spec
+2. This error logged
+
+Preventive rule: Before finalizing any hosting decision in a task spec, explicitly check: (1) Does the client already have a paid account on another platform? (2) Does the architecture require persistent process or cron-style refresh? If yes to either → Railway, not Vercel.
+
+--- ERROR ENTRY ---
+Date: 2026-03-21
+Agent: Rex
+Error Type: Tool/Dependency Failure — Reinstalled Already-Installed CLI
+Severity: Low
+
+What happened:
+When asked to deploy the DC Data Hub to Railway, Rex ran `brew install railway` — which reinstalled/upgraded the Railway CLI that was already installed at v4.33.0. Kelly had to point out that Railway was already set up. Additionally, the re-install was irrelevant to the Railway service disruption risk concern Kelly raised.
+
+Root cause:
+Rex did not check `which railway` or `railway --version` before attempting to install. Failed to verify existing tooling state before acting on it.
+
+What was affected:
+Minor — Railway CLI reinstalled unnecessarily. No services disrupted (CLI install does not touch deployed Railway projects). Kelly had to correct Rex twice in the same exchange.
+
+How it was caught:
+Kelly flagged it directly.
+
+Corrective action taken:
+1. Confirmed the X RSS feed Railway service (feed-adapter-production) was NOT disrupted by CLI reinstall
+2. This error logged
+
+Preventive rule: Before installing ANY CLI tool, run `which [tool]` + `[tool] --version` first. If already installed and at a reasonable version, skip install. Verify existing tooling state before acting.
+--- END ENTRY ---

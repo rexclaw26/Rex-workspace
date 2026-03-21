@@ -1,9 +1,9 @@
 # QUICKREF.md — Rex State Snapshot
 _Read this FIRST, EVERY session. No exceptions. No skimming._
-_Last updated: 2026-03-21 1:16 PM PDT_
+_Last updated: 2026-03-21 4:52 PM PDT_
 
 ## Active Right Now
-- **TASK-007** — DC Data Hub — FULLY BUILT. Both designer critique passes complete. Server live on port 3001. Railway deployment pending.
+- **TASK-007** — DC Data Hub — FULLY BUILT (Days 1+2). Live on port 3001. Day 3 = Railway deploy + audit (next action).
 - **TASK-008** — Lex Architecture Integrations — COMPLETE (commit 974239e)
 
 ## What's Live (permanent infrastructure)
@@ -17,9 +17,8 @@ _Last updated: 2026-03-21 1:16 PM PDT_
 ## Open Tasks
 | ID | Task | Status | Next Action |
 |----|------|--------|-------------|
-| TASK-008 | Lex Architecture Integrations | active | Execute steps 1-10 |
-| TASK-007 | DC Data Hub | active | Senior designer critique → Railway deploy |
-| TASK-006 | Build 3 Missing Skills | planned | Revisit after DC Hub |
+| TASK-007 | DC Data Hub | active — built, deploy pending | Railway login → deploy new project → Day 3 audit |
+| TASK-006 | Build 3 Missing Skills | planned | Revisit after DC Hub deployed |
 
 ## Last Session Summary (2026-03-21)
 - DC Data Hub Phase 1 + revisions complete (auth gate, 11 sections, ticker bar, X Feed categorized, Deeper Insight, Bull/Bear 5 assets, Watching parser fixed)
@@ -32,7 +31,7 @@ _Last updated: 2026-03-21 1:16 PM PDT_
 
 ## Blockers
 - Nansen API key (awaiting from Kelly)
-- Railway account setup (awaiting Kelly)
+- Railway CLI needs `railway login` (browser auth required) before DC Data Hub can deploy
 - Claude Code CLI credits subject to Claude.ai subscription limits (kelly@bitlabacademy.com)
 
 ## Recent Decisions (last 7 days)
