@@ -1,5 +1,5 @@
 {
   "lastProcessedId": "19d11da9fbe07aba",
-  "lastPollAt": "2026-03-21T20:16:00.000Z",
+  "lastPollAt": "2026-03-21T20:26:00.000Z",
   "note": "Tracks Gmail polling state. lastProcessedId is the hex ID of the last email processed. Empty string = process all recent on first run."
 }
