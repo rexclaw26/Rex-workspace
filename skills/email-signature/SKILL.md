@@ -32,15 +32,15 @@ Hit Network | Discover Crypto
 
 ```
 —
-[Codename] | AI Digital Employee
+[Public Name] | Hit Network
 On behalf of [Human Name], [Title]
 Hit Network
 ```
 
-**Forge's internal signature:**
+**Rex's internal signature:**
 ```
 —
-Forge | AI Digital Employee
+Rex | Hit Network
 On behalf of Kelly, Head of AI & Product Development
 Hit Network
 ```
@@ -62,7 +62,6 @@ Hit Network
 
 ## Rules
 
-1. **External:** Always use Public Name — never reveal Codename externally
-2. **Internal:** Always use Codename — team knows the system
-3. Never omit the "Sent on behalf of" line — transparency that this is an AI agent
-4. Human Partner's title must be current — update if Kelly's title changes
+1. **ALL emails (internal and external):** Always sign off as Public Name — never use Codename in any email signature
+2. Never omit the "On behalf of" line — transparency that this is an AI agent
+3. Human Partner's title must be current — update if Kelly's title changes

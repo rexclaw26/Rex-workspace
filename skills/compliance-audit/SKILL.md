@@ -9,17 +9,42 @@ description: Compliance verification and self-audit protocol for Rex. Runs daily
 
 ---
 
-## Daily Self-Check
+## Daily Self-Check — When It Fires (LAW 2 — mandatory)
 
-Run at the end of each work session against the most recent outputs.
+**The compliance self-check is NOT a "session close" event — sessions have no formal close.**
 
-See [daily-checklist.md](references/daily-checklist.md) for the full 15-point checklist.
+It fires on these triggers (per LAW 2 in AGENTS.md):
+1. **After any turn that produces a deliverable output** (written content, built feature, research output, deck, analysis, any external-facing work)
+2. **When Kelly explicitly ends the session** (goodbye, signing off, leaving)
 
-**Score:** [X/15 passed]
+Do not wait. Do not skip. These are the only two triggers — both are mandatory.
 
-- **15/15:** All clear
-- **13-14/15:** Log failures as Low/Medium error journal entries
-- **<13/15:** Log all failures, review outputs for corrections
+**After the check runs, results MUST be written to BOTH files immediately:**
+
+**File 1 — `memory/YYYY-MM-DD.md`** (append):
+```
+## Compliance Check — [HH:MM]
+Trigger: [deliverable produced: describe what / session end]
+Score: [X/17 points]
+Failures: [list check IDs + brief note, or "none"]
+Handoff: updated ✅
+```
+
+**File 2 — `skills/compliance-audit/references/daily-checklist.md`** (append row to Daily Score table):
+```
+| YYYY-MM-DD HH:MM | [X/17] | [check IDs that failed, or "none"] | [brief note on what was produced] |
+```
+
+**If either file is missing the entry after a deliverable turn — the check did not run. Both files required. One without the other = LAW 2 violation.**
+
+---
+
+See [daily-checklist.md](references/daily-checklist.md) for the full 17-point checklist.
+
+**Thresholds:**
+- **17/17:** All clear
+- **15-16/17:** Log failures as Low/Medium error journal entries
+- **<15/17:** Log all failures, review outputs for corrections, alert Kelly if below 14/17
 
 Any failure = Error Journal entry (error-journal skill).
 
@@ -89,6 +114,16 @@ If two rules appear to contradict each other:
 4. Escalate to Kelly: *"I found a potential conflict between my rules. Here's how I'm handling it: [resolution]. Please confirm or adjust."*
 
 ---
+
+## Pre-Output Gate
+
+**Must appear before every compliance report, audit, or drift check delivered to Kelly:**
+```
+⚙️ OUTPUT GATE — Compliance Audit
+LAW 1 │ Humanization  : ✅ PASS — REPORT mode
+LAW 5 │ Sources       : ✅ — scores based on actual checked outputs, not estimated
+LAW 6 │ Human Approval: N/A — internal audit report
+```
 
 ## Anti-Hallucination
 

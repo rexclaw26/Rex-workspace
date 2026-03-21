@@ -63,6 +63,16 @@ See [moodboard-format.md](references/moodboard-format.md) for structure.
 
 ---
 
+## Pre-Output Gate
+
+**Must appear before every thumbnail concept or mood board delivered:**
+```
+⚙️ OUTPUT GATE — Thumbnail & Mood Board
+LAW 1 │ Humanization  : ✅ PASS — REPORT mode for any written descriptions
+LAW 5 │ Sources       : ✅ / N/A — CTR data sourced from real analytics or flagged as [Best practice]
+LAW 6 │ Human Approval: ⏸ HOLDING — concepts presented for Kelly selection. Not published.
+```
+
 ## Anti-Hallucination
 
 Never fabricate CTR data or performance metrics. Use real channel analytics when available. If data isn't available, make recommendations based on documented best practices and flag as `[Best practice — verify with your analytics]`.

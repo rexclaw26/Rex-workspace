@@ -1,50 +1,103 @@
 # Daily Briefing Template
 
-Deliver by 7:00 AM PST. Apply REPORT mode humanization.
+Deliver by 7:00 AM PST. Apply REPORT mode humanization (LAW 1 in AGENTS.md).
+
+---
+
+## Header
+```
+🌅 GOOD MORNING KELLY — Daily Market Briefing
+[Day], [Month Date, Year] | 7:00 AM PST
+```
 
 ---
 
 ## 📊 Market Snapshot
-[Source: CoinGecko / CoinMarketCap — fetched live]
+[Source: CoinGecko + Alternative.me — live as of 7:00 AM PST]
 
-- **BTC:** $[price] ([24h %])
-- **ETH:** $[price] ([24h %])
-- **Total Crypto Market Cap:** $[amount] ([24h %])
-- **Fear & Greed Index:** [score] — [sentiment label: Extreme Fear / Fear / Neutral / Greed / Extreme Greed]
+- **BTC:** $[price] | 24h: [%] | Market Cap: $[amount]
+- **ETH:** $[price] | 24h: [%]
+- **Total Crypto Market Cap:** $[amount] | 24h: [%]
+- **BTC Dominance:** [%]
+- **24h Volume:** $[amount]
+- **Fear & Greed:** [score] — [label]
 
----
-
-## 📰 Top 5 Stories
-
-1. **[Headline]**
-   Source: [name + URL] | Relevance: [score]/10
-   [2-3 sentence summary]
-
-2. **[Headline]**
-   Source: [name + URL] | Relevance: [score]/10
-   [2-3 sentence summary]
-
-3. **[Headline]**
-   Source: [name + URL] | Relevance: [score]/10
-   [2-3 sentence summary]
-
-4. **[Headline]**
-   Source: [name + URL] | Relevance: [score]/10
-   [2-3 sentence summary]
-
-5. **[Headline]**
-   Source: [name + URL] | Relevance: [score]/10
-   [2-3 sentence summary]
+**Macro context:** [Gold spot, Silver, Nvidia, any Tier 2 items with notable moves]
 
 ---
 
-## 💡 Trending Topics (Content Ideas)
+## ₿ BITCOIN
+[Status label: ⚡ BREAKING | 🟢 BULLISH | 🔴 BEARISH | ⚖️ NEUTRAL]
 
-- [Topic 1] — why it's trending, angle for Discover Crypto / Blockchain Basement
-- [Topic 2] — why it's trending, angle suggestion
-- [Topic 3] — why it's trending, angle suggestion
+**[Headline]**
+
+[3-5 sentence narrative covering: price context, key event, on-chain signals, analyst reads]
+
+*[Source: name — URL]*
 
 ---
 
-## ⚠️ On My Radar
-[Optional: anything brewing that's worth monitoring but not breaking yet]
+## Ξ ETHEREUM
+[Status label]
+
+**[Headline]**
+
+[3-5 sentence narrative]
+
+*[Source: name — URL]*
+
+---
+
+## 🌐 CRYPTO MARKET
+[Status label]
+
+**[Headline]**
+
+[3-5 sentence narrative covering: altcoins, institutional moves, regulatory, broader market cap]
+
+*[Source: name — URL]*
+
+---
+
+## 📰 BIG STORIES (Tier 2)
+*Include only when there is significant news. Each story:*
+
+**[CATEGORY]: [Headline]**
+Why it matters: [1 sentence]
+[2-3 sentence summary]
+[Sentiment label: 🟢 / 🔴 / ⚖️]
+*[Source: name — URL]*
+
+---
+
+## 💡 CONTENT ANGLES FOR TODAY
+
+1. **"[Title]"** — [Platform suggestion]. [1-2 sentence pitch: why this angle, why today]
+2. **"[Title]"** — [Platform suggestion]. [1-2 sentence pitch]
+3. **"[Title]"** — [Platform suggestion]. [1-2 sentence pitch]
+
+---
+
+## ⚠️ WATCH LIST
+
+1. **[Item]** — [What to watch for, what triggers next action]
+2. **[Item]** — [What to watch for]
+3. **[Item]** — [What to watch for]
+4. **[Item]** (if applicable)
+
+---
+
+## Footer
+```
+Briefing delivered 7:00 AM PST | Data: CoinGecko + Alternative.me (live) | News: Brave Search (live)
+```
+
+---
+
+## Notes for Cron Job Execution
+- Pull ALL market data live at time of send — never use cached prices
+- Tier 1 (always cover): BTC, ETH, Total Market Cap, Fear & Greed
+- Tier 2 (cover when significant): Gold/Silver, Nvidia, MSTR, Metaplanet ($MTPLF), Binance, geopolitics, Clarity Act, FATF
+- Every price and data point needs [Source: ...] tag
+- Content Angles should be actionable today — tied to breaking news where possible
+- Watch List should have 3-4 items that are actively developing stories

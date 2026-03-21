@@ -9,6 +9,8 @@ description: Mission Control operational dashboard for Rex. Guides the design, b
 **Hosting:** Local, accessible via Tailscale VPN
 **Per agent:** Each agent gets their own Mission Control instance with a role-specific component.
 
+**Status:** Prompt ready in `mission-control-prompt.md` — awaiting Claude Code execution.
+
 ---
 
 ## Build Order
@@ -62,3 +64,20 @@ The role-specific component for Forge / Rex:
 - Never expose dashboard publicly — Tailscale access only
 - All agent data kept behind authentication
 - Human approval required before any production deployment
+
+**⏸ PHASE GATE — fires at every build phase transition:**
+```
+⚙️ PHASE GATE — Mission Control
+Completed phase: [X] | Next phase: [Y]
+LAW 6 │ Human Approval: ⏸ HOLDING — phase [X] complete and tested locally.
+        Not proceeding to [Y] until Kelly approves.
+        What was built: [summary]
+        What comes next: [summary]
+        Reply "proceed" to continue.
+```
+
+**⏸ TAILSCALE EXPOSURE GATE — fires before any remote access is enabled:**
+```
+⚙️ EXPOSURE GATE — Mission Control
+LAW 6 │ Human Approval: ⏸ HOLDING — dashboard ready. Not exposing via Tailscale until Kelly confirms.
+```

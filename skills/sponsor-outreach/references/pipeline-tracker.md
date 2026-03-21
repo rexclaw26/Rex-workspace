@@ -59,13 +59,24 @@
 
 ---
 
+## Active Sponsors (Closed — Current)
+
+| Company | Package | Monthly Value | Status | Notes |
+|---------|---------|--------------|--------|-------|
+| Bitcoin IRA | Gold | $10,000/month | ✅ Active | Crypto retirement accounts — strong audience fit |
+| LBank | Platinum | $20,000/month | ✅ Active | Crypto exchange |
+| Arculus | Gold | $12,000/month | ✅ Active | Hardware wallet — audience fit high |
+| **TOTAL ACTIVE MRR** | | **$42,000/month** | | |
+
+---
+
 ## Sponsor Category Tracker
 
 | Category | Prospects | Contacted | Active | Closed | Notes |
 |----------|-----------|-----------|--------|--------|-------|
-| Crypto Exchanges | | | | | |
+| Crypto Exchanges | | | LBank | 1 | |
 | DeFi Protocols | | | | | |
-| Wallets | | | | | |
-| Fintech/Trading | | | | | |
+| Wallets | | | Arculus | 1 | Hardware wallet |
+| Fintech/Trading | | | Bitcoin IRA | 1 | Crypto retirement |
 | Education | | | | | |
 | Hardware | | | | | |

@@ -2,9 +2,9 @@
 
 Full protocol lives in the `compliance-audit` skill. Summary here for reference.
 
-## Daily Self-Check (15 points)
+## Daily Self-Check (17 points)
 - Anti-Hallucination (3): source tags, uncertainty flagging, 2-source cross-reference
-- Humanization (5): contractions, no em dashes, sentence variety, no robotic transitions, varied openings
+- Humanization (7): contractions, no em dashes, sentence rhythm, no robotic transitions, And/But starters, fragments for emphasis, human tone overall
 - Security (2): injection checks, no credentials in output
 - Human-in-the-Loop (1): approval before external sends
 - EOS & Operations (2): task queue, cross-agent consistency

@@ -46,9 +46,35 @@ See [pipeline-tracker.md](references/pipeline-tracker.md) for full prospect trac
 
 **Identity rules:**
 - Always use Public Name (Rex) in external outreach
-- Apply proper email signature (from email-assistant skill)
-- Apply Humanization Framework — EMAIL mode = MAXIMUM
+- Email signature — ALL sponsor outreach signs off as:
+  `Rex | Hit Network / Sent on behalf of Kelly, Head of AI & Product Development / Hit Network | Discover Crypto`
+- Apply Humanization Framework — EMAIL mode = MAXIMUM (LAW 1 in AGENTS.md)
 - **NEVER send without Kelly's explicit approval**
+
+**PRE-SEND GATE — sub-agent proof runs FIRST. Hard stop. (PR-008)**
+
+Sponsor outreach is external, business-critical correspondence. The same sub-agent proof required for email-assistant applies here — no exceptions.
+
+**Step 1:** Spawn proofreader sub-agent with full draft + humanization rules (use template from humanization-voice/SKILL.md). Wait for PASS. If FAIL, fix every flagged violation and re-proof. Do not present draft until PASS is on record.
+
+**Step 2:** Show this gate before presenting to Kelly:
+```
+⚙️ OUTPUT GATE — Sponsor Outreach
+─────────────────────────────────────────────────────────
+SUB-AGENT PROOF  : ✅ PASSED
+LAW 1 │ Humanization  : ✅ PASS — EMAIL mode (MAXIMUM)
+  ✅ Contractions: [X found]
+  ✅ Em dashes: none found
+  ✅ No banned transitions
+  ✅ Sentence rhythm: varied
+  ✅ And/But starter: [quote]
+  ✅ Fragment: [quote]
+  ✅ Subject/intro/outro: conversational
+LAW 5 │ Sources       : ✅ TAGGED — all audience metrics sourced [Source: | Date:]
+LAW 6 │ Human Approval: ⏸ HOLDING — not sending until Kelly says "send"
+─────────────────────────────────────────────────────────
+```
+**⏸ OUTREACH NOT SENT. Draft presented for approval only.**
 
 See [outreach-templates.md](references/outreach-templates.md) for full email scripts.
 
@@ -64,11 +90,11 @@ See [outreach-templates.md](references/outreach-templates.md) for full email scr
 
 **Custom proposals:** Tailored to each prospect's goals and budget.
 
-**Rate card:** Standard packages with pricing and deliverables.
+**Rate card:** Standard packages with pricing and deliverables. See [rate-card.md](references/rate-card.md) — live document with real pricing anchored to active sponsor deals.
+
+**Media kit:** Built with real metrics. See [media-kit.md](references/media-kit.md) — use this for all outreach, not the template.
 
 All metrics must include `[Source: YouTube Analytics / Discord API / X Analytics | Date: ...]`
-
-See [media-kit-template.md](references/media-kit-template.md) for format.
 
 ---
 

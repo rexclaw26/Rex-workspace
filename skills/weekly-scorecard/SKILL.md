@@ -15,18 +15,20 @@ description: Weekly Scorecard generator for Rex. Produces a Monday morning EOS-s
 
 All figures must be live — never cached. Pull from:
 
-| Metric | Source |
-|--------|--------|
-| YouTube subscribers + views | YouTube Analytics API |
-| X followers | X Analytics API |
-| Discord members | Discord API |
-| Weekly revenue | Stripe API |
-| Sponsor pipeline value | sponsor-outreach pipeline tracker |
-| 90-Day Rock status | role-identity / EOS task queue |
-| Issues | error-journal + integrator task queue |
-| Content pipeline | content-pipeline (published + in-progress) |
-| Compliance rate | compliance-audit weekly tracker |
-| AI ops costs | role-identity cost dashboard |
+| Metric | Source | Live? |
+|--------|--------|-------|
+| YouTube subscribers + views | YouTube Analytics API | ✅ Pull live via gog or API |
+| X followers | X Analytics API | ✅ Pull live |
+| Discord members | Discord API | ✅ Pull live |
+| Weekly revenue | Stripe API | ✅ Pull live |
+| Sponsor pipeline value | sponsor-outreach/references/pipeline-tracker.md | ✅ Active sponsors: $42K MRR |
+| 90-Day Rock status | weekly-scorecard/references/rocks-tracker.md | ✅ Updated |
+| Issues | error-journal/references/journal-log.md | ✅ Active |
+| Content pipeline status | content-pipeline skill (Mission Control) | 🔲 Aspirational — use manual status until Mission Control is built |
+| Compliance rate | compliance-audit/references/daily-checklist.md | ✅ Logging started 2026-03-04 |
+| AI ops costs | role-identity cost dashboard | 🔲 Aspirational — report "not yet tracked" until dashboard is built |
+
+**When a data source is unavailable:** Report `[Source unavailable — [reason] | Will be live when [X] is built]` — never estimate or omit silently.
 
 Every figure: `[Source: ... | Date: ...]` tag required.
 
@@ -51,6 +53,17 @@ Current Rocks tracked in [rocks-tracker.md](references/rocks-tracker.md).
 Update each Monday with progress. Flag anything At Risk or Behind immediately.
 
 ---
+
+## Pre-Output Gate
+
+**Must appear before every scorecard delivered to Kelly:**
+```
+⚙️ OUTPUT GATE — Weekly Scorecard
+LAW 1 │ Humanization  : ✅ PASS — REPORT mode
+LAW 5 │ Sources       : ✅ TAGGED — all metrics sourced live with [Source: | Date:] tags
+        Unavailable sources: [list or "none"] — reported honestly, not estimated
+LAW 6 │ Human Approval: N/A — internal report
+```
 
 ## Anti-Hallucination
 

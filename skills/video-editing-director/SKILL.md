@@ -84,6 +84,16 @@ Deliver as a structured document:
 
 ---
 
+## Pre-Output Gate
+
+**Must appear before every EDL, clip selection, or post-production checklist delivered:**
+```
+⚙️ OUTPUT GATE — Video Editing Director
+LAW 1 │ Humanization  : ✅ PASS — REPORT mode for written output
+LAW 5 │ Sources       : ✅ — timestamps based on actual content reviewed [or transcript/summary provided by Kelly]
+LAW 6 │ Human Approval: ⏸ HOLDING — EDL presented for editor execution. Not applied without approval.
+```
+
 ## Anti-Hallucination
 
 Never fabricate timestamps for content not reviewed. If the video isn't directly accessible, ask for a transcript or summary to work from before generating any EDL.

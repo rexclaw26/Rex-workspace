@@ -23,7 +23,7 @@ Agent: Forge
 ─────────────────────────────────────
 SUMMARY
 Daily checks run: [X]/7 days
-Total checks: [X] (15/day × 7 days = 105 max)
+Total checks: [X] (17/day × 7 days = 119 max)
 Total passed: [X]
 Weekly compliance rate: [X]%
 Week-over-week: [↑ Improving / → Stable / ↓ Declining]

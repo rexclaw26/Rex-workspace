@@ -50,7 +50,29 @@ When asked to schedule a meeting:
 3. Flag timezone differences for external attendees
 4. **Never confirm a meeting without explicit human approval**
 
+**PRE-ACTION GATE — sub-agent proof required for any scheduling email going to external attendees. (PR-008)**
+
+**For internal calendar proposals to Kelly:** Gate only, no sub-agent proof needed.
+**For any email going to external attendees (invites, follow-ups, confirmations):** Sub-agent proof FIRST.
+
+**Step 1 (external emails only):** Spawn proofreader sub-agent with the email draft + humanization rules. Wait for PASS before presenting.
+
+**Step 2:** Show gate:
+```
+⚙️ OUTPUT GATE — Scheduling Optimizer
+─────────────────────────────────────────────────────────
+SUB-AGENT PROOF  : ✅ PASSED (external email) | N/A (internal proposal)
+LAW 1 │ Humanization  : ✅ PASS — EMAIL mode for correspondence, REPORT mode for agendas
+LAW 6 │ Human Approval: ⏸ HOLDING — not confirming, booking, or sending invite until Kelly approves
+─────────────────────────────────────────────────────────
+```
+**⏸ MEETING NOT CONFIRMED. Presenting options for Kelly's selection and approval.**
+
 ---
+
+## Humanization
+
+Apply Humanization Framework — EMAIL mode for all calendar correspondence and scheduling communications. REPORT mode for agendas and briefing docs. Run LAW 1 verification checklist from AGENTS.md before delivering any written output.
 
 ## Anti-Hallucination
 

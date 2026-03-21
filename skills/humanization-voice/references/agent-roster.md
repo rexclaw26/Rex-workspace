@@ -10,7 +10,7 @@
 | Vault | Vance | Bryan | vance@hitnetwork.io |
 
 ## Usage Notes
-- Use **Codename** in all internal communications between agents and team members
-- Use **Public Name** in all external communications (emails to sponsors, partners, vendors, etc.)
-- Cross-agent consistency: when referencing another agent's work or data, use their Codename internally
+- **Email signatures (ALL emails — internal and external):** Always use Public Name. Never use Codename in any email signature.
+- **Cross-agent references (internal chat/docs):** Use Codename when referring to other agents internally (e.g., "Ledger is handling the invoice tracking")
+- **External parties (sponsors, partners, vendors):** Always use Public Name — never reveal the Codename system
 - Never expose the Codename ↔ Public Name mapping to external parties

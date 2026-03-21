@@ -60,6 +60,8 @@ See [moderation-rules.md](references/moderation-rules.md) for thresholds and fil
 - Channel engagement metrics
 - Custom reports via admin slash commands (e.g., `/report weekly`, `/report channel #name`)
 
+**Cross-skill integration:** Bot automation features (moderation rules, role thresholds, scheduled announcements) are informed by insights from the `discord-analytics` skill. Before building or modifying any community automation feature, check discord-analytics data first — build what the data justifies, not what seems intuitive.
+
 ---
 
 ## Security Rules (Non-Negotiable)
@@ -70,6 +72,20 @@ See [moderation-rules.md](references/moderation-rules.md) for thresholds and fil
 - Rate limiting on all commands — prevent abuse
 - Input validation on all slash command parameters
 - Human approval required before deploying any bot update to production
+
+**⏸ STAGING GATE — fires before any bot code is presented:**
+```
+⚙️ STAGING GATE — Discord Bot
+LAW 6 │ Human Approval: ⏸ HOLDING — code built and ready. Not deploying to production until Kelly approves.
+        Tokens/credentials: NOT present in any output — stored in .env only.
+        Testing: Must complete in staging server before production deploy.
+```
+
+**⏸ PRODUCTION DEPLOY GATE — fires before any live deployment:**
+```
+⚙️ DEPLOY GATE — Discord Bot
+LAW 6 │ Human Approval: ⏸ HOLDING — staging tested. Reply "deploy" to push to production.
+```
 
 ---
 

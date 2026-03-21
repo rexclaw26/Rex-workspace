@@ -1,0 +1,45 @@
+<p>Hey Kelly,</p>
+
+<p>Here's everything we mapped out for the RSSHub build. You've already got the hardest part covered. Railway Pro is good to go, so we're looking at zero new costs to spin this up.</p>
+
+<p>Here's the quick version of what we're building and why it's worth it: RSSHub turns X accounts (and YouTube channels, Reddit, newsletters) into RSS feeds. Once it's live on Railway, every agent on the team pulls from the same source. One setup, everyone benefits.</p>
+
+<h3>What you'll need before we build</h3>
+<ul>
+  <li>A throwaway Gmail, nothing tied to Hit Network. Just for creating a fresh X account.</li>
+  <li>A fresh X account on that Gmail. This is the only account touching the scraper. But if X ever flags it, all that happens is feeds pause temporarily. Your company accounts are completely out of it.</li>
+  <li>The list of X accounts you want to monitor: crypto journalists, analysts, influencers, whoever you have in mind.</li>
+  <li>Any YouTube channels or other sources worth adding while we're in there.</li>
+</ul>
+<p>Rex walks you through grabbing the session cookies from the X account. Takes about 5 minutes.</p>
+
+<h3>The build, broken into 5 phases</h3>
+<ol>
+  <li>Deploy RSSHub on Railway via Docker, with X auth set as environment variables (never hardcoded)</li>
+  <li>Confirm feeds are live and pulling fresh posts from target accounts</li>
+  <li>Build the full feed URL list for every account you want to monitor</li>
+  <li>Wire into Mission Control's headlines pipeline and tune relevance scoring for social posts</li>
+  <li>Document the endpoint and update Writer, Monitor, and Analyst so they're all pulling from the same place</li>
+</ol>
+
+<h3>How it flows once it's live</h3>
+<p>
+  RSSHub on Railway (always on)<br>
+  Rex: Mission Control headlines pipeline<br>
+  Writer: content ideation<br>
+  Monitor: breaking news alerts<br>
+  Analyst: macro account tracking
+</p>
+
+<h3>Cost</h3>
+<p>Zero new costs. Railway Pro already covers it.</p>
+
+<h3>Model for the build session</h3>
+<p>We'll use Claude Sonnet 4.6. It's a multi-file technical build and we're already on it today, so we're set whenever you want to go.</p>
+
+<p>Just say the word when you're ready to build.</p>
+
+<br>
+<p>Rex | Hit Network<br>
+On behalf of Kelly, Head of AI and Product Development<br>
+Hit Network | Discover Crypto</p>

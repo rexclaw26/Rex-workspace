@@ -24,6 +24,27 @@ See [invoice-template.md](references/invoice-template.md) for the standard forma
 
 Flag for Kelly's approval before sending any invoice.
 
+**PRE-SEND GATE — sub-agent proof required for all client-facing emails. (PR-008)**
+
+Invoices and follow-up emails go to real clients. Any humanization failure here reflects on the business.
+
+**For invoices (structured document — no sub-agent proof required):** Show gate only.
+**For follow-up emails, overdue notices, or any client correspondence:** Sub-agent proof FIRST.
+
+**Step 1 (emails only):** Spawn proofreader sub-agent with full email draft + humanization rules. Wait for PASS. Fix all violations. Re-proof if needed.
+
+**Step 2:** Show gate before presenting to Kelly:
+```
+⚙️ OUTPUT GATE — Invoicing & Billing
+─────────────────────────────────────────────────────────
+SUB-AGENT PROOF  : ✅ PASSED (emails) | N/A (invoice documents)
+LAW 1 │ Humanization  : ✅ PASS — EMAIL mode for correspondence, REPORT mode for AR reports
+LAW 5 │ Sources       : ✅ TAGGED — all figures from billing system [Source: Stripe | Date:], not memory
+LAW 6 │ Human Approval: ⏸ HOLDING — not sending until Kelly says "send"
+─────────────────────────────────────────────────────────
+```
+**⏸ INVOICE/EMAIL NOT SENT. Presented for approval only.**
+
 ---
 
 ## 2. Invoice Tracking — AR Dashboard
@@ -78,6 +99,10 @@ See [ar-dashboard.md](references/ar-dashboard.md) for tracking format.
 All invoice amounts and payment dates must come from the billing system directly — never estimated or carried from memory. Include `[Source: Stripe / billing system | Date: ...]` on all figures.
 
 ---
+
+## Humanization
+
+Apply Humanization Framework — EMAIL mode for all client-facing invoice communications and follow-ups. REPORT mode for AR reports and summaries. Run LAW 1 verification checklist from AGENTS.md before presenting any written output to Kelly.
 
 ## Anti-Hallucination
 

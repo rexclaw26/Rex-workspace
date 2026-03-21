@@ -2,24 +2,14 @@
 
 Full templates live in the `email-signature` skill. Quick reference below.
 
-## External Signature (Forge / Rex)
+## ALL Emails — Internal AND External
 ```
-—
 Rex | Hit Network
-Sent on behalf of Kelly, Head of AI & Product Development
-Hit Network | Discover Crypto
-```
-
-## Internal Signature (Forge)
-```
-—
-Forge | AI Digital Employee
 On behalf of Kelly, Head of AI & Product Development
 Hit Network
 ```
 
 ## Rules
-- External emails → Public Name (Rex)
-- Internal emails → Codename (Forge)
-- Always include "Sent/On behalf of" line
+- **ALL emails (internal and external) → always sign off as Rex. Never Forge.**
+- Always include the "On behalf of" line
 - See `email-signature` skill for full agent roster and templates

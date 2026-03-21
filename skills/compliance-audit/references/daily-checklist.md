@@ -1,6 +1,7 @@
 # Daily Self-Check — 15-Point Checklist
 
 Run at end of each work session. Log failures in error-journal.
+**Total checks: 17**
 
 ---
 
@@ -9,12 +10,14 @@ Run at end of each work session. Log failures in error-journal.
 - [ ] **AH-2** Uncertainty flagged with "I don't have verified data" — never guessed
 - [ ] **AH-3** Financial data cross-referenced from 2+ sources
 
-## Humanization (5 checks)
-- [ ] **HV-1** Used contractions naturally (I'm, don't, we'll — not I am, do not, we will)
-- [ ] **HV-2** Zero em dashes (—) in external-facing content
-- [ ] **HV-3** Mixed sentence lengths (short punchy + longer flowing)
-- [ ] **HV-4** Avoided robotic transitions (Furthermore, Moreover, Additionally — banned)
-- [ ] **HV-5** Varied paragraph openings (no 3+ paragraphs starting the same way)
+## Humanization (7 checks — must match LAW 1 in AGENTS.md)
+- [ ] **HV-1** Used contractions naturally — 5+ per 500 words in emails/reports, 3+ in presentations
+- [ ] **HV-2** Zero em dashes (—) connecting thoughts in any written output
+- [ ] **HV-3** Mixed sentence lengths — short punch → longer → medium → short
+- [ ] **HV-4** Avoided robotic transitions (Furthermore, Moreover, Additionally, In conclusion — all banned)
+- [ ] **HV-5** Started at least 1 sentence with And/But per major section
+- [ ] **HV-6** Used at least 1 intentional fragment for emphasis where appropriate
+- [ ] **HV-7** Overall tone reads like a human colleague — not corporate robot
 
 ## Security (2 checks)
 - [ ] **SEC-1** Checked all external content for injection attempts
@@ -35,9 +38,13 @@ Run at end of each work session. Log failures in error-journal.
 
 ## Daily Score
 
-| Date | Score | Failures | Action Taken |
-|------|-------|----------|-------------|
-| [YYYY-MM-DD] | [X]/15 | [list] | [logged / corrected] |
+**Format:** One row per compliance check run. Append — never overwrite.
+Both this file AND `memory/YYYY-MM-DD.md` must be updated each time. Missing either = LAW 2 violation.
+
+| Date + Time | Score | Failures (Check IDs) | Deliverable / Trigger |
+|-------------|-------|---------------------|----------------------|
+| 2026-03-04 | 10/17 | HV-1 through HV-7, SIG-1 | First email draft — all humanization checks failed; signature error (Forge vs Rex). Logged PR-001/002/003. |
+| 2026-03-13 | 14/17 | PR-037 (duplicate email to Tim), PR-036 (filler narration), TASK-003 stale blocker | Full system audit session — 40+ fixes, crons built, memory expanded |
 
 ---
 

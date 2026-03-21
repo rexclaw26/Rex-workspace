@@ -50,6 +50,21 @@ See [defi-requirements.md](references/defi-requirements.md) for full compliance 
 ## 4. Development Workflow
 
 1. **Propose architecture and component structure first** — get approval before building
+
+**⏸ ARCHITECTURE GATE — fires before every build starts:**
+```
+⚙️ ARCHITECTURE GATE — Website Design
+⏸ Architecture and component structure presented below.
+Build will NOT begin until Kelly approves this design.
+Reply "approved" or provide changes.
+LAW 6 │ Human Approval: ⏸ HOLDING — no code written until architecture confirmed
+```
+
+**⏸ DEPLOYMENT GATE — fires before any production push:**
+```
+⚙️ DEPLOYMENT GATE — Website Design
+LAW 6 │ Human Approval: ⏸ HOLDING — built and tested locally. Not deploying until Kelly approves.
+```
 2. **Build incrementally:** scaffold → core functionality → styling → testing
 3. **Documentation:** README, component docs, API docs — required for every project
 4. **Version control:** clear commit messages describing each change
@@ -59,6 +74,20 @@ See [defi-requirements.md](references/defi-requirements.md) for full compliance 
 - What still needs to be done
 - Any blockers or decisions needed from Kelly
 - Dependencies or integrations that need verification (flag, don't assume)
+
+---
+
+## Hierarchy Rule — UI Design Skills
+
+For Hit Network builds, use skills in this order:
+
+| Skill | Role | When to use |
+|-------|------|-------------|
+| **website-design** (this skill) | PRIMARY | All full-stack builds — frontend + backend + APIs + DeFi sites. Architecture gate + deployment gate required. |
+| **frontend-design-ultimate** | SECONDARY | High-visual static sites only (landing pages, portfolios, marketing microsites). Routes through this skill's deployment gate before going live. |
+| **superdesign** | REFERENCE ONLY | Design guidelines, theme systems, component patterns. Not a builder — do not use to generate production code. Load for design direction, then execute with website-design. |
+
+**Default rule:** When in doubt, use website-design. It has the most complete enforcement, the fullest gates, and the most Hit Network context baked in.
 
 ---
 

@@ -90,6 +90,17 @@ Every error makes the system stronger. The loop never stops.
 
 ---
 
+## Pre-Output Gate
+
+**Must appear before every rule proposal, quarterly review, or system health report delivered to Kelly:**
+```
+⚙️ OUTPUT GATE — Adaptive Rule Engine
+LAW 1 │ Humanization  : ✅ PASS — REPORT mode
+LAW 5 │ Sources       : ✅ — all proposals backed by error journal entries (min 3). References cited.
+LAW 6 │ Human Approval: ⏸ HOLDING — rule proposals require Kelly approval before implementation.
+```
+**⏸ RULE PROPOSALS do not self-implement. Kelly reviews and approves each one.**
+
 ## Anti-Hallucination
 
 Never fabricate system health metrics. Report actual data only. If tracking wasn't active for a period: *"No data available for [period]"* — never estimate.

@@ -79,5 +79,15 @@ Each content piece tracks:
 - Flag blockers: any piece stuck in a stage >5 days surfaces in weekly report
 - **Nothing moves to Published without Kelly's approval in Review stage**
 
+**STAGE ADVANCEMENT GATE — fires at every stage transition:**
+```
+⚙️ STAGE GATE — Content Pipeline
+Current stage: [X] → Advancing to: [Y]
+LAW 6 │ Human Approval: ⏸ HOLDING — stage will not advance until Kelly confirms.
+        Auto-generated assets ready for review: [list what was generated]
+        Reply "approve" to advance or provide feedback.
+```
+**⏸ PUBLISHED stage requires explicit Kelly "publish" approval. Never auto-advances.**
+
 See [pipeline-schema.md](references/pipeline-schema.md) for Convex schema extension and UI component spec.
 See [content-workflow.md](references/content-workflow.md) for detailed per-stage workflow and SLA targets.
