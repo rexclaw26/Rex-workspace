@@ -1,4 +1,49 @@
 ---
+## 2026-03-22 — REPORT INGESTION + X SCRAPING
+
+**Source**: MARKET_REPORT_20260322.html (CryptAgro 2 / Discover Crypto, 13:48 UTC) + X scraping (Mar 22)
+**BTC**: $68,573 | **ETH**: $2,148 | **SOL**: $89.60 | **Gold**: $4,490 | **Oil**: $120 (Brent)
+**Fear & Greed**: 10 (Extreme Fear — 46 consecutive days below 25)
+**BTC RSI**: 27 (deep oversold)
+
+**Key Narratives from Report:**
+- Whales accumulate 270,000 BTC in 30 days — largest buying wave in 13+ years. Wallets holding 100+ BTC crossed 20,000 for first time ever.
+- SEC/CFTC joint 68-page release names 16 crypto assets as digital commodities (BTC, ETH, SOL, XRP, DOGE, ADA, AVAX, LINK, DOT, HBAR, LTC, BCH, SHIB, XLM, XTZ, APT). Staking classified as non-securities activity.
+- Morgan Stanley files spot BTC ETF (ticker MSBT) on NYSE Arca — first major US bank to go solo on crypto ETF. BNY Mellon custody, Coinbase prime broker.
+- Mining difficulty drops 7.76% at block 941,472. Hashrate at ~933 EH/s. Production cost ~$88K vs BTC ~$69K = miners at 21% loss.
+- Strategy buys 22,337 BTC for $1.57B (largest weekly buy of 2026). Total: 761,068 BTC. Target: 1M BTC by year-end.
+- CLARITY Act stablecoin yield compromise reached — passive rewards prohibited, activity-based permitted. Community bank rider risks delay.
+- Iran war: Brent at $120, Strait of Hormuz threatens 12M bbl/day. Fed paralyzed — rate hike odds 50%, inflation at 3%.
+- Quadruple witching: $7.1T options expired Friday. $13.5B Deribit crypto expiry March 27. BTC max pain $71K.
+- TAO surges 17% to $300+ on Nvidia CEO praise for decentralized AI training. 72B-parameter LLM trained on Bittensor Subnet 3.
+- Spot BTC ETFs: 7 straight days of inflows totaling $1.17B.
+- Two early BTC holders (2010-2011 wallets) sold combined $117M on March 21.
+
+**Key Levels:** BTC support $65,800 / $60K. Max pain $71K (Deribit Mar 27). Mining production cost $88K. Strategy avg cost $66,384.
+
+**X Account Scraping — Mar 22:**
+
+**@coinbureau:**
+- BTC decoupling from S&P 500 — longest negative correlation with equities since 2020
+- 70K BTC open interest liquidation event, reset positioning to April 2025 levels
+- Saylor signals another BTC buy ("The Orange March Continues") — Strategy at $52.36B
+- Bithumb CEO reappointment despite $40B BTC glitch (620K BTC credited accidentally)
+- Iran internet OFF for 23 days — one of longest nationwide shutdowns in recent history
+- Tom Lee: wars bullish for US economy/stocks
+
+**@KobeissiLetter:**
+- Key events this week: Trump "48 Hour Warning" to Iran, Services PMI, Oil Inventory, Jobless Claims, Consumer Sentiment
+- Interest rate HIKES back in discussion amid global energy crisis
+- Trump deploying ICE at US airports to assist TSA beginning Monday
+- Trump Iran timeline: "no ceasefire" → "considering winding down" → "peace talks" → "48h warning" — markets whipsawing
+
+**@Barchart:**
+- SPY closes below 200-day MA
+- Google searches for "Help With Mortgage" at highest level in history, surpassing GFC peak
+- Philippine Peso collapses to all-time low vs USD
+- Live show topics: total economic collapse concerns, nat gas supply chain, silver/gold timing
+
+---
 ## 2026-03-21
 
 **BTC**: $70,131 | **ETH**: $2,145 | **SOL**: $89.74 | **Gold**: $4,575 | **Oil**: $98.23

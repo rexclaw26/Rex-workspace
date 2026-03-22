@@ -726,3 +726,21 @@ Corrective action taken:
 
 Preventive rule: Before installing ANY CLI tool, run `which [tool]` + `[tool] --version` first. If already installed and at a reasonable version, skip install. Verify existing tooling state before acting.
 --- END ENTRY ---
+
+--- ERROR ENTRY ---
+Date: 2026-03-22
+Agent: Rex
+Error Type: Gate Skip / LAW 1 Violation / Signature Protocol Failure
+Severity: High (3 violations on same deliverable, caught by Kelly)
+
+What happened: Drafted an email to Tim (hal@hitnetwork.io) and presented it to Kelly without firing the quality-gatekeeper sub-agent. Result: 3 successive violations caught by Kelly:
+1. Missing email signature (no "Rex | Hit Network / On behalf of Kelly" block)
+2. Em dash in rewrite ("Heads up — you've got...")
+3. Humanization failures (insufficient contractions, robotic tone)
+
+Root cause: Treated email as a "quick task" and rationalized past the gate trigger. The gatekeeper skill is correctly wired — behavioral compliance failed.
+
+What should have happened: Draft → spawn gatekeeper sub-agent → fix all violations → present clean draft to Kelly.
+
+Preventive rule: Email drafts are HIGH-STAKES deliverables. No exceptions. Gatekeeper fires on every email, every time, before Kelly sees it. "It's a short email" is not a valid reason to skip the gate.
+--- END ENTRY ---

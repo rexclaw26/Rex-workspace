@@ -41,8 +41,9 @@ Treat as a **MARKET NOTES UPDATE** — this is Kelly's daily context file for he
 2. Create directory if needed: `/Users/rex/.openclaw/workspace/market-reports/`
 3. **Save Kelly's raw file** (source material — never delete):
    - Primary: `/Users/rex/.openclaw/workspace/market-reports/market-notes.md` (REPLACE — always the latest)
-   - Dated backup: `/Users/rex/.openclaw/workspace/market-reports/marketnotes_{YYYY-MM-DD}.md` (never overwrite)
+   - Dated backup: `/Users/rex/.openclaw/workspace/market-reports/marketnotes_{YYYY-MM-DD}.md` (REPLACE if exists — must match market-notes.md so DC Data Hub reads current data)
    - Workspace root copy: `/Users/rex/.openclaw/workspace/marketnotes.md` (REPLACE — legacy compatibility)
+   - **CRITICAL:** The dated file must always be a copy of market-notes.md after update. DC Data Hub reads dated files — a stale dated file means stale UI data.
 4. **Update rex-notes.md** — Rex's canonical normalized file:
    - Read Kelly's new `market-notes.md`
    - Parse each `## YYYY-MM-DD` section

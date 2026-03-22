@@ -1,55 +1,64 @@
 # QUICKREF.md — Rex State Snapshot
 _Read this FIRST, EVERY session. No exceptions. No skimming._
-_Last updated: 2026-03-21 4:52 PM PDT_
+_Last updated: 2026-03-22 1:00 PM PDT_
 
 ## Active Right Now
-- **TASK-007** — DC Data Hub — FULLY BUILT (Days 1+2). Live on port 3001. Day 3 = Railway deploy + audit (next action).
-- **TASK-008** — Lex Architecture Integrations — COMPLETE (commit 974239e)
+- **TASK-007** — DC Data Hub — Major feature push complete (2026-03-22). Market Pulse card, forward-looking bull/bear (RSI + TwelveData), Hyperliquid liquidations, enriched Onchain Signals (SOPR/MVRV). Dev running on port 3000.
+- **TASK-008** — Lex Architecture Integrations — COMPLETE + fully wired (extraPaths updated 2026-03-22)
 
 ## What's Live (permanent infrastructure)
 | Service | URL | Status |
 |---------|-----|--------|
 | Mission Control | http://100.70.46.41:3000 | LIVE |
-| DC Data Hub | http://100.70.46.41:3001 | LIVE |
+| DC Data Hub (local dev) | http://localhost:3000 | LIVE (port 3000) |
+| DC Data Hub (Railway) | https://dc-data-hub-production-cff0.up.railway.app | LIVE |
 | X RSS Feed | Railway (deployed) | LIVE |
-| OpenClaw | localhost:34931 | LIVE |
+| OpenClaw | localhost:30322 | LIVE |
 
 ## Open Tasks
 | ID | Task | Status | Next Action |
 |----|------|--------|-------------|
-| TASK-007 | DC Data Hub | active — built, deploy pending | Railway login → deploy new project → Day 3 audit |
-| TASK-006 | Build 3 Missing Skills | planned | Revisit after DC Hub deployed |
+| TASK-007 | DC Data Hub | active — features built, Railway needs redeploy for new APIs | `railway up` from ~/dev/dc-data-hub |
+| TASK-002 | Calendar focus bug | blocked | — |
+| TASK-003 | X feed RSS | blocked | — |
 
-## Last Session Summary (2026-03-21)
-- DC Data Hub Phase 1 + revisions complete (auth gate, 11 sections, ticker bar, X Feed categorized, Deeper Insight, Bull/Bear 5 assets, Watching parser fixed)
-- Tank-shell-security, injection-defense v1.1, x-post-automator v2, first-principles-thinking skills pushed to GitHub
-- Lex architecture assessment completed — 7 integrations planned (TASK-008)
-- Security emails to Lex + Hal confirmed sent 2026-03-20 (5 sends, most recent 20:24)
-- Tailscale issue resolved (phone was on wrong account — frankrussobiz@ vs rex@hitnetwork.io)
-- PR-042, PR-043 added (coding agent verification + scope limits)
-- Full workspace backup: ~/Desktop/openclaw-backups/openclaw-backup-2026-03-21-1308 (2.1GB)
+## Last Session Summary (2026-03-22)
+- **Memory system fully wired** — extraPaths updated (37 entries), SKILL-MAP.md built, gates + tracker fixed, PR-044 written
+- **PR-044 added (PERMANENT)** — Zero-bypass gate enforcement. Gatekeeper fires on ALL written deliverables. No exceptions.
+- **Model:** `anthropic/claude-sonnet-4-6` via `anthropic:manual` (token, no API credits)
+- **TwelveData API key** added to DC Data Hub `.env.local` — RSI live for all 7 assets
+- **Bull/Bear redesigned** — forward-looking RSI signals (not lagging price change)
+- **Liquidations rebuilt** — Hyperliquid (was Binance futures, geo-blocked)
+- **Onchain Signals enriched** — SOPR, LTH/STH-MVRV, whale accumulation, exchange flows, miner cost
+- **Market Pulse card added** — grid card + full report viewer at `/report`
+- **market-notes.md data lag fixed** — API routes now read `market-notes.md` first (always current)
+- **GMAIL_HOOK fixed** — dated backup now overwrites on every ingest
+- **Email gate violation** — Tim/Tailscale email: missing sig + em dash + humanization. PR-044 written.
+- **Tailscale for Tim** — Kelly inviting tim@hitnetwork.com + hal@hitnetwork.io to Tailscale
 
 ## Blockers
 - Nansen API key (awaiting from Kelly)
-- Railway CLI needs `railway login` (browser auth required) before DC Data Hub can deploy
-- Claude Code CLI credits subject to Claude.ai subscription limits (kelly@bitlabacademy.com)
+- DC Data Hub Railway needs redeploy to pick up new API routes (bull-bear, liquidations, onchain, market-pulse)
+- Tim's Tailscale invite pending from Kelly
 
 ## Recent Decisions (last 7 days)
 | Date | Decision | Status |
 |------|----------|--------|
+| 2026-03-22 | PR-044: Zero-bypass gate enforcement — ALL deliverables gated | PERMANENT |
+| 2026-03-22 | Liquidations source: Hyperliquid (not CoinGlass — too expensive) | ACTIVE |
+| 2026-03-22 | Bull/Bear: forward-looking RSI signals via TwelveData | ACTIVE |
+| 2026-03-22 | DC Data Hub dev port = 3000 (not 3001 — .env.local fixed) | ACTIVE |
+| 2026-03-22 | Market report ingestion: auto-convert HTML→MD on receipt | ACTIVE |
+| 2026-03-22 | extraPaths maintenance: any new file → add immediately, Kelly applies | ACTIVE |
 | 2026-03-21 | DC Data Hub password: dcgodmode26 | ACTIVE |
-| 2026-03-21 | Ticker bar = crypto only (no equities/commodities) | ACTIVE |
 | 2026-03-21 | DXY signal inverted in Bull/Bear (rising = bearish for crypto) | ACTIVE |
-| 2026-03-21 | No X/YT buttons on DC Hub (Mission Control only) | ACTIVE |
-| 2026-03-21 | Dev port = 3001 (3000 reserved for Mission Control) | ACTIVE |
-| 2026-03-21 | Tailscale account for devices: rex@hitnetwork.io (not frankrussobiz@) | ACTIVE |
-| 2026-03-21 | Claude Code CLI = Claude.ai subscription, NOT API credits | ACTIVE |
 
 ## Key People
 - Kelly Kellam — Principal. Telegram: 1011362712. PST timezone.
 - TJ Shedd — Hit Network leadership
 - Lex — Hit Network AI (GitHub: LexClaw/Lex-Workspace, operator: TJ)
-- Hal — Hit Network Discord AI (operator: Tim)
+- Hal — Hit Network Discord AI (operator: Tim, hal@hitnetwork.io)
+- Tim — Hal's operator. Tailscale invite pending.
 
 ## Full Capabilities
 See SELF.md

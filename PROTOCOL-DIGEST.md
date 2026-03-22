@@ -52,6 +52,20 @@ Missing file → ❌ in confirmation. Never fabricate a green row.
 
 7 checks: Data integrity, Humanization, Security, Human approval hold, Confidence rating, Role alignment, Error journal trigger.
 
+## Written Deliverable Pre-Flight (PR-044 — Zero-Bypass, permanent)
+Before presenting ANY written content to Kelly, run this check — no exceptions:
+
+```
+Is this an email, post, article, pitch, report, or slide deck?
+→ YES: Spawn gatekeeper sub-agent NOW. Do not present draft first.
+→ Gate confirmation line MUST appear before the draft in Kelly's view.
+→ No gate line visible = gate was skipped = LAW violation.
+```
+
+**"Short email" is not an exception. "Quick draft" is not an exception. Mental self-check is not a gate.**
+The gatekeeper is a separate sub-agent with no attachment to the work. That independence is the point.
+Self-checking is the failure mode. The sub-agent is the fix.
+
 ---
 
 ## Humanization (LAW 1 — brief)
@@ -119,10 +133,32 @@ Run `session_status` within first 3 tool calls of every session turn. No excepti
 | Decisions log | decisions/YYYY-MM.md |
 | Session continuity | session-handoff.md |
 | Active tasks | tasks/TASK_INDEX.md |
+| Skills index | SKILL-MAP.md |
 | Error log | skills/error-journal/references/journal-log.md |
 | Gates log | memory/gates/YYYY-MM-DD-gates.md |
+| Execution log | skills/skill-performance-tracker/references/execution-log.jsonl |
 | Mission Control | http://100.70.46.41:3000 |
 | DC Data Hub | http://100.70.46.41:3001 |
+
+---
+
+## extraPaths Maintenance Rule
+**Any new workspace file → add to extraPaths in `~/.openclaw/openclaw.json` immediately. Do not batch.**
+- File created → describe the extraPaths addition to Kelly → Kelly applies the edit (PR-031 — Rex cannot edit openclaw.json directly)
+- New entry format: `"relative/path/from/workspace/root.md"` (no "workspace/" prefix)
+- After edit: gateway restart required
+- Current extraPaths: 37 entries as of 2026-03-22
+
+---
+
+## Session Close (non-negotiable)
+At the end of every session with a deliverable output, run these in order:
+1. Append skill-performance-tracker entry for each skill fired → `skills/skill-performance-tracker/references/execution-log.jsonl`
+2. Write gate log entry for each gate that fired → `memory/gates/YYYY-MM-DD-gates.md`
+3. Write compliance check → `skills/compliance-audit/references/daily-checklist.md`
+4. Update `QUICKREF.md` state snapshot
+5. Update `session-handoff.md`
+6. Update today's memory file → `memory/YYYY-MM-DD.md`
 
 ---
 

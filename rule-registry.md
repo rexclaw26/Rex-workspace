@@ -23,6 +23,7 @@ _Started: 2026-03-21 | Source of truth for all PRs: AGENTS.md_
 | PR-041 | Verify financial figures before rewriting | 2026-03-20 | — | PERMANENT |
 | PR-042 | Verify coding agent output before reporting done | 2026-03-21 | 2026-03-21 | PERMANENT |
 | PR-043 | Coding agent session scope limit (max 5 files) | 2026-03-21 | 2026-03-21 | PERMANENT |
+| PR-044 | Zero-bypass gate enforcement — gatekeeper fires on ALL written deliverables, no exceptions, gate line must precede draft | 2026-03-22 | 2026-03-22 | PERMANENT |
 
 ## Rules in Testing (need 3 consecutive successes)
 | PR | Rule | Testing Status | Evidence |

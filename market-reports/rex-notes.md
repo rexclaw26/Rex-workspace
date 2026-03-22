@@ -1,3 +1,88 @@
+## 2026-03-21 — Iran Escalation; $240M Liquidation; JPMorgan S&P Cut; BTC Sub-$68K
+
+**Source**: Kelly's market-notes.md — X/Twitter scraping (@coinbureau, @BullTheoryio, @KobeissiLetter, @Andre_Dragosch) — Mar 19-21, 2026
+
+### SNAPSHOT
+| Asset | Price | Trend |
+|-------|-------|-------|
+| BTC | $70,131 | Down |
+| ETH | $2,145 | Down |
+| SOL | $89.74 | Down |
+| Gold | $4,575 | Down |
+| Oil | $98.23 | Up |
+
+- **Fear & Greed**: 10 (Extreme Fear)
+- **Altcoin Season**: 51 (Neutral)
+- **Overall Trend**: Down
+
+### MACRO
+- Trump threatens to "obliterate" Iran's power plants if Strait of Hormuz not opened within 48 hours
+- JPMorgan cuts S&P 500 year-end target from $7,500 to $7,200 citing Hormuz disruption risk
+- US and Iran reportedly discussing peace talk terms per Axios (mixed signals — 36hrs of Trump flip-flops per @KobeissiLetter)
+- Russia potentially blocking Telegram, tightening internet control
+- 80M Americans skipping meals/bills for routine healthcare costs
+- Andre Dragosch (Bitwise): "Real risk is in sovereign bonds — accident waiting to happen"
+
+### BITCOIN
+- BTC briefly crashed below $68,000 before partial recovery above $70K on Iran escalation
+- $240M+ crypto longs liquidated in ~15 minutes on the Iran escalation news
+- BTC now $70,131 — partial recovery but trend remains down
+
+### ETHEREUM
+- ETH: $2,145 — tracking broader crypto weakness from geopolitical escalation
+
+### INSTITUTIONAL
+- No new institutional data for this date
+
+### POLICY
+- Iran/Hormuz escalation creating macro instability — Trump 48hr ultimatum
+- Russia/Telegram situation developing — potential internet censorship expansion
+
+### KEY_NARRATIVE
+Iran escalation drove a flash crash: BTC broke below $68K on Trump's "obliterate" threat, $240M+ longs liquidated in 15 minutes. JPMorgan cut S&P target to $7,200. Mixed signals followed — peace talk rumors per Axios partially reversed the damage, BTC recovered above $70K. Fear & Greed at 10 (Extreme Fear). Sovereign bond risk flagged by Bitwise's Dragosch as the bigger systemic threat.
+
+### CONTENT_ANGLES
+1. "Trump Said 'Obliterate' — Here's Exactly What Happened to Crypto in 15 Minutes" (liquidation breakdown)
+2. "$240M Gone in 15 Minutes: The Iran Trade That Wrecked Crypto Longs Explained"
+3. "JPMorgan Cuts S&P Target — What It Means for BTC at $70K"
+4. "Fear & Greed at 10: Historically, What Happens Next to BTC?" (Glassnode data angle)
+5. "Russia Blocking Telegram: The Crypto-Censorship Connection"
+6. "Sovereign Bonds vs. Bitcoin: Why Bitwise Says Bonds Are the Real Danger"
+
+---
+
+## 2026-03-20 — REPORT INGESTION
+**Source**: MARKET_REPORT_20260320.html — "Powell DEFIANT! Judge BLOCKS Trump's DOJ Probe & Morgan Stanley Files Bitcoin ETF!"
+**Prices verified**: 16:59 UTC March 20, 2026 via Yahoo Finance & Trading Economics
+
+### PRICES (from report)
+| Asset | Price | Chg | Trend |
+|-------|-------|-----|-------|
+| BTC | $69,766 | +0.56% | Up |
+| ETH | $2,135 | +1.07% | Up |
+| SOL | $88.88 | +1.44% | Up |
+| XRP | $1.44 | +0.34% | Up |
+| LINK | $9.01 | +0.89% | Up |
+| TAO | $274.94 | +12.17% | Up |
+| MSTR | $136.64 | -1.40% | Down |
+| COIN | $198.10 | -2.37% | Down |
+| Gold | $4,587 | -0.41% | Down |
+| Silver | $69.97 | -1.75% | Down |
+
+### SENTIMENT
+- Fear & Greed: **11** (Extreme Fear) — 46 consecutive days below 25, longest since late 2022
+- Buying BTC below F&G 15 historically yields median +38.4% 90-day return (Glassnode)
+
+### KEY NARRATIVES
+- **Powell vs DOJ**: Federal judge quashed grand jury subpoenas, found "essentially zero evidence" of crime. AG Pirro promises appeal. Powell says staying until probe resolved, blocking Warsh confirmation.
+- **SEC/CFTC 5-Category Framework**: First-ever joint crypto taxonomy — Digital Commodities, Digital Collectibles, Digital Tools, Stablecoins, Digital Securities. Airdrops, staking, mining excluded from securities treatment.
+- **Morgan Stanley MSBT**: First major US bank to file proprietary spot Bitcoin ETF (ticker MSBT, NYSE Arca). Coinbase as custodian, BNY Mellon admin. $1.5T AUM bank going solo.
+- **Strategy 761K BTC**: Needs ~6,158 BTC/week ($430M+/week) to hit 1M by year-end. Average cost basis $75,894.
+- **CLARITY Act 99%**: Stablecoin yield compromise nearly done. Senate Republicans attached community bank deregulation rider. Sen. Moreno warns: must advance by May or shelved "for years."
+- **$75K Gamma Wall**: $9.4B BTC+ETH options expire March 27. 40%+ OI at $75K strike. 24hr call/put shifted bearish (43/56). Put/call ratio overall 0.68.
+- **TAO +12%**: Biggest daily mover among tracked assets, Grayscale ETF filing momentum.
+
+
 ## 2026-03-18 — X Scraping Session; Institutional flows; Fed framework
 
 **Source**: X/Twitter scraping (@coinbureau, @KobeissiLetter, @cryptoquant_com) — Mar 16-18

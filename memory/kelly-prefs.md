@@ -74,6 +74,9 @@
 
 ---
 
+## Automation Rules (standing instructions)
+- **Market report ingestion (2026-03-22, permanent):** When a new `MARKET_REPORT_YYYYMMDD.html` file arrives in `market-reports/`, immediately convert it to markdown and save as `MARKET_REPORT_YYYYMMDD.md` in the same directory. Do not wait to be asked.
+
 ## Notes
 - Kelly's Telegram ID: `1011362712`
 - Started partnership: 2026-02-26

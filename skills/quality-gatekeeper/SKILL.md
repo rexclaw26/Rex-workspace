@@ -147,6 +147,21 @@ Gate failed twice → surface to Kelly:
 
 Full verdict logs go to `memory/gates/YYYY-MM-DD-gates.md`. Never dump verdict in chat.
 
+**Mandatory gate log write (non-negotiable):**
+After every gate review — pass OR fail — append to `memory/gates/YYYY-MM-DD-gates.md`. Use this exact pattern:
+```bash
+cat >> /Users/rex/.openclaw/workspace/memory/gates/$(date +%Y-%m-%d)-gates.md << 'EOF'
+
+---
+## [HH:MM PDT] [CONTENT TYPE] Gate — [APPROVED|NEEDS REVISION]
+- Task: [brief task description]
+- Verdict: [APPROVED / NEEDS REVISION]
+- Checks run: [list any that failed, or "all pass"]
+- Fixes applied: [list, or "none"]
+EOF
+```
+If the file doesn't exist yet for today, `cat >>` creates it. No exceptions — every gate fires a log entry.
+
 ---
 
 ## Standards Reference
