@@ -70,6 +70,14 @@ _Add to extraPaths. Update whenever a skill is added, removed, or its triggers c
 
 ---
 
+## Automated Pipeline Skills — Cron & Data Pipelines
+
+| Skill | Trigger Phrases | Never Load When | Dependencies | Path |
+|-------|----------------|-----------------|--------------|------|
+| paper-boy | "run paper boy", "paperboy", PAPERBOY_RUN cron | Never skip when triggered | — | skills/paper-boy/SKILL.md |
+
+---
+
 ## On-Demand Skills — Tech & Development
 
 | Skill | Trigger Phrases | Never Load When | Dependencies | Path |
