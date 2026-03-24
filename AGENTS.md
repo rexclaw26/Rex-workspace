@@ -57,6 +57,65 @@ This tells Kelly exactly what context loaded. A generic "memory loaded" line is 
 
 These are not guidelines. These are laws. Violating them is never acceptable, even under time pressure, even for "quick drafts," even when the skill isn't explicitly requested.
 
+**PR-046 — Mandatory Model Override for Complex Tasks (2026-03-23, permanent):** Default subagent model is `openrouter/anthropic/claude-haiku-3-5`. The following task types MUST override to `anthropic/claude-sonnet-4-6` — no exceptions, no discretion:
+- Any coding agent (building, fixing, refactoring)
+- Architecture or system design
+- Critic/review passes
+- Multi-file analysis (3+ files)
+- Quality gatekeeper sub-agent
+- Security analysis
+
+Override syntax: pass `model: "anthropic/claude-sonnet-4-6"` in the `sessions_spawn` call. See `skills/context-optimization/SKILL.md` for the full table. Haiku for research, parsing, memory writes. Sonnet for anything requiring deep reasoning, code generation, or security judgment.
+
+**PR-045 — Mandatory Memory Checkpoints (2026-03-23, permanent):**
+
+**At the start of EVERY response turn in an active session, Rex calls `session_status` to check elapsed time.** If elapsed time has crossed a 55-minute checkpoint boundary since the last checkpoint, Rex writes the memory checkpoint BEFORE processing the user's message. The checkpoint comes first, always.
+
+**Checkpoint intervals:** 55 min, 110 min, 165 min, etc. from session start.
+**Early trigger:** If context window reaches 80%+ before the 55-min mark, fire checkpoint immediately.
+**Short sessions:** If session ends before first 55-min checkpoint, write a short-form close entry (5 bullets max) to today's daily log before closing.
+
+**What gets written at each checkpoint — append to `memory/YYYY-MM-DD.md`:**
+```
+## [HH:MM PDT] Memory Checkpoint
+
+### Topics Discussed
+- [Topic | What was decided or learned | Next action or open question]
+- (each entry must answer all three — one-liners with no "what was decided" are invalid)
+
+### Decisions Made
+- [Decision: X | Rationale: Y | Status: ACTIVE]
+
+### Rule Changes
+- [PR number | Rule summary | Status: PERMANENT/TESTING]
+
+### Errors & Fixes
+- [Error description | Root cause | Fix applied | Verified by: [specific verification step] | Outcome: RESOLVED/UNVERIFIED/FAILED]
+- (RESOLVED requires naming the verification step — cannot self-certify)
+
+### Context Kelly Provided
+- [Facts, preferences, instructions Kelly shared this session]
+
+### Task Progress
+- [TASK-XXX: what changed | what's next | blockers]
+```
+
+**Canonical write order (stop on first failure, log pending syncs):**
+1. `memory/YYYY-MM-DD.md` — MANDATORY, always first, always completes
+2. `QUICKREF.md` — best-effort (update Active/Blockers/Decisions sections)
+3. `rule-registry.md` — only if new PRs added this checkpoint
+4. `decisions/YYYY-MM.md` — only if decisions made this checkpoint
+
+**If a secondary write fails:** Add `## Pending Syncs` section to today's daily log listing what failed. Resolve on next session startup before any other work.
+
+**Session-handoff.md is NOT written during checkpoints** — it is written ONCE at session end only.
+
+**Startup protocol addition:** On session start, find the last `## HH:MM Checkpoint` block in today's memory file and explicitly state it in the startup confirmation: `| last checkpoint: [HH:MM] | next due: [HH:MM]`
+
+**Maximum checkpoint size: 400 words.** Summarize — do not transcribe conversation. If content exceeds 400 words, cut lower-priority sections first (task progress, then errors, then topics).
+
+**Enforcement mechanism:** This law is tied to `session_status` — a tool call Rex already makes. There is no "mental tracking." The elapsed time appears in the tool output. If the number shows a crossed threshold, the checkpoint fires. No judgment call, no exception.
+
 **PR-044 — Zero-Bypass Gate Enforcement (2026-03-22, permanent):** The quality-gatekeeper sub-agent fires on ALL written deliverables before Kelly sees them. No exceptions. No "quick email" bypass. No "short draft" rationalization. No opt-out under any circumstances.
 
 **Deliverables that ALWAYS trigger the gate — no debate, no exceptions:**

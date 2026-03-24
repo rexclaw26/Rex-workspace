@@ -24,6 +24,8 @@ _Started: 2026-03-21 | Source of truth for all PRs: AGENTS.md_
 | PR-042 | Verify coding agent output before reporting done | 2026-03-21 | 2026-03-21 | PERMANENT |
 | PR-043 | Coding agent session scope limit (max 5 files) | 2026-03-21 | 2026-03-21 | PERMANENT |
 | PR-044 | Zero-bypass gate enforcement — gatekeeper fires on ALL written deliverables, no exceptions, gate line must precede draft | 2026-03-22 | 2026-03-22 | PERMANENT |
+| PR-045 | Mandatory memory checkpoints — session_status check every turn, checkpoint fires at 55-min intervals, daily log canonical, 400-word max | 2026-03-23 | 2026-03-23 | PERMANENT |
+| PR-046 | Mandatory model override — Haiku default, Sonnet required for coding/architecture/critic/security/multi-file/gatekeeper tasks | 2026-03-23 | 2026-03-23 | PERMANENT |
 
 ## Rules in Testing (need 3 consecutive successes)
 | PR | Rule | Testing Status | Evidence |

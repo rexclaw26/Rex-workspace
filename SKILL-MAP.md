@@ -15,6 +15,7 @@ _Add to extraPaths. Update whenever a skill is added, removed, or its triggers c
 | compliance-audit | Daily self-check at end of session | Always active — fires at session close |
 | context-optimization | Token budget, subagent sizing, anti-patterns | Always active |
 | skill-performance-tracker | Logs skill execution to JSONL after each skill fires | Always active — fires at skill completion |
+| nightly-mc-review | Trigger: "NIGHTLY_MC_REVIEW" message | Fires nightly at 11 PM via cron | — | skills/nightly-mc-review/SKILL.md |
 
 ---
 

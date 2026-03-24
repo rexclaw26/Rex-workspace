@@ -112,6 +112,28 @@ Full entry: `skills/error-journal/references/journal-log.md`
 
 ---
 
+## Memory Checkpoints (PR-045 — mandatory)
+
+**At the start of EVERY turn: call `session_status` and check elapsed time.**
+
+| Elapsed | Action |
+|---------|--------|
+| < 55 min from last checkpoint | Continue normally |
+| ≥ 55 min from last checkpoint | Write checkpoint to `memory/YYYY-MM-DD.md` FIRST, then respond |
+| Context ≥ 80% (any time) | Write checkpoint immediately — don't wait for 55 min |
+| Session ending before first checkpoint | Write 5-bullet short-form close entry |
+
+**Startup confirmation must include:** `| last checkpoint: [HH:MM or "none"] | next due: [HH:MM]`
+
+**Checkpoint write order:** (1) daily log [mandatory] → (2) QUICKREF [best-effort] → (3) rule-registry [if new PRs] → (4) decisions [if decisions made]
+
+**Session-handoff.md = end of session ONLY. Never written during checkpoints.**
+
+**Max 400 words per checkpoint block. Summarize, don't transcribe.**
+
+Each topic entry format: `Topic | What was decided/learned | Next action`
+Each fix entry format: `Error | Root cause | Fix | Verified by: [step] | Outcome: RESOLVED/UNVERIFIED/FAILED`
+
 ## Context Window (LAW 9)
 | Level | Action |
 |-------|--------|

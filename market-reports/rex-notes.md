@@ -1,3 +1,151 @@
+## 2026-03-23 — REPORT INGESTION (MONDAY MARKET RALLY)
+
+**Source**: MARKET_REPORT_20260323.html (CryptAgro 2 / Discover Crypto, 13:31 UTC) 
+**Headline**: Trump Pauses Iran Strikes! Oil CRASHES 7%, Bitcoin ROCKETS to $70K & Banks TOKENIZE Stocks!
+
+### PRICES (snapshot ~13:31 UTC March 23, 2026)
+| Asset | Price | Change | Trend |
+|-------|-------|--------|-------|
+| BTC | $70,724 | +2.74% | Up |
+| ETH | $2,147 | +2.86% | Up |
+| SOL | $90.20 | +3.15% | Up |
+| XRP | $1.42 | +1.56% | Up |
+| LINK | $9.04 | +2.56% | Up |
+| TAO | $284 | +3.21% | Up |
+| MSTR | $139.40 | +2.8% | Up |
+| COIN | $203.60 | +3.1% | Up |
+| GOLD | $4,423 | -3.31% | Down |
+| SILVER | $68.39 | -1.83% | Down |
+
+**Fear & Greed Index**: 8 (Extreme Fear — 46+ days below 25)
+
+### X SCRAPING INSIGHTS (Mar 23, 2026)
+
+**@coinbureau (Mar 23):**
+- Trump says US had "very, very strong talks" with Iran despite Iran denying discussions
+- Claims US reached "major points of agreement" with Iran's leadership
+- Oil trading surges on Hyperliquid — WTI perp futures hit $1.7B daily volume (JPMorgan)
+- BTC reclaims $71,000
+- Terror group arsons in London — Ashab al-Yamin burned 4 Jewish ambulance service vehicles
+
+**@KobeissiLetter (Mar 23):**
+- Trump responds to Iran denying "productive discussions" — hopes to "meet soon and settle this"
+- Kobeissi "Conflict Playbook" tracking perfectly — 23 days into Iran war, Step 9 imminent
+- Peace talks narrative driving massive risk-on reversal
+
+**@Barchart (Mar 23):**
+- "Bears Have Returned Home" — sentiment shift
+- S&P 500 $SPY "God Candle" — massive bullish reversal
+- CBOE VIX soars to 30
+- Google mortgage help searches still at all-time highs (from Mar 22)
+
+### MARKET PULSE & KEY NARRATIVES
+
+**Iran War Premium Unwinds:**
+- Trump's 5-day pause on Iran strikes triggered massive safe-haven liquidation overnight (Sunday evening)
+- Oil crashed 7.24% to $91.12 (Brent) — largest single-day drop in six weeks
+- Gold shed 3.31%, dropping $150 to $4,423 from war-driven levels
+- Entire commodity unwind rests on unconfirmed ceasefire — Iran's foreign ministry says NO contact with US
+- Flat crude disconnect persists: Oman physical crude trading at $167 (+72% premium), Goldman warns paper/physical disconnect
+
+**Bitcoin Breaks $70K:**
+- BTC cleared $70,000 for first time since early March, breaking resistance that failed 4x in past ten days
+- Geopolitical relief + ETF inflows ($1.4B in March) + on-chain accumulation converged
+- Dow +829 pts, S&P +1.32% to 6,592, but Russell 2000 fell -2.26% (large caps rallied, small caps sold)
+- VIX down 9.38% to 24.27 — fear moderating but still elevated
+- Spot ETF inflows continue: $1.4B YTD March (reversal after 4-month outflow streak in Feb)
+
+**Tokenized Stocks Go LIVE:**
+- Coinbase, Binance, and Kraken all launched tokenized equity trading on SAME DAY (March 23)
+- Biggest structural expansion of crypto utility since spot Bitcoin ETFs (Jan 2024)
+- Banks entering the space: Morgan Stanley filing MSBT spot BTC ETF continues institutional buildout
+- No pause in infrastructure despite geopolitical headlines — accelerating instead
+
+**Strategy Holdings Update:**
+- Filed 8-K: 762,099 BTC total holdings at $75,694 average cost basis
+- This week: purchased 1,031 BTC at $74,326
+- Total portfolio cost: $57.69B
+- Currently UNDERWATER on average cost by ~$4,970/BTC (BTC at $70,724 vs avg $75,694)
+- Needs ~6,158 BTC/week at current run rate to hit 1M BTC target by year-end
+
+**Deribit $13.5B Expiry Friday (March 27):**
+- Max pain pinned at $71,000 — exactly $276 ABOVE current BTC price ($70,724)
+- If BTC holds above $71K into Friday 08:00 UTC: call writers face squeeze, rally can extend
+- If BTC breaks $70K: gravitational pull from max pain dominates
+- This four-day window sets tone for rest of Q1
+
+**On-Chain: Accumulation Structure (No Cycle Peak Signals):**
+- SOPR, NUPL, MVRV all in accumulation territory — not showing froth
+- Short-term holder SOPR: below 1.0 (near breakeven, not realized-loss extremes)
+- No leverage excess, no euphoria metrics — structure looks like bottom formation, not top
+
+### WHAT WE'RE WATCHING
+
+1. **Iran Ceasefire Confirmation** — Trump's 5-day pause may be unilateral. Tehran denies contact. Any escalation reverses entire oil/gold unwind + BTC rally. Watch for diplomatic statement in 48hrs.
+
+2. **Deribit Max Pain Gravity** — $276 separates BTC from $71K max pain. Friday's expiry is the key level for next week's direction.
+
+3. **Tokenized Stock Adoption** — First 48h volume on Coinbase/Binance/Kraken will signal if institutional custody + execution infrastructure finally arrived. Structural shift if gains momentum.
+
+4. **ETF Inflows Sustainability** — March saw $1.4B YTD after 4 months of outflows. If reversal holds, institutions may be re-entering. If reverts to outflows on any dip, signal broken.
+
+5. **Mining Cost Pressure** — Not mentioned in today's report but context from March 22: miners producing at $88K cost while BTC at $70.7K = 21% loss. Capitulation watch.
+
+### MACRO CONTEXT
+- Fed on hold; one rate cut expected 2026
+- PCE 2.7%, inflation moderating but Iran premium still factored in
+- Pentagon requesting $200B+ additional spending on Iran conflict
+- Geopolitical binary: if ceasefire holds, risk-off assets recover; if escalates, commodity premium returns + BTC struggles
+
+---
+---
+
+## 2026-03-22 — REPORT INGESTION + X SCRAPING
+
+**Source**: MARKET_REPORT_20260322.html (CryptAgro 2 / Discover Crypto, 13:48 UTC) + X scraping (Mar 22)
+**BTC**: $68,573 | **ETH**: $2,148 | **SOL**: $89.60 | **Gold**: $4,490 | **Oil**: $120 (Brent)
+**Fear & Greed**: 10 (Extreme Fear — 46 consecutive days below 25)
+**BTC RSI**: 27 (deep oversold)
+
+**Key Narratives from Report:**
+- Whales accumulate 270,000 BTC in 30 days — largest buying wave in 13+ years. Wallets holding 100+ BTC crossed 20,000 for first time ever.
+- SEC/CFTC joint 68-page release names 16 crypto assets as digital commodities (BTC, ETH, SOL, XRP, DOGE, ADA, AVAX, LINK, DOT, HBAR, LTC, BCH, SHIB, XLM, XTZ, APT). Staking classified as non-securities activity.
+- Morgan Stanley files spot BTC ETF (ticker MSBT) on NYSE Arca — first major US bank to go solo on crypto ETF. BNY Mellon custody, Coinbase prime broker.
+- Mining difficulty drops 7.76% at block 941,472. Hashrate at ~933 EH/s. Production cost ~$88K vs BTC ~$69K = miners at 21% loss.
+- Strategy buys 22,337 BTC for $1.57B (largest weekly buy of 2026). Total: 761,068 BTC. Target: 1M BTC by year-end.
+- CLARITY Act stablecoin yield compromise reached — passive rewards prohibited, activity-based permitted. Community bank rider risks delay.
+- Iran war: Brent at $120, Strait of Hormuz threatens 12M bbl/day. Fed paralyzed — rate hike odds 50%, inflation at 3%.
+- Quadruple witching: $7.1T options expired Friday. $13.5B Deribit crypto expiry March 27. BTC max pain $71K.
+- TAO surges 17% to $300+ on Nvidia CEO praise for decentralized AI training. 72B-parameter LLM trained on Bittensor Subnet 3.
+- Spot BTC ETFs: 7 straight days of inflows totaling $1.17B.
+- Two early BTC holders (2010-2011 wallets) sold combined $117M on March 21.
+
+**Key Levels:** BTC support $65,800 / $60K. Max pain $71K (Deribit Mar 27). Mining production cost $88K. Strategy avg cost $66,384.
+
+**X Account Scraping — Mar 22:**
+
+**@coinbureau:**
+- BTC decoupling from S&P 500 — longest negative correlation with equities since 2020
+- 70K BTC open interest liquidation event, reset positioning to April 2025 levels
+- Saylor signals another BTC buy ("The Orange March Continues") — Strategy at $52.36B
+- Bithumb CEO reappointment despite $40B BTC glitch (620K BTC credited accidentally)
+- Iran internet OFF for 23 days — one of longest nationwide shutdowns in recent history
+- Tom Lee: wars bullish for US economy/stocks
+
+**@KobeissiLetter:**
+- Key events this week: Trump "48 Hour Warning" to Iran, Services PMI, Oil Inventory, Jobless Claims, Consumer Sentiment
+- Interest rate HIKES back in discussion amid global energy crisis
+- Trump deploying ICE at US airports to assist TSA beginning Monday
+- Trump Iran timeline: "no ceasefire" → "considering winding down" → "peace talks" → "48h warning" — markets whipsawing
+
+**@Barchart:**
+- SPY closes below 200-day MA
+- Google searches for "Help With Mortgage" at highest level in history, surpassing GFC peak
+- Philippine Peso collapses to all-time low vs USD
+- Live show topics: total economic collapse concerns, nat gas supply chain, silver/gold timing
+
+---
+
 ## 2026-03-21 — Iran Escalation; $240M Liquidation; JPMorgan S&P Cut; BTC Sub-$68K
 
 **Source**: Kelly's market-notes.md — X/Twitter scraping (@coinbureau, @BullTheoryio, @KobeissiLetter, @Andre_Dragosch) — Mar 19-21, 2026

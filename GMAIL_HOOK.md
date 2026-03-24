@@ -67,6 +67,13 @@ Treat as a **MARKET NOTES UPDATE** — this is Kelly's daily context file for he
    exec: curl -s -X POST http://localhost:3000/api/headlines/marketnotes
    ```
    This parses `## YYYY-MM-DD` sections from rex-notes.md, stores each with canonical dataTimestamp.
+5b. **Push market data to Railway (DC Data Hub)**:
+   Run the update script to regenerate all static JSON files and push to Railway:
+   ```
+   exec: bash /Users/rex/dev/dc-data-hub/scripts/update-market-data.sh
+   ```
+   This updates: watching-this-week.json, marketnotes.json, onchain-sopr-mvrv.json, market-pulse.json, market-report-latest.html
+   If the script exits with code 1 (validation failed), alert Kelly: "⚠️ Railway deploy failed — market data validation error. DC Hub showing last good data."
 6. Send Telegram confirmation to 1011362712:
    "✅ Market notes updated — {N} new date sections added to rex-notes.md and synced to Mission Control."
 
@@ -93,6 +100,11 @@ Treat as a MARKET REPORT.
    - Save the email body content to: `/Users/rex/.openclaw/workspace/market-reports/MARKET_REPORT_{DATE}.md`
 4. Send Kelly a brief Telegram confirmation (channel: telegram, to: 1011362712):
    "✅ Market report {DATE} ingested and saved. Ready for newsletter pipeline."
+4b. **Push to Railway (DC Data Hub)**:
+   ```
+   exec: bash /Users/rex/dev/dc-data-hub/scripts/update-market-data.sh
+   ```
+   This regenerates all static JSON files + HTML and deploys to Railway. If script exits with code 1, alert Kelly: "⚠️ Railway deploy failed — market data validation error. DC Hub showing last good data."
 5. Done — no further action needed.
 
 **Note on canonical timestamps:** The market report contains a snapshot time (e.g., "~14:53 UTC") — that is the dataTimestamp for the prices and data in that report. Do NOT let the market report override RSS headlines that have a pubDate AFTER the snapshot time — those headlines are newer data.

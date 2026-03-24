@@ -744,3 +744,18 @@ What should have happened: Draft → spawn gatekeeper sub-agent → fix all viol
 
 Preventive rule: Email drafts are HIGH-STAKES deliverables. No exceptions. Gatekeeper fires on every email, every time, before Kelly sees it. "It's a short email" is not a valid reason to skip the gate.
 --- END ENTRY ---
+
+--- ERROR ENTRY ---
+Date: 2026-03-23
+Agent: Rex
+Error Type: Incorrect date display / timezone bug
+Severity: Low (cosmetic, data was correct)
+
+What happened: Market Pulse card showed "Mar 22, 2026" date badge when today is March 23. The actual content was correct (today's report). Kelly flagged it via screenshot.
+
+Root cause: `new Date("2026-03-23")` parses as UTC midnight (00:00:00Z). When `toLocaleDateString()` renders in PST (UTC-7), midnight UTC = 5:00 PM previous day in PST → rolls back to March 22. This is a classic JavaScript timezone off-by-one.
+
+Fix: Changed to `new Date("2026-03-23T12:00:00Z")` — noon UTC never rolls back to previous day in any timezone. Applied to all 3 files containing formatDate(): MarketPulseCard.tsx, MarketPulsePanel.tsx, sections/market-pulse/page.tsx.
+
+Preventive rule: Any `new Date("YYYY-MM-DD")` call that's subsequently rendered via toLocaleDateString() must use T12:00:00Z to avoid timezone rollback. Never construct a date from date-only string for display purposes without the noon-UTC anchor.
+--- END ENTRY ---

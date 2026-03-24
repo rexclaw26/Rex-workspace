@@ -31,6 +31,42 @@ Run `session_status` within the first 3 tool calls of every turn (LAW 9 — mand
 
 ---
 
+## Model Selection — Mandatory Override Rule (PR-046)
+
+**Default subagent model:** `openrouter/anthropic/claude-haiku-3-5` (set in config)
+
+**Override to `anthropic/claude-sonnet-4-6` — MANDATORY for these task types:**
+
+| Task | Override required | Why |
+|------|------------------|-----|
+| Any coding agent (building features, fixing bugs, refactoring) | ✅ YES | Haiku produces shallow code, misses edge cases |
+| Architecture or system design | ✅ YES | Haiku lacks depth on complex tradeoffs |
+| Critic/review passes on plans or deliverables | ✅ YES | Haiku criticism is surface-level |
+| Multi-file analysis (reading + reasoning across 3+ files) | ✅ YES | Haiku loses context across files |
+| Quality gatekeeper sub-agent | ✅ YES | Gate must catch real issues |
+| Security analysis | ✅ YES | High stakes, needs full reasoning |
+
+**Haiku is sufficient for:**
+- Research + web search + summarize
+- Memory checkpoint writes
+- Simple data parsing or extraction
+- Nightly review agents (structured Q&A)
+- Single-file reads with simple output
+
+**How to override:** Pass `model: "anthropic/claude-sonnet-4-6"` in the `sessions_spawn` call.
+
+```
+sessions_spawn({
+  task: "...",
+  model: "anthropic/claude-sonnet-4-6",  // ← explicit override
+  ...
+})
+```
+
+**Enforcement:** Before spawning any subagent, Rex checks the task type against this table. No judgment calls — if the task type appears in the "Override required" column, Sonnet is used. No exceptions.
+
+---
+
 ## Coding Agent Scope (extends PR-043)
 - Max 5 files per Claude Code session
 - Max one logical patch group per session
