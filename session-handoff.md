@@ -41,7 +41,7 @@ Kelly saw March 23 data on /sections/market-pulse despite local files being curr
 - Returns unique synthesized 2-3 sentence insight per headline
 - HeadlinesSection updated: "Deeper Insight" button per headline → loads insight on click
 - Tested: two different headlines → two different insights, both grounded in real market data
-- Kelly added `OPENROUTER_API_KEY` to Railway environment variables (sk-or-v1-891c8...)
+- Kelly added `OPENROUTER_API_KEY` to Railway environment variables ([KEY REDACTED]
 
 ### Design Debt Still Outstanding (not fixed today)
 - `update-market-data.sh` doesn't verify git push succeeded (silently fails)
