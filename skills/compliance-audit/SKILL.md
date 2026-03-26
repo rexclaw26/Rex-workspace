@@ -35,6 +35,12 @@ Handoff: updated ✅
 | YYYY-MM-DD HH:MM | [X/17] | [check IDs that failed, or "none"] | [brief note on what was produced] |
 ```
 
+**Also run the memory health check at every session close:**
+```
+python3 /Users/rex/.openclaw/workspace/scripts/rex-memory-health.py
+```
+This writes `memory/health-report.md` with 6 checks (daily memory file, timestamps, QUICKREF freshness, topic file staleness, LCM summaries, session handoff freshness). Review the report — if any FAIL, address before next session or flag to Kelly.
+
 **If either file is missing the entry after a deliverable turn — the check did not run. Both files required. One without the other = LAW 2 violation.**
 
 ---

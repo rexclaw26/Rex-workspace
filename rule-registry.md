@@ -26,6 +26,9 @@ _Started: 2026-03-21 | Source of truth for all PRs: AGENTS.md_
 | PR-044 | Zero-bypass gate enforcement — gatekeeper fires on ALL written deliverables, no exceptions, gate line must precede draft | 2026-03-22 | 2026-03-22 | PERMANENT |
 | PR-045 | Mandatory memory checkpoints — session_status check every turn, checkpoint fires at 55-min intervals, daily log canonical, 400-word max | 2026-03-23 | 2026-03-23 | PERMANENT |
 | PR-046 | Mandatory model override — Haiku default, Sonnet required for coding/architecture/critic/security/multi-file/gatekeeper tasks | 2026-03-23 | 2026-03-23 | PERMANENT |
+| PR-047 | Sub-agent and plan execution: 120s max per pass, partial results written immediately, continuation protocol on timeout, critic gets pre-written summary not live research | 2026-03-25 | — | PERMANENT |
+| PR-048 | Gateway restart = `openclaw gateway install --force` only. `stop && start` leaves orphaned process on port. Alias: `openclaw-restart` in .zshrc | 2026-03-25 | — | PERMANENT |
+| PR-049 | Error troubleshooting: dual-subagent diagnosis, root-cause-first fix, mandatory critic before implementing — no exceptions | 2026-03-25 | 2026-03-25 | PERMANENT |
 
 ## Rules in Testing (need 3 consecutive successes)
 | PR | Rule | Testing Status | Evidence |
@@ -76,4 +79,35 @@ Testing [0/3] → 3 consecutive successes → PERMANENT (added to AGENTS.md) →
 - This registry tracks lifecycle metadata only
 - When retiring a rule: remove from AGENTS.md, archive full text here with retirement date and reason
 - Maximum 2 new rule proposals per week (prevents rule inflation)
-- Last PR number used: PR-043
+- Last PR number used: PR-048
+
+---
+
+## PR-049 — LCM Safeguard Minimum Headroom (2026-03-26, permanent)
+
+**Problem:** contextThreshold=0.75 fires at 150K tokens on a 200K limit. When output is 32K, overflow happens at 215K. LCM fires too late.
+
+**Rule:** LCM contextThreshold must leave minimum 20% headroom = 0.60 for 200K context. If a model with different limits is set as primary, recalculate accordingly.
+
+**Config location:** `openclaw.json → plugins.entries.lossless-claw.config.contextThreshold`
+
+**Also:** LCM summaryModel must not be the same model used as subagent model. Using qwen for both summarization AND subagents creates a compounding failure path when qwen times out.
+
+**Verification:** After any model change, grep error logs for `context overflow detected` — zero occurrences = working.
+
+---
+
+## PR-050 — AGENTS.md Bootstrap Limit (2026-03-26, permanent)
+
+**Problem:** AGENTS.md grew to 67K chars over time. OpenClaw bootstrap limit is 20,000 chars. Sessions starting truncated since 2026-03-07 caused degraded quality and contributed to overnight freeze cascade.
+
+**Rule:** AGENTS.md must stay under 20,000 chars at all times. If it approaches 18,000 chars, trigger a trim. Reference content (protocols, templates, verbose descriptions) must live in separate files.
+
+**Reference files (created 2026-03-26):**
+- `BUILD-CRITIC-PROTOCOL.md` — full build-critic loop + templates
+- `PIPELINE-PROTOCOL.md` — multi-step pipeline protocol + templates
+- `SOCIAL.md` — group chat and social protocol
+- `PROTOCOL-DIGEST.md` — condensed LAWS text
+- `rule-registry.md` — full PR text
+
+**Verification:** `wc -c AGENTS.md` must return < 20,000.

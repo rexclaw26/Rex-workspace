@@ -26,6 +26,7 @@ All figures must be live — never cached. Pull from:
 | Issues | error-journal/references/journal-log.md | ✅ Active |
 | Content pipeline status | content-pipeline skill (Mission Control) | 🔲 Aspirational — use manual status until Mission Control is built |
 | Compliance rate | compliance-audit/references/daily-checklist.md | ✅ Logging started 2026-03-04 |
+| Memory health | `memory/health-report.md` (run: `python3 scripts/rex-memory-health.py`) | ✅ Run fresh each Monday |
 | AI ops costs | role-identity cost dashboard | 🔲 Aspirational — report "not yet tracked" until dashboard is built |
 
 **When a data source is unavailable:** Report `[Source unavailable — [reason] | Will be live when [X] is built]` — never estimate or omit silently.

@@ -46,7 +46,7 @@ Topping up one does NOT affect the others.
 | Service | URL | Port | Status |
 |---------|-----|------|--------|
 | Mission Control | http://100.70.46.41:3000 | 3000 | LIVE |
-| DC Data Hub | http://100.70.46.41:3001 | 3001 | LIVE |
+| DC Data Hub | https://dc-data-hub-production-cff0.up.railway.app | 3000 (local dev) | LIVE |
 | X RSS Feed | Railway (deployed) | — | LIVE |
 | OpenClaw | localhost | 34931 | LIVE |
 
@@ -69,7 +69,7 @@ Topping up one does NOT affect the others.
 
 ## Pending / Not Yet Configured
 - Nansen API (awaiting key from Kelly)
-- Railway deployment for DC Data Hub (awaiting Kelly account setup)
+- DC Data Hub Railway | DEPLOYED | https://dc-data-hub-production-cff0.up.railway.app |
 - X/Twitter direct API (using RSS adapter via Railway)
 - Gmail real-time push/Pub/Sub (not configured)
 - SMS/Twilio (not configured)
@@ -81,7 +81,7 @@ Topping up one does NOT affect the others.
 | Tailscale account mismatch | All devices MUST be on rex@hitnetwork.io account. frankrussobiz@ is a different tailnet — can't see the Mac. |
 | DC Data Hub Railway filesystem | /Users/rex/... paths unavailable in Railway. Use /public/data/ static fallback. |
 | base64 + Python inline | Triggers OpenClaw security policy. Use `base64 -d` via shell instead. |
-| Port 3000 reserved | Mission Control owns port 3000. DC Data Hub = 3001. Never swap. |
+| Port 3000 reserved | Mission Control owns port 3000 on Tailscale IP. DC Data Hub local dev = 3000. Railway handles prod. Never swap. |
 | AGENTS.md is off-limits (infra) | Not infrastructure per PR-031, but editing it requires care — 1,062 lines, every LAW lives there |
 
 ## Lessons Learned (operational)

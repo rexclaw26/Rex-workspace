@@ -114,11 +114,26 @@ last_status=$(python3 -c "import json,sys; d=json.load(open('$STATE_FILE')); pri
 last_run_time=$(python3 -c "import json,sys; d=json.load(open('$STATE_FILE')); print(d.get('lastRunTime',''))" 2>/dev/null || echo "")
 stored_mtime=$(python3 -c "import json,sys; d=json.load(open('$STATE_FILE')); print(d.get('lastMarketNotesModified','') or '')" 2>/dev/null || echo "")
 
-# Check for new HTML report
-HTML_FILE="$MARKET_DIR/MARKET_REPORT_${TODAY_COMPACT}.html"
+# Check for new HTML report — glob for any MARKET_REPORT HTML with today's date
+# Handles all naming conventions: MARKET_REPORT_20260325.html, MARKET_REPORT_2026_0325.html, MARKET_REPORT_2026-03-25.html, etc.
+TODAY_YEAR=$(date +%Y)
+TODAY_MONTH=$(date +%m)
+TODAY_DAY=$(date +%d)
+TODAY_COMPACT=$(date +%Y%m%d)
+MARKET_DIR=/Users/rex/.openclaw/workspace/market-reports
+
+# Find any HTML file matching today's date in various formats
+HTML_MATCH=$(ls $MARKET_DIR/MARKET_REPORT_${TODAY_COMPACT}*.html 2>/dev/null | head -1)
+if [ -z "$HTML_MATCH" ]; then
+    HTML_MATCH=$(ls $MARKET_DIR/MARKET_REPORT_${TODAY_YEAR}_${TODAY_MONTH}${TODAY_DAY}*.html 2>/dev/null | head -1)
+fi
+if [ -z "$HTML_MATCH" ]; then
+    HTML_MATCH=$(ls $MARKET_DIR/MARKET_REPORT_${TODAY_YEAR}-${TODAY_MONTH}-${TODAY_DAY}*.html 2>/dev/null | head -1)
+fi
+HTML_FILE="$HTML_MATCH"
 MD_FILE="$MARKET_DIR/MARKET_REPORT_${TODAY_COMPACT}.md"
 has_new_html=false
-if [ -f "$HTML_FILE" ] && [ ! -f "$MD_FILE" ]; then
+if [ -n "$HTML_FILE" ] && [ -f "$HTML_FILE" ] && [ ! -f "$MD_FILE" ]; then
     has_new_html=true
 fi
 
@@ -223,6 +238,32 @@ PYEOF
             # Alert Kelly via Telegram: "⚠️ Paper Boy: HTML conversion output too small for $HTML_FILE (${MD_SIZE} bytes). Skipping HTML steps."
             rm -f "$MD_FILE"  # Remove bad output
             has_new_html=false
+            # FALLBACK: copy MD from market-notes.md if it has today's data
+            if [ -f "$NOTES_FILE" ] && [ ! -f "$MD_FILE" ]; then
+                python3 -c "
+import sys
+notes = open('$NOTES_FILE', 'r', encoding='utf-8', errors='ignore').read()
+today = '$TODAY'
+marker = '## ' + today
+idx = notes.find(marker)
+if idx == -1:
+    print('FALLBACK: no today section in market-notes.md')
+    sys.exit(0)
+search_from = idx + len(marker)
+next_sec = notes.find('\\n## ', search_from)
+next_sec = next_sec if next_sec > -1 else len(notes)
+section = notes[idx:next_sec].strip()
+with open('$MD_FILE', 'w', encoding='utf-8') as f:
+    f.write(section + '\\n')
+print(f'FALLBACK: wrote {len(section)} chars from market-notes.md')
+"
+                if [ -f "$MD_FILE" ]; then
+                    MD_SIZE=$(wc -c < "$MD_FILE" 2>/dev/null || echo 0)
+                    if [ "$MD_SIZE" -gt 500 ]; then
+                        html_conversion_status="fallback-converted"
+                    fi
+                fi
+            fi
         else
             html_conversion_status="converted"
         fi
@@ -232,6 +273,32 @@ else
         html_conversion_status="skipped (already exists)"
     else
         html_conversion_status="skipped (no HTML report for today)"
+        # FALLBACK: copy MD from market-notes.md if it has today's data
+        if [ -f "$NOTES_FILE" ]; then
+            python3 -c "
+import sys
+notes = open('$NOTES_FILE', 'r', encoding='utf-8', errors='ignore').read()
+today = '$TODAY'
+marker = '## ' + today
+idx = notes.find(marker)
+if idx == -1:
+    print('FALLBACK: no today section in market-notes.md')
+    sys.exit(0)
+search_from = idx + len(marker)
+next_sec = notes.find('\\n## ', search_from)
+next_sec = next_sec if next_sec > -1 else len(notes)
+section = notes[idx:next_sec].strip()
+with open('$MD_FILE', 'w', encoding='utf-8') as f:
+    f.write(section + '\\n')
+print(f'FALLBACK: wrote {len(section)} chars from market-notes.md')
+"
+            if [ -f "$MD_FILE" ]; then
+                MD_SIZE=$(wc -c < "$MD_FILE" 2>/dev/null || echo 0)
+                if [ "$MD_SIZE" -gt 500 ]; then
+                    html_conversion_status="fallback-converted"
+                fi
+            fi
+        fi
     fi
 fi
 ```
@@ -317,7 +384,7 @@ for section in new_sections:
         header_end = existing_content.index('\n') + 1 if '\n' in existing_content else len(existing_content)
         content_after_header = existing_content[header_end:].strip()
         
-        if len(content_after_header) < 200:
+        if len(content_after_header) < 500:
             # Incomplete — replace it
             rex_notes = existing_pattern.sub('', rex_notes)
             prepend_sections.append(section.strip())

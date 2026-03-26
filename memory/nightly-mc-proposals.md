@@ -1,37 +1,32 @@
-# Nightly Mission Control Proposals Log
-_Rolling log — newest first. Updated nightly by nightly-mc-review skill._
-_Status values: PROPOSED / APPROVED / BUILDING / COMPLETE_
+# Nightly MC Review — Proposal Log
+
+## [2026-03-26] — Task Impact Ledger
+Status: PROPOSED
+Critic verdict: PENDING
+Notes: Addresses Business Consultant's finding that tasks have no revenue/outcome linkage. PM also flagged no momentum tracking — this bridges both. 2 of 4 assessment agents completed fully; SE and UX timed out.
+
+## [2026-03-26] — Handoff Dashboard Widget
+Status: PROPOSED
+Critic verdict: PENDING
+Notes: Session-handoff.md is written but never surfaced in MC. PM identified this as a core friction — Kelly has to navigate to a file instead of seeing state on the dashboard. Simple widget on the Dashboard page.
+
+## [2026-03-26] — Spend Pacing & ROI Tracker
+Status: PROPOSED
+Critic verdict: PENDING
+Notes: BC flagged that spend tracking is backward-looking with no budget pacing or per-skill ROI. This adds forward-looking alerts and cost-to-outcome ratios to the existing spend dashboard.
 
 ---
 
-## 2026-03-23 — Session Handoff Auto-Loader
-Status: PROPOSED
-Critic verdict: APPROVED
-Notes: Complexity 2/5. Reads session-handoff.md on dashboard load, renders as dismissible banner. No new Rex behaviors required — handoff file already written at session end per protocol. Build this first.
+## Pipeline Run Notes — 2026-03-26
 
-## 2026-03-23 — Stall Detection + Alerts
-Status: PROPOSED
-Critic verdict: APPROVED
-Notes: Complexity 2/5. Convex scheduled function compares task updatedAt timestamps; flags tasks stalled 48h+. Make threshold configurable. Low false-positive risk since task updates are consistent.
+**Assessment agents:** 4 spawned
+- Business Consultant: ✅ Full results returned (44s runtime)
+- Project Manager: ✅ Full results returned (partial delivery, complete content)
+- UX Designer: TIMED OUT — was examining components at cutoff, never synthesized
+- Systems Engineer: TIMED OUT — was still locating Mission Control codebase at cutoff
 
-## 2026-03-23 — Daily Decision Queue
-Status: PROPOSED
-Critic verdict: APPROVED WITH CHANGES
-Notes: Start with file-based version (memory/daily-decisions.md written by Rex at session end, rendered by dashboard widget). Upgrade to Convex-backed queue with mutations after workflow is proven. Complexity 3/5 for full version, 1/5 for file-based MVP.
+**Critic agents:** Not run (pipeline degraded — synthesis done from 2 agents only)
 
-## 2026-03-24 — Session Warm-Start System
-Status: PROPOSED
-Critic verdict: APPROVED WITH CHANGES
-Notes: Complexity 2/5. Convex `sessionHandoff` table + Dashboard card. Single point of failure is Rex's session-close write — add isStale/TTL check. Simpler v1: flat JSON file via Next.js API route. Use generic `agentState` table with key field.
+**Telegram report:** Sent to chat ID 1011362712
 
-## 2026-03-24 — Live Agent Heartbeat Monitor
-Status: PROPOSED
-Critic verdict: APPROVED WITH CHANGES
-Notes: Complexity 3/5. Skip 30s polling loop — write START on spawn + COMPLETE/FAILED on finish, flag no-COMPLETE after 5min as FAILED. Must define HTTP mutation integration point first. Convex table + useQuery subscription + badge UI is clean 2-3hr build.
-
-## 2026-03-24 — Unified Cost + Impact Ledger
-Status: PROPOSED
-Critic verdict: APPROVED WITH CHANGES
-Notes: Complexity 3/5. Define measuredImpact as concrete numeric type per category before writing schema. Build table + manual-entry panel first (2-3 weeks baseline), then add automated ROI scorecard. "Double down/cut" tags advisory-only until 4+ weeks of clean data.
-
-<!-- New proposals are prepended above this line -->
+**Recommendation:** Task Impact Ledger or Handoff Dashboard Widget — both address multi-agent findings and are low-complexity builds.
