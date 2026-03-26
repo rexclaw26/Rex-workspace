@@ -1,0 +1,18 @@
+# Sensitive personal data
+ai-spend.json
+memory/gmail-poll-state.json
+.openclaw/workspace-state.json
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Temporary / debug files
+*.tmp
+*.log
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
