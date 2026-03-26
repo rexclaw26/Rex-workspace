@@ -21,7 +21,7 @@ _Update whenever integration status changes or new lessons are learned._
 | Provider | Status | Notes |
 |----------|--------|-------|
 | OpenRouter (primary) | LIVE | Claude Sonnet 4.6 via OpenRouter — covers all OpenClaw chat sessions |
-| Anthropic API (fallback) | LIVE | Direct API key sk-ant-api03-rT... — separate credit pool from Claude.ai |
+| Anthropic API (fallback) | LIVE | Direct API key [KEY REDACTED] — separate credit pool from Claude.ai |
 | Claude Code CLI | LIVE (usage-limited) | kelly@bitlabacademy.com OAuth login — NOT API key. Subject to Claude.ai subscription limits. Cannot use OpenRouter. |
 | Claude Haiku 3.5 | LIVE (fallback) | Cheap fallback model when primary is unavailable |
 
