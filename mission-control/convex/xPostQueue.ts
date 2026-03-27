@@ -72,6 +72,7 @@ export const create = mutation({
       v.literal("legislation"), v.literal("onchain")
     ),
     score: v.number(),
+    sourceType: v.union(v.literal("x"), v.literal("market")),
     sourceAuthor: v.optional(v.string()),
     sourceUrl: v.optional(v.string()),
   },

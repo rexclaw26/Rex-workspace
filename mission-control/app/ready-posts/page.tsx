@@ -6,7 +6,7 @@ import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
 import {
   Copy, CheckCircle2, Trash2, RefreshCw, Zap,
-  ChevronDown, ChevronUp, ExternalLink,
+  Twitter, TrendingUp, ExternalLink,
 } from "lucide-react";
 
 // ── Relative time ─────────────────────────────────────────────────────────────
@@ -20,7 +20,7 @@ function relTime(ms: number): string {
   return `${Math.floor(hrs / 24)}d ago`;
 }
 
-// ── Format badge config ────────────────────────────────────────────────────────
+// ── Format badge config ────────────────────────────────────────────────────
 const FORMAT_BADGE: Record<string, { bg: string; color: string }> = {
   "BREAKING":  { bg: "rgba(239,68,68,0.15)",   color: "#EF4444" },
   "JUST IN":   { bg: "rgba(249,115,22,0.15)",  color: "#F97316" },
@@ -30,17 +30,23 @@ const FORMAT_BADGE: Record<string, { bg: string; color: string }> = {
   "THREAD":    { bg: "rgba(52,211,153,0.15)",  color: "#34D399" },
 };
 
-// ── Status pill config ─────────────────────────────────────────────────────────
+// ── Status pill config ─────────────────────────────────────────────────────
 const STATUS_PILL: Record<string, { bg: string; color: string; label: string }> = {
   ready:  { bg: "rgba(59,130,246,0.12)",  color: "#60A5FA", label: "READY"  },
   copied: { bg: "rgba(234,179,8,0.12)",   color: "#EAB308", label: "COPIED" },
   posted: { bg: "rgba(34,197,94,0.12)",   color: "#22C55E", label: "POSTED" },
 };
 
-// ── Filter tab type ───────────────────────────────────────────────────────────
+// ── Source type badge ───────────────────────────────────────────────────────
+const SOURCE_BADGE: Record<string, { label: string; color: string; bg: string; Icon: React.FC<{className?: string; style?: React.CSSProperties; w?: number; h?: number}> }> = {
+  x:      { label: "X FEED",     color: "#1DA1F2", bg: "rgba(29,161,242,0.1)",  Icon: Twitter },
+  market: { label: "MARKET",    color: "#A78BFA", bg: "rgba(167,139,250,0.1)", Icon: TrendingUp },
+};
+
+// ── Filter tab type ─────────────────────────────────────────────────────────
 type FilterTab = "all" | "ready" | "copied" | "posted";
 
-// ── Toast ─────────────────────────────────────────────────────────────────────
+// ── Toast ──────────────────────────────────────────────────────────────────
 function useToast() {
   const [msg, setMsg] = useState<string | null>(null);
   const toast = useCallback((m: string) => {
@@ -50,7 +56,7 @@ function useToast() {
   return { msg, toast };
 }
 
-// ── Post card ─────────────────────────────────────────────────────────────────
+// ── Post card ──────────────────────────────────────────────────────────────
 type Post = {
   _id: Id<"xPostQueue">;
   content: string;
@@ -58,6 +64,7 @@ type Post = {
   category: string;
   score: number;
   status: "ready" | "copied" | "posted";
+  sourceType: "x" | "market";
   sourceAuthor?: string;
   sourceUrl?: string;
   createdAt: number;
@@ -81,6 +88,8 @@ function PostCard({
   const [expanded, setExpanded] = useState(false);
   const badge = FORMAT_BADGE[post.format] ?? { bg: "rgba(255,255,255,0.08)", color: "var(--text-muted)" };
   const pill  = STATUS_PILL[post.status] ?? STATUS_PILL.ready;
+  const source = SOURCE_BADGE[post.sourceType] ?? SOURCE_BADGE.x;
+  const SourceIcon = source.Icon;
   const charCount = post.content.length;
 
   return (
@@ -94,7 +103,7 @@ function PostCard({
           : "rgba(255,255,255,0.06)",
       }}
     >
-      {/* ── Top row: format badge · status · score · time ── */}
+      {/* ── Top row: format · status · score · time ── */}
       <div className="flex items-center gap-2 flex-wrap">
         <span
           className="px-2 py-0.5 rounded text-[10px] font-bold shrink-0"
@@ -113,6 +122,21 @@ function PostCard({
           }}
         >
           {pill.label}
+        </span>
+        <span
+          className="px-2 py-0.5 rounded text-[10px] shrink-0"
+          style={{
+            background: source.bg,
+            color: source.color,
+            fontFamily: "var(--font-display)",
+            letterSpacing: "0.06em",
+            display: "flex",
+            alignItems: "center",
+            gap: "3px",
+          }}
+        >
+          <SourceIcon className="w-2.5 h-2.5" />
+          {source.label}
         </span>
         <span
           className="px-2 py-0.5 rounded text-[10px] shrink-0"
@@ -178,7 +202,7 @@ function PostCard({
       {post.sourceAuthor && (
         <div className="flex items-center gap-2">
           <span style={{ color: "var(--text-muted)", fontSize: "11px", fontFamily: "var(--font-data)" }}>
-            via @{post.sourceAuthor}
+            via {post.sourceAuthor}
           </span>
           {post.sourceUrl && (
             <a
@@ -197,7 +221,6 @@ function PostCard({
 
       {/* ── Action buttons ── */}
       <div className="flex items-center gap-2 flex-wrap">
-        {/* COPY — main action, green */}
         {post.status !== "posted" && (
           <button
             type="button"
@@ -216,8 +239,6 @@ function PostCard({
             COPY
           </button>
         )}
-
-        {/* MARK COPIED */}
         {post.status === "ready" && (
           <button
             type="button"
@@ -236,8 +257,6 @@ function PostCard({
             MARK COPIED
           </button>
         )}
-
-        {/* MARK POSTED */}
         {(post.status === "ready" || post.status === "copied") && (
           <button
             type="button"
@@ -256,10 +275,7 @@ function PostCard({
             MARK POSTED
           </button>
         )}
-
         <span style={{ flex: 1 }} />
-
-        {/* DELETE */}
         <button
           type="button"
           onClick={() => onDelete(post)}
@@ -280,53 +296,192 @@ function PostCard({
   );
 }
 
-// ── Main Page ──────────────────────────────────────────────────────────────────
+// ── Column header ──────────────────────────────────────────────────────────
+function ColumnHeader({
+  label,
+  Icon,
+  accentColor,
+  count,
+  onGenerate,
+  generating,
+  generatingThis,
+}: {
+  label: string;
+  Icon: React.FC<{className?: string; style?: React.CSSProperties; w?: number; h?: number}>;
+  accentColor: string;
+  count: number;
+  onGenerate: () => void;
+  generating: boolean;
+  generatingThis: boolean;
+}) {
+  return (
+    <div className="flex items-center justify-between gap-3 mb-3">
+      <div className="flex items-center gap-2">
+        <div
+          className="w-8 h-8 rounded-lg flex items-center justify-center"
+          style={{ background: `${accentColor}18`, border: `1px solid ${accentColor}33` }}
+        >
+          <Icon w={4} h={4} style={{ color: accentColor }} />
+        </div>
+        <div>
+          <h2
+            className="text-xs font-bold tracking-widest"
+            style={{ color: accentColor, fontFamily: "var(--font-display)", letterSpacing: "0.12em" }}
+          >
+            {label}
+          </h2>
+          <p className="text-[10px]" style={{ color: "var(--text-muted)", fontFamily: "var(--font-data)" }}>
+            {count} post{count !== 1 ? "s" : ""}
+          </p>
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={onGenerate}
+        disabled={generating}
+        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all"
+        style={{
+          background: generating ? `${accentColor}15` : `${accentColor}10`,
+          border: `1px solid ${accentColor}40`,
+          color: accentColor,
+          fontFamily: "var(--font-display)",
+          letterSpacing: "0.06em",
+          cursor: generating ? "default" : "pointer",
+          opacity: generatingThis ? 0.6 : 1,
+        }}
+      >
+        {generatingThis
+          ? <><RefreshCw className="w-3 h-3 animate-spin" />Generating…</>
+          : <><Zap className="w-3 h-3" />Generate</>
+        }
+      </button>
+    </div>
+  );
+}
+
+// ── Post column ────────────────────────────────────────────────────────────
+function PostColumn({
+  posts,
+  sourceType,
+  filter,
+  onCopy,
+  onMarkCopied,
+  onMarkPosted,
+  onDelete,
+}: {
+  posts: Post[];
+  sourceType: "x" | "market";
+  filter: FilterTab;
+  onCopy: (post: Post) => void;
+  onMarkCopied: (post: Post) => void;
+  onMarkPosted: (post: Post) => void;
+  onDelete: (post: Post) => void;
+}) {
+  const filtered = filter === "all"
+    ? posts
+    : posts.filter((p) => p.status === filter);
+
+  const counts = {
+    all:    posts.length,
+    ready:  posts.filter((p) => p.status === "ready").length,
+    copied: posts.filter((p) => p.status === "copied").length,
+    posted: posts.filter((p) => p.status === "posted").length,
+  };
+
+  const tabs: Array<{ key: FilterTab; label: string }> = [
+    { key: "all",    label: "ALL" },
+    { key: "ready",  label: "READY" },
+    { key: "copied", label: "COPIED" },
+    { key: "posted", label: "POSTED" },
+  ];
+
+  const [colFilter, setColFilter] = useState<FilterTab>("all");
+  const displayPosts = colFilter === "all"
+    ? filtered
+    : filtered.filter((p) => p.status === colFilter);
+
+  return (
+    <div>
+      {/* Column-level filter tabs */}
+      <div className="flex items-center gap-1 mb-3 flex-wrap">
+        {tabs.map((tab) => {
+          const active = colFilter === tab.key;
+          const count  = counts[tab.key];
+          return (
+            <button
+              key={tab.key}
+              type="button"
+              onClick={() => setColFilter(tab.key)}
+              className="px-2 py-1 rounded text-[10px] font-bold transition-all"
+              style={{
+                background: active ? "rgba(255,255,255,0.08)" : "transparent",
+                border: `1px solid ${active ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.05)"}`,
+                color: active ? "var(--text-primary)" : "var(--text-muted)",
+                fontFamily: "var(--font-display)",
+                letterSpacing: "0.06em",
+                cursor: "pointer",
+              }}
+            >
+              {tab.label}{count > 0 ? ` ${count}` : ""}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Posts */}
+      {displayPosts.length === 0 ? (
+        <div
+          className="mc-card p-8 text-center"
+          style={{ border: "1px solid rgba(255,255,255,0.05)" }}
+        >
+          <p className="text-label text-xs">No {colFilter !== "all" ? colFilter : ""} posts</p>
+        </div>
+      ) : (
+        <div className="space-y-3">
+          {displayPosts.map((post) => (
+            <PostCard
+              key={post._id}
+              post={post}
+              onCopy={onCopy}
+              onMarkCopied={onMarkCopied}
+              onMarkPosted={onMarkPosted}
+              onDelete={onDelete}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Main Page ──────────────────────────────────────────────────────────────
 export default function ReadyPostsPage() {
   const [filter, setFilter] = useState<FilterTab>("all");
-  const [generating, setGenerating] = useState(false);
+  const [generatingX, setGeneratingX] = useState(false);
+  const [generatingMarket, setGeneratingMarket] = useState(false);
   const { msg: toastMsg, toast } = useToast();
 
-  // Convex real-time query
   const allPosts = useQuery(api.xPostQueue.getAll) as Post[] | undefined;
 
-  // Convex mutations
   const updateStatus = useMutation(api.xPostQueue.updateStatus);
   const removePost   = useMutation(api.xPostQueue.remove);
 
-  // Filter client-side
-  const posts = allPosts
-    ? filter === "all"
-      ? allPosts
-      : allPosts.filter((p) => p.status === filter)
-    : undefined;
+  // Split by source type
+  const xPosts     = allPosts?.filter((p) => p.sourceType === "x")     ?? [];
+  const marketPosts = allPosts?.filter((p) => p.sourceType === "market") ?? [];
 
-  // Tab counts
-  const counts = {
-    all:    allPosts?.length ?? 0,
-    ready:  allPosts?.filter((p) => p.status === "ready").length  ?? 0,
-    copied: allPosts?.filter((p) => p.status === "copied").length ?? 0,
-    posted: allPosts?.filter((p) => p.status === "posted").length ?? 0,
-  };
-
-  // ── Handlers ──────────────────────────────────────────────────────────────
-
+  // ── Handlers ────────────────────────────────────────────────────────────
   const handleCopy = useCallback(async (post: Post) => {
-    // Write to clipboard first — this is the primary action
-    let clipped = false;
     try {
       await navigator.clipboard.writeText(post.content);
-      clipped = true;
+      toast("✓ Copied");
     } catch {
-      toast("✗ Clipboard access denied — check browser permissions");
+      toast("✗ Clipboard denied — check browser permissions");
       return;
     }
-    toast("✓ Copied to clipboard");
-    // Convex update is secondary — non-critical, don't fail the UX if it errors
     try {
       await updateStatus({ id: post._id, status: "copied" });
-    } catch {
-      // Status update failed silently — clipboard succeeded, that's what matters
-    }
+    } catch { /* non-critical */ }
   }, [updateStatus, toast]);
 
   const handleMarkCopied = useCallback(async (post: Post) => {
@@ -344,173 +499,133 @@ export default function ReadyPostsPage() {
     toast("Deleted");
   }, [removePost, toast]);
 
-  const handleGenerate = useCallback(async () => {
-    setGenerating(true);
-    toast("⏳ Generating posts from x-feed…");
+  const handleGenerateX = useCallback(async () => {
+    setGeneratingX(true);
+    toast("⏳ Generating from x-feed…");
     try {
       const res  = await fetch("/api/generate-x-posts", { method: "POST" });
       const json = await res.json();
       if (!res.ok || json.error) {
-        toast(`✗ Generation failed: ${json.error ?? res.status}`);
+        toast(`✗ Failed: ${json.error ?? res.status}`);
       } else {
-        toast(`✓ Generated ${json.generated} posts · ${json.skipped} skipped`);
+        toast(`✓ ${json.generated} x-posts generated · ${json.skipped} skipped`);
       }
     } catch (e: any) {
       toast(`✗ Network error: ${e.message}`);
     } finally {
-      setGenerating(false);
+      setGeneratingX(false);
     }
   }, [toast]);
 
-  // ── Filter tabs ────────────────────────────────────────────────────────────
-  const tabs: Array<{ key: FilterTab; label: string }> = [
-    { key: "all",    label: "ALL"    },
-    { key: "ready",  label: "READY"  },
-    { key: "copied", label: "COPIED" },
-    { key: "posted", label: "POSTED" },
-  ];
+  const handleGenerateMarket = useCallback(async () => {
+    setGeneratingMarket(true);
+    toast("⏳ Generating from market data…");
+    try {
+      const res  = await fetch("/api/generate-market-posts", { method: "POST" });
+      const json = await res.json();
+      if (!res.ok || json.error) {
+        toast(`✗ Failed: ${json.error ?? res.status}`);
+      } else {
+        toast(`✓ ${json.generated} market posts generated · ${json.skipped} skipped`);
+      }
+    } catch (e: any) {
+      toast(`✗ Network error: ${e.message}`);
+    } finally {
+      setGeneratingMarket(false);
+    }
+  }, [toast]);
 
-  const tabAccent: Record<FilterTab, string> = {
-    all:    "#60A5FA",
-    ready:  "#60A5FA",
-    copied: "#EAB308",
-    posted: "#22C55E",
+  const generating = generatingX || generatingMarket;
+  const totalCount = {
+    x: xPosts.length,
+    market: marketPosts.length,
   };
 
   return (
     <div className="p-6 space-y-5 animate-fade-in">
 
       {/* ── Header ────────────────────────────────────────────────── */}
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h1 className="page-title text-lg mb-0.5">[READY POSTS]</h1>
-          <p className="text-label">
-            {allPosts === undefined
-              ? "Loading…"
-              : `${counts.ready} ready · ${counts.copied} copied · ${counts.posted} posted`}
-          </p>
-        </div>
-        <button
-          type="button"
-          onClick={handleGenerate}
-          disabled={generating}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg border text-xs font-bold transition-all shrink-0"
+      <div>
+        <h1 className="page-title text-lg mb-0.5">[READY POSTS]</h1>
+        <p className="text-label">
+          {allPosts === undefined
+            ? "Loading…"
+            : `${xPosts.filter((p) => p.status === "ready").length} x-feed ready · ${marketPosts.filter((p) => p.status === "ready").length} market ready`}
+        </p>
+      </div>
+
+      {/* ── Two-column layout (desktop) / stacked (mobile) ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        {/* ── X FEED column ── */}
+        <div
+          className="rounded-xl p-4"
           style={{
-            background: generating ? "rgba(167,139,250,0.15)" : "rgba(167,139,250,0.08)",
-            borderColor: "rgba(167,139,250,0.35)",
-            color: "#A78BFA",
-            fontFamily: "var(--font-display)",
-            letterSpacing: "0.06em",
-            boxShadow: generating ? "0 0 14px rgba(167,139,250,0.2)" : "none",
-            cursor: generating ? "default" : "pointer",
+            background: "rgba(29,161,242,0.03)",
+            border: "1px solid rgba(29,161,242,0.1)",
           }}
         >
-          {generating
-            ? <><RefreshCw className="w-3.5 h-3.5 animate-spin" />Generating…</>
-            : <><Zap className="w-3.5 h-3.5" />GENERATE NOW</>
-          }
-        </button>
-      </div>
-
-      {/* ── Filter tabs ───────────────────────────────────────────── */}
-      <div className="flex items-center gap-2 flex-wrap">
-        {tabs.map((tab) => {
-          const active  = filter === tab.key;
-          const accent  = tabAccent[tab.key];
-          const count   = counts[tab.key];
-          return (
-            <button
-              key={tab.key}
-              type="button"
-              onClick={() => setFilter(tab.key)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all"
-              style={{
-                background: active ? `${accent}18` : "rgba(255,255,255,0.03)",
-                border:     `1px solid ${active ? `${accent}55` : "var(--border-subtle)"}`,
-                color:      active ? accent : "var(--text-muted)",
-                fontFamily: "var(--font-display)",
-                letterSpacing: "0.08em",
-                cursor: "pointer",
-              }}
-            >
-              {tab.label}
-              {count > 0 && (
-                <span
-                  className="px-1.5 py-0.5 rounded-full text-[9px]"
-                  style={{
-                    background: active ? `${accent}22` : "rgba(255,255,255,0.06)",
-                    color: active ? accent : "var(--text-muted)",
-                    fontFamily: "var(--font-data)",
-                  }}
-                >
-                  {count}
-                </span>
-              )}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* ── Loading ───────────────────────────────────────────────── */}
-      {allPosts === undefined && (
-        <div className="flex flex-col items-center justify-center py-20 gap-3">
-          <RefreshCw className="w-6 h-6 animate-spin" style={{ color: "var(--orange)" }} />
-          <p className="text-label">Loading post queue…</p>
-        </div>
-      )}
-
-      {/* ── Empty state ───────────────────────────────────────────── */}
-      {allPosts !== undefined && posts !== undefined && posts.length === 0 && (
-        <div
-          className="mc-card p-10 flex flex-col items-center justify-center gap-4"
-          style={{ border: "1px solid var(--border-subtle)" }}
-        >
-          <Zap className="w-8 h-8" style={{ color: "var(--text-muted)", opacity: 0.4 }} />
-          <div className="text-center">
-            <p className="text-label text-sm mb-1">No posts in queue</p>
-            <p className="text-label text-xs">
-              {filter === "all"
-                ? "Hit GENERATE NOW to create posts from the current x-feed."
-                : `No ${filter} posts. Switch to ALL to see everything.`}
-            </p>
-          </div>
-          {filter === "all" && (
-            <button
-              type="button"
-              onClick={handleGenerate}
-              disabled={generating}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold"
-              style={{
-                background: "rgba(167,139,250,0.1)",
-                border: "1px solid rgba(167,139,250,0.3)",
-                color: "#A78BFA",
-                fontFamily: "var(--font-display)",
-                letterSpacing: "0.06em",
-                cursor: generating ? "default" : "pointer",
-              }}
-            >
-              <Zap className="w-3.5 h-3.5" />
-              GENERATE NOW
-            </button>
-          )}
-        </div>
-      )}
-
-      {/* ── Post grid ─────────────────────────────────────────────── */}
-      {posts !== undefined && posts.length > 0 && (
-        <div className="space-y-3">
-          {posts.map((post) => (
-            <PostCard
-              key={post._id}
-              post={post}
+          <ColumnHeader
+            label="X FEED"
+            Icon={Twitter}
+            accentColor="#1DA1F2"
+            count={totalCount.x}
+            onGenerate={handleGenerateX}
+            generating={generating}
+            generatingThis={generatingX}
+          />
+          {allPosts === undefined ? (
+            <div className="flex justify-center py-10">
+              <RefreshCw className="w-5 h-5 animate-spin" style={{ color: "#1DA1F2" }} />
+            </div>
+          ) : (
+            <PostColumn
+              posts={xPosts}
+              sourceType="x"
+              filter={filter}
               onCopy={handleCopy}
               onMarkCopied={handleMarkCopied}
               onMarkPosted={handleMarkPosted}
               onDelete={handleDelete}
             />
-          ))}
+          )}
         </div>
-      )}
+
+        {/* ── MARKET PULSE column ── */}
+        <div
+          className="rounded-xl p-4"
+          style={{
+            background: "rgba(167,139,250,0.03)",
+            border: "1px solid rgba(167,139,250,0.1)",
+          }}
+        >
+          <ColumnHeader
+            label="MARKET PULSE"
+            Icon={TrendingUp}
+            accentColor="#A78BFA"
+            count={totalCount.market}
+            onGenerate={handleGenerateMarket}
+            generating={generating}
+            generatingThis={generatingMarket}
+          />
+          {allPosts === undefined ? (
+            <div className="flex justify-center py-10">
+              <RefreshCw className="w-5 h-5 animate-spin" style={{ color: "#A78BFA" }} />
+            </div>
+          ) : (
+            <PostColumn
+              posts={marketPosts}
+              sourceType="market"
+              filter={filter}
+              onCopy={handleCopy}
+              onMarkCopied={handleMarkCopied}
+              onMarkPosted={handleMarkPosted}
+              onDelete={handleDelete}
+            />
+          )}
+        </div>
+
+      </div>
 
       {/* ── Toast ─────────────────────────────────────────────────── */}
       {toastMsg && (

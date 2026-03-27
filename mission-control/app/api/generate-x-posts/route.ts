@@ -258,6 +258,7 @@ export async function POST(request: Request) {
           format,
           category,
           score,
+          sourceType: "x",
           sourceAuthor: author,
           sourceUrl: tweet.url,
         });
