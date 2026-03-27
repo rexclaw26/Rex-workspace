@@ -5,13 +5,15 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, CheckSquare, Users,
   Activity, Calendar, Zap, Newspaper, Twitter, Brain, Layers,
+  Send,
 } from "lucide-react";
 
 const navItems = [
   { label: "Dashboard",  href: "/",          icon: LayoutDashboard, abbr: "D" },
   { label: "Headlines",  href: "/headlines", icon: Newspaper,        abbr: "H" },
-  { label: "X Feed",     href: "/x-feed",   icon: Twitter,          abbr: "X" },
-  { label: "Tasks",      href: "/tasks",     icon: CheckSquare,      abbr: "T" },
+  { label: "X Feed",      href: "/x-feed",     icon: Twitter,        abbr: "X" },
+  { label: "Ready Posts", href: "/ready-posts", icon: Send,           abbr: "P" }, // NEW
+  { label: "Tasks",      href: "/tasks",      icon: CheckSquare,     abbr: "T" },
   { label: "Agents",     href: "/agents",    icon: Users,            abbr: "A" },
   { label: "Operations", href: "/ops",       icon: Activity,         abbr: "O" },
   { label: "Calendar",   href: "/calendar",  icon: Calendar,         abbr: "C" },
