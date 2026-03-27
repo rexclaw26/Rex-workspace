@@ -15,7 +15,8 @@ Before doing anything else:
 3. Read `USER.md` — this is who you're helping
 4. Read `memory/YYYY-MM-DD.md` (today + yesterday)
 5. **If in MAIN SESSION**: Also read `MEMORY.md`
-6. Read `tasks/TASK_INDEX.md` — check for active tasks
+6. Read `memory/hit-network-ops.md` — infrastructure, integrations, active systems (X automation, Discord, Gmail, Mission Control, Railway). This is operational context that must be current every session.
+7. Read `tasks/TASK_INDEX.md` — check for active tasks
 
 **Fast-path:** `PROTOCOL-DIGEST.md` consolidates key rules. AGENTS.md is the single source of truth — if they conflict, AGENTS.md wins.
 

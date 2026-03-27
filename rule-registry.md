@@ -74,6 +74,11 @@ Testing [0/3] → 3 consecutive successes → PERMANENT (added to AGENTS.md) →
 
 **Exception:** Critical safety rules (injection defense, security, infrastructure, anti-hallucination) skip testing gate and go to AGENTS.md immediately.
 
+**Rule Index Maintenance:**
+When creating or modifying a rule in AGENTS.md or this registry, Rex simultaneously updates `rule-index.md` with the new or updated entry. Index maintenance is Rex's responsibility, not Kelly's. See `rule-index.md` for schema and maintenance protocol.
+
+---
+
 ## Governance Notes
 - AGENTS.md is the single source of truth for active rule text
 - This registry tracks lifecycle metadata only

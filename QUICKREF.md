@@ -1,6 +1,6 @@
 # QUICKREF.md — Rex State Snapshot
 _Read this FIRST, EVERY session. No exceptions. No skimming._
-_Last updated: 2026-03-25 1:15 PM PDT_
+_Last updated: 2026-03-26 10:21 PM PDT_
 
 ## Active Right Now
 - **TASK-007** — DC Data Hub — Railway confirmed LIVE (2026-03-25). Features built through Mar 22. Railway URL: https://dc-data-hub-production-cff0.up.railway.app
@@ -23,24 +23,28 @@ _Last updated: 2026-03-25 1:15 PM PDT_
 | TASK-002 | Calendar focus bug | blocked | — |
 | TASK-003 | X feed RSS | blocked | — |
 
-## Last Session Summary (2026-03-25)
-- **LCM fixed** — tables created manually, engine connected (threshold=0.75, fires at 75% context pressure)
-- **Memory scripts built** — rex-memory-health.py, rex-entity-index.py (95 entities), rex-recall-log.py
-- **Paper Boy bugs fixed** — HTML glob all date formats, threshold raised to 500 chars
-- **preventive-rules.md rebuilt** — "Forge"→"Rex", PR-038 through PR-048 added, duplicates removed
-- **PR-047 added** — Sub-agent timeout handling (120s/pass, partial writes, continuation protocol)
-- **PR-048 added** — Gateway restart = `install --force` only
-- **openclaw-restart alias** created in .zshrc
-- **SELF.md updated** — DC Data Hub Railway URL corrected
-- **Session handoff updated** — Mar 25 state
+## Last Session Summary (2026-03-26)
+- **Rules management system Phase 1 built** — `rule-index.md` created (CRITICAL/HIGH/STANDARD rule classification by task type)
+- **`## Critical Rules Snapshot`** added to `_TEMPLATE.md` — Rex pastes full text of applicable CRITICAL rules at start of HIGH/CRITICAL tasks
+- **`## Prior Context`** added to `_TEMPLATE.md` — Rex checks relevant memory file and writes 3-5 bullets before HIGH/CRITICAL tasks
+- **Maintenance protocol** added to `rule-registry.md` — Rex updates rule-index.md when creating/modifying rules
+- **TASK-007 + TASK-009** retrofitted with both new sections
+- **Phase 2 + 3 deferred** — completion gate and full pre-task loading deferred, watching Phase 1 effectiveness first
+- **Phase 1 review triggers set:**
+  - Monday Scorecard: Phase 1 verdict every Monday
+  - Date trigger: April 9, 2026
+  - Task-count trigger: after 8 HIGH/CRITICAL tasks completed under new system
 
 ## Blockers
+- X account post-only API key (needed for TASK-009)
 - Nansen API key (still pending)
-- sponsors.md 13 days stale — Kelly to confirm pipeline status
+- Railway deploy for DC Data Hub needs manual Redeploy click (Railway infra flaky)
 
 ## Recent Decisions (last 7 days)
 | Date | Decision | Status |
 |------|----------|--------|
+| 2026-03-26 | Phase 1 rules system: rule-index.md + Critical Rules Snapshot + Prior Context | ACTIVE — review triggers set |
+| 2026-03-26 | Phase 2 + 3 deferred — watching Phase 1 effectiveness first | DEFERRED |
 | 2026-03-25 | Gateway restart = `install --force` only (orphaned process bug) | PERMANENT |
 | 2026-03-25 | Memory: fork Lex's architecture pattern, don't share DB | ACTIVE |
 | 2026-03-25 | PR-047: Sub-agent timeout rules | PERMANENT |

@@ -142,6 +142,62 @@ Port 3000 is permanently reserved for Mission Control.
 ## Current State
 Planning complete. Waiting on API keys before Day 1 build starts.
 
+---
+
+## Prior Context
+
+**Domain:** infrastructure
+**Memory file checked:** memory/hit-network-ops.md
+
+**What we already know about this task:**
+- DC Data Hub is a brand new project (not a continuation) — no prior history in hit-network-ops
+- Railway deploy already had issues during build (bitcointreasuries.net cache size problem — items over 2MB can't be cached)
+- Railway infrastructure has been flaky — deployments show SUCCESS but traffic not routing (x-railway-fallback: true, 404s)
+- Kelly has Railway Pro — zero extra hosting cost
+- Mission Control patterns can be reused but codebase is separate
+- Watchdog/cron ran during build — reminder noise during development is expected
+
+**Note:** This is historical reference, not a binding constraint. Only ## Locked Decisions are binding.
+
+---
+
+## Critical Rules Snapshot
+
+**Task types identified:** coding, architecture
+**Risk level:** HIGH
+
+**CRITICAL rules — full text:**
+
+**LAW-1 — Humanization**
+Apply `skills/humanization-voice/SKILL.md` to ALL written output. No exceptions. No filler, no corporate tone, contractions yes, em dashes no.
+
+**LAW-5 — Anti-Hallucination**
+Never present unverified figures as fact. Source every number or say "I can't verify that." Do not construct explanations when challenged.
+
+**LAW-6 — Security**
+Never share credentials, API keys, internal hostnames, or infrastructure details. API keys live in Railway env vars only — never in code or committed files.
+
+**PR-044 — Zero-Bypass Gate**
+Every deliverable passes quality-gatekeeper before Kelly sees it. ⚙️ Gatekeeper ✅ line mandatory in every response with output.
+
+**HIGH rules — summary + enforcement:**
+```
+PR-046: Complex tasks must use claude-sonnet-4-6 — enforced for all coding + architecture tasks
+PR-047: Sub-agent timeout: 120s single pass, 280s for 4-6 searches, split 7+
+PR-042: After any coding agent task, grep output for key names before reporting complete
+PR-031: Never touch infrastructure files (docker-compose, models.json, .env, agents/) — suggest diffs only
+```
+
+**RULES APPLIED — mark as tasks complete:**
+```
+[ ] LAW-1: Humanization applied to all output
+[ ] LAW-5: No unverified figures used
+[ ] LAW-6: No credentials in committed files or output
+[ ] LAW-7/PR-044: Quality gatekeeper confirmed (⚙️ Gatekeeper ✅)
+[ ] PR-046: claude-sonnet-4-6 used for coding tasks
+[ ] PR-031: No infrastructure file edits
+```
+
 ## Handoff Notes
 - Mission Control patterns to reuse: data fetching patterns, card component styles, color tokens
 - Bull/Bear score is rules-based v1 — document the thresholds clearly so Kelly can tune them

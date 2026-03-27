@@ -5,7 +5,31 @@
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
+// ── xPostQueue table definition (see convex/xPostQueue.ts for queries/mutations)
+const xPostQueueTable = defineTable({
+  content: v.string(),
+  format: v.union(
+    v.literal("BREAKING"), v.literal("JUST IN"), v.literal("DATA"),
+    v.literal("WATCHING"), v.literal("SIGNAL"), v.literal("THREAD")
+  ),
+  category: v.union(
+    v.literal("btcEth"), v.literal("macro"), v.literal("altcoins"),
+    v.literal("legislation"), v.literal("onchain")
+  ),
+  score: v.number(),
+  status: v.union(v.literal("ready"), v.literal("copied"), v.literal("posted")),
+  sourceAuthor: v.optional(v.string()),
+  sourceUrl: v.optional(v.string()),
+  createdAt: v.number(),
+  expiresAt: v.number(),
+  postedAt: v.optional(v.number()),
+})
+  .index("by_status", ["status"])
+  .index("by_expiresAt", ["expiresAt"]);
+
 export default defineSchema({
+  xPostQueue: xPostQueueTable,
+
   // ── TASKS (Extended from Phase 2) ────────────────────
   tasks: defineTable({
     title: v.string(),

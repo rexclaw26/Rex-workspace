@@ -534,3 +534,26 @@ Status: Active
 
 | PR-047 | 2026-03-25 | 0 | Active — monitoring |
 | PR-048 | 2026-03-25 | 0 | Active — monitoring |
+
+## PR-048 — Git Push Verification Before Claiming Security Clean (2026-03-26)
+
+**Trigger:** Any question from Kelly about what was pushed to GitHub, or any statement that "nothing sensitive was pushed."
+
+**Rule:** Before answering, I MUST verify every committed file that could contain credentials (memory files, task files, config files, skill files). Use `git show master:path | grep -i pattern` for every potentially sensitive file. This takes 3 seconds and catches everything.
+
+**Why:** On 2026-03-26, I told Kelly the FRED API key was not pushed without checking. It was pushed. This is a LAW 5 (anti-hallucination) and LAW 6 (security) violation. Kelly caught it. Never again.
+
+## PR-048 — Git Push Verification Before Claiming Security Clean (2026-03-26)
+**Trigger:** Any question from Kelly about what was pushed to GitHub, or any statement that "nothing sensitive was pushed."
+**Rule:** Before answering, I MUST verify every committed file that could contain credentials. Use `git show master:path | grep -i pattern` for every potentially sensitive file. This takes 3 seconds and catches everything.
+**Why:** On 2026-03-26, I told Kelly the FRED API key was not pushed without checking. It was pushed. LAW 5 + LAW 6 violation. Kelly caught it.
+
+## PR-049 — Pre-Commit Credential Scan Is Mandatory (2026-03-26)
+**Trigger:** Before every `git commit` on this workspace.
+**Rule:** Before committing, run: `grep -rE "(api[_-]?key|secret|token|password|bearer|FRED|OPENAI|TWITTER|sk-|[A-F0-9]{32,})" --include='*.md' --include='*.json' --include='*.ts' --include='*.js' $(git diff --name-only)` on staged files. If any match: stop, report to Kelly, do not commit.
+**Why:** No automated hook existed. Every credential leak is a cognitive-load failure without tooling.
+
+## PR-050 — File-Level Verification Only, No Transitive Cleanliness (2026-03-26)
+**Trigger:** After any redaction of a credential from any file.
+**Rule:** After editing any file to remove a key, MUST immediately grep that specific file to confirm redaction landed. Verifying File A ≠ File B is clean. Verification is file-bound.
+**Why:** "I cleaned one file" created false confidence that "all files are clean." Transitive cleanliness is a logical fallacy.

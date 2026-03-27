@@ -42,9 +42,30 @@ See [scorecard-template.md](references/scorecard-template.md) for the full forma
 **Sections:**
 1. **90-Day Rock Progress** — % complete + status per Rock
 2. **Key Metrics** — vs. last week with delta
-3. **Issues (IDS Format)** — Issue · Impact · Recommendation
-4. **Wins This Week**
-5. **Priority Actions** — this week's focus
+3. **Phase 1 Effectiveness Review** — Critical Rules Snapshot + Prior Context: is it working? (see review criteria below)
+4. **Issues (IDS Format)** — Issue · Impact · Recommendation
+5. **Wins This Week**
+6. **Priority Actions** — this week's focus
+
+---
+
+## Phase 1 Effectiveness Review (Mondays)
+
+Every Monday, assess whether the Phase 1 rules management system is working:
+
+**Review criteria:**
+- Did Rex populate Critical Rules Snapshot on all HIGH/CRITICAL tasks this week?
+- Did Prior Context catch anything useful (prior decisions, blocked approaches, relevant history)?
+- Did the rules system prevent any errors? (check error journal)
+- Any rules in Critical Rules Snapshot that felt unnecessary or wrong for the task type?
+- Did any task execution get blocked or delayed by the rules system?
+
+**Metrics to count:**
+- Number of HIGH/CRITICAL tasks completed this week
+- Number where Critical Rules Snapshot was populated
+- Number where Prior Context found relevant history
+
+**Output:** 2-3 sentence verdict + whether to proceed to Phase 2 (completion gate) or adjust Phase 1 first.
 
 ---
 

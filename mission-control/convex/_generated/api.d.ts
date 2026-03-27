@@ -16,6 +16,7 @@ import type * as headlines from "../headlines.js";
 import type * as skillChains from "../skillChains.js";
 import type * as tasks from "../tasks.js";
 import type * as triggerRules from "../triggerRules.js";
+import type * as xPostQueue from "../xPostQueue.js";
 
 import type {
   ApiFromModules,
@@ -32,6 +33,7 @@ declare const fullApi: ApiFromModules<{
   skillChains: typeof skillChains;
   tasks: typeof tasks;
   triggerRules: typeof triggerRules;
+  xPostQueue: typeof xPostQueue;
 }>;
 
 /**

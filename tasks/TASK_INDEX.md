@@ -1,13 +1,14 @@
 # Task Index — Active Tasks
-_Last updated: 2026-03-26 13:48 PST_
+_Last updated: 2026-03-27 08:12 PST_
 
 ## Active
 
 | ID | Name | Status | Owner | Priority | Lock File |
 |----|------|--------|-------|----------|-----------|
-| TASK-009 | Automated X Posting System | planned — waiting on Kelly for X API key + FRED key | Rex | high | tasks/TASK-009-x-auto-post.md |
-| TASK-007 | DC Data Hub — Standalone member dashboard | active — built + live on :3001, Day 3 (Railway deploy + audit) pending | Rex | high | tasks/TASK-007-dc-data-hub.md |
+| TASK-009 | READY POST: X Content Queue | active — building | Rex | high | tasks/TASK-009-x-auto-post.md |
+| TASK-007 | DC Data Hub — Standalone member dashboard | active — Railway live, Day 3 audit pending | Rex | high | tasks/TASK-007-dc-data-hub.md |
 | TASK-006 | Build 3 Missing Skills | planned — revisit when DC Hub deployed | Rex | medium | — |
+| TASK-010 | Phase 1 Rules System Review | planned — triggers: 8 HIGH/CRITICAL tasks OR April 9 OR Monday Scorecard verdict | Rex | medium | — |
 
 ## Completed
 
