@@ -140,14 +140,22 @@ export async function POST(request: Request) {
   let skipped = 0;
 
   try {
-    // 1. Fetch x-feed
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://127.0.0.1:3000";
-    const feedRes = await fetch(`${baseUrl}/api/x-feed`, {
+    // 1. Fetch x-feed — use relative URL so Next.js routes it internally
+    const feedRes = await fetch(`/api/x-feed`, {
       signal: AbortSignal.timeout(15000),
     });
     if (!feedRes.ok) {
+      const text = await feedRes.text().catch(() => "");
       return NextResponse.json(
-        { error: `x-feed fetch failed: ${feedRes.status}` },
+        { error: `x-feed fetch failed: ${feedRes.status} — ${text.slice(0, 100)}` },
+        { status: 502 }
+      );
+    }
+    const contentType = feedRes.headers.get("content-type") ?? "";
+    if (!contentType.includes("application/json")) {
+      const text = await feedRes.text().catch(() => "");
+      return NextResponse.json(
+        { error: `x-feed returned non-JSON (${contentType}). Is the route protected? Body: ${text.slice(0, 100)}` },
         { status: 502 }
       );
     }

@@ -120,33 +120,45 @@ export async function POST(request: Request) {
   let skipped = 0;
 
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://127.0.0.1:3000";
-
-    // 1. Fetch market-pulse
+    // 1. Fetch market-pulse — use relative URL for Next.js internal routing
     let marketPulse: MarketPulse | null = null;
     try {
-      const mpRes = await fetch(`${baseUrl}/api/market-pulse`, {
+      const mpRes = await fetch(`/api/market-pulse`, {
         signal: AbortSignal.timeout(10000),
       });
       if (mpRes.ok) {
-        marketPulse = await mpRes.json();
+        const ct = mpRes.headers.get("content-type") ?? "";
+        if (ct.includes("application/json")) {
+          marketPulse = await mpRes.json();
+        } else {
+          errors.push(`market-pulse returned ${mpRes.status} (${ct}), skipping`);
+        }
+      } else {
+        errors.push(`market-pulse fetch failed: ${mpRes.status}`);
       }
     } catch (e: any) {
-      errors.push(`market-pulse fetch failed: ${e.message}`);
+      errors.push(`market-pulse fetch error: ${e.message}`);
     }
 
-    // 2. Fetch headlines
+    // 2. Fetch headlines — use relative URL for Next.js internal routing
     let headlines: Headline[] = [];
     try {
-      const hlRes = await fetch(`${baseUrl}/api/headlines`, {
+      const hlRes = await fetch(`/api/headlines`, {
         signal: AbortSignal.timeout(10000),
       });
       if (hlRes.ok) {
-        const data = await hlRes.json();
-        headlines = (data.headlines ?? []).slice(0, 5);
+        const ct = hlRes.headers.get("content-type") ?? "";
+        if (ct.includes("application/json")) {
+          const data = await hlRes.json();
+          headlines = (data.headlines ?? []).slice(0, 5);
+        } else {
+          errors.push(`headlines returned ${hlRes.status} (${ct}), skipping`);
+        }
+      } else {
+        errors.push(`headlines fetch failed: ${hlRes.status}`);
       }
     } catch (e: any) {
-      errors.push(`headlines fetch failed: ${e.message}`);
+      errors.push(`headlines fetch error: ${e.message}`);
     }
 
     // 3. Build candidate data points
@@ -185,7 +197,11 @@ export async function POST(request: Request) {
     }
 
     if (candidates.length === 0) {
-      return NextResponse.json({ generated: 0, skipped: 0, errors: ["No market data available"] });
+      return NextResponse.json({
+        generated: 0,
+        skipped: 0,
+        errors: errors.length > 0 ? errors : ["No market data available from market-pulse or headlines"],
+      });
     }
 
     // 4. Dedup check (market data — dedup by content hash for the day)
