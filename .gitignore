@@ -16,3 +16,4 @@ memory/gmail-poll-state.json
 # OS files
 .DS_Store
 Thumbs.db
+tasks/TASK-009-api-keys.md
