@@ -33,6 +33,11 @@
 
 ## Mission Control
 - **Status:** Running, Next.js + Convex
+- **Railway URL:** `https://mission-control-production-b7e2.up.railway.app` (public, password protected)
+- **Local Tailscale:** `http://100.70.46.41:3000` (home network only)
+- **Password:** `Rexl@bacademy`
+- **Railway-linked dir:** `/Users/rex/OpenClaw/workspace/mission-control/` → pushes to `dc-data-hub` repo (this is the Railway-linked copy)
+- **Backup dir:** `/Users/rex/.openclaw/workspace/mission-control/` → `Rex-workspace` repo
 - **Price grid:** 14 assets tracked (BTC, ETH, BNB, XRP, SOL, LINK, ADA, TAO, GOLD, SILV, DXY, NVDA, COIN, MSTR)
 - **Dashboard agents:** Rex · Writer · Analyst · Monitor · Builder · Closer
 - **Headlines pipeline:** Daily Insight + What We're Watching (collapsible sections)
@@ -42,25 +47,32 @@
 - **Railway RSS adapter:** `https://feed-adapter-production.up.railway.app/rss`
 - **X API:** $100/mo Basic tier (official route, no ToS risk)
 - **44 X accounts** monitored in x-rss-adapter/server.js — deployed and live
-- **Mission Control page:** `http://100.70.46.41:3000/x-feed`
+- **Mission Control page:** `http://100.70.46.41:3000/x-feed` (local) or via Railway
 - **Bearer Token:** Kelly's Railway env var — never stored in Rex files (LAW 6)
 
-## Automated X Posting System (In Progress — Session 2026-03-26)
-**Full plan from 3-critic panel: social media specialist + AI systems engineer + data aggregation critic**
+## Ready Posts — X Post Queue (Deployed 2026-03-27)
+- **Mission Control page:** `/ready-posts` — Kelly browses queue, clicks COPY, pastes to X himself
+- **No X API key needed** — human-in-the-loop approach
+- **Convex table:** `xPostQueue` — stores generated posts with status flow: GENERATED → READY → COPIED → POSTED
+- **Data sources:** X Feed (44 accounts) + DC Hub market data
+- **Schedule:** 4:30–11 AM PT every 20 min | 11 PM–4:30 AM PT every 60 min
+- **6 post formats:** Thread Starter, Breaking Take, Watch List, Thread Summary, Education, Data Drop
+- **Scoring:** 40% authority / 25% velocity / 20% market impact / 15% novelty — skip if < 40
+- **Kelly's tier 1 sources:** @coinbureau, @kobeissiletter, @BullTheoryio (scored higher)
+- **Generation API:** `/api/generate-x-posts` — scored + humanized posts saved to queue
+- **Status API:** `/api/x-post-status` — protected by `MC_API_SECRET` header auth
 
-### Architecture
-- **Run on Railway** — new service `x-poster-worker`, always-on, 15-min polling
-- **Breaking news fast lane:** poll every 2 min, fires only when 3+ monitored accounts hit same topic within 10 min
-- **Redis (Railway add-on ~$10/mo)** for: seen-hash store, post count tracking, rate limit counter
-- **LLM use:** copy generation ONLY after scoring passes threshold. ~500 calls/mo ≈ $3-5 on minimax. Not used for classification.
-- **Kelly provides:** X account API key (post-only scoped) + FRED API key
-
-### Scoring Engine
-| Signal | Source | Weight |
-|---|---|---|
-| Source authority | Hardcoded tier whitelist | 40% |
-| Velocity | Same story on 3+ monitored accounts in 15 min | 25% |
-| Market impact | Price correlation from /api/prices | 20% |
+## Ready Posts — X Post Queue (Deployed 2026-03-27)
+- **Mission Control page:** `/ready-posts` — Kelly browses queue, clicks COPY, pastes to X himself
+- **No X API key needed** — human-in-the-loop approach
+- **Convex table:** `xPostQueue` — stores generated posts with status flow: GENERATED → READY → COPIED → POSTED
+- **Data sources:** X Feed (44 accounts) + DC Hub market data
+- **Schedule:** 4:30–11 AM PT every 20 min | 11 PM–4:30 AM PT every 60 min
+- **6 post formats:** Thread Starter, Breaking Take, Watch List, Thread Summary, Education, Data Drop
+- **Scoring:** 40% authority / 25% velocity / 20% market impact / 15% novelty — skip if < 40
+- **Kelly's tier 1 sources:** @coinbureau, @kobeissiletter, @BullTheoryio (scored higher)
+- **Generation API:** `/api/generate-x-posts` — scored + humanized posts saved to queue
+- **Status API:** `/api/x-post-status` — protected by `MC_API_SECRET` header auth
 | Novelty | Hash dedup vs last 4h of posts | 15% |
 
 **Urgency multiplier:** `base_score × (1 + abs(price_change% / 5))`
@@ -142,36 +154,40 @@ Every generated post MUST:
 5. **Price staleness:** reject price-correlated posts if price data >15 min old
 
 ### Implementation Phases
-**Phase 1 (this week, mostly free):**
-- [ ] Get FRED API key
-- [ ] Get X account API key (post-only scope)
-- [ ] Add FRED macro integration to pipeline
-- [ ] Add Farside/SoSoValue ETF flow data
+**Phase 1 — Ready Posts (COMPLETE 2026-03-27):**
+- [x] Built Ready Posts page on Mission Control (`/ready-posts`)
+- [x] Kelly copies posts from queue and posts manually — no X API key needed
+- [x] Scored + humanized posts generated from X Feed + DC Hub market data
+- [x] Deployed to Railway
+
+**Phase 2 — Macro integration (deferred, needs FRED key):**
+- [ ] Get FRED API key → add macro data (CPI, PPI, jobs numbers) to scoring
+- [ ] Add Farside/SoSoValue ETF flow data to scoring engine
 - [ ] Add SEC EDGAR RSS for institutional filings
 
-**Phase 2 (one sprint):**
-- [ ] Deploy x-poster-worker on Railway
-- [ ] Set up Redis for state management
+**Phase 3 — Automated posting (deferred, needs X post-only API key):**
+- [ ] X account API key (post-only scope) → automate posting from queue
 - [ ] Build scoring engine against existing headlines API
 - [ ] Configure posting formats and humanization prompts
 
-**Phase 3 (iterative):**
-- [ ] Tune source authority taxonomy based on performance
-- [ ] Add breaking news fast lane (2-min poll)
-- [ ] THREAD: format for legislation deep dives
+### Cost Estimate (Ready Posts — Phase 1)
+| Item | Monthly |
+|---|---|
+| Mission Control Railway | already deployed |
+| LLM calls (generation only, ~20-50/day) | ~$1-3 |
+| **Total Phase 1** | **~$1-3/mo** |
 
-### Cost Estimate
+**If Phase 3 (automated posting) added:**
 | Item | Monthly |
 |---|---|
 | Railway x-poster-worker | ~$5-10 |
 | Railway Redis | ~$10 |
 | LLM calls (~500/mo) | ~$3-5 |
-| Metals-API (gold/silver) | already on Twelve Data |
-| X API upgrade (if needed) | TBD |
-| **Total** | **~$18-25/mo** |
+| X API post-only | ~$0 |
+| **Total Phase 3** | **~$18-25/mo** |
 
 ### X API Note
-Current X API Basic plan has post limits. At 12-15 posts/day (~450/mo), may need Pro tier. Verify cap before launch. Post-only scoped key reduces risk of misuse.
+Ready Posts Phase 1 uses NO X API. Phase 3 (automated posting) needs X post-only scoped key. Current X API Basic plan has post limits — verify cap before Phase 3 launch.
 
 ### Skills Referenced
 - `x-post-automator` skill already exists — handles manual drafting with humanization
@@ -180,9 +196,10 @@ Current X API Basic plan has post limits. At 12-15 posts/day (~450/mo), may need
 - Discover Crypto voice examples available in Mission Control X Feed data
 
 ### Session Context
-- **Date:** 2026-03-26
+- **Date:** 2026-03-27
 - **Kelly's priorities:** Humanization above all, 4:30 AM–11 PM posting window, no em dashes, contractions, hook-led posts, source authority tiers with his specific account list
-- **Next action:** Kelly to provide X account post-only API key (FRED key received and verified ✅)
+- **Next action:** Ready Posts Phase 1 deployed — Kelly tests queue, generates posts, provides feedback. Phase 2 deferred until FRED API key provided.
+- **Pivot:** Abandoned full X API automation (needed post-only key). Replaced with Ready Posts — Kelly copies from queue, posts manually.
 
 ## Gmail Integration
 - **Status:** Partially working

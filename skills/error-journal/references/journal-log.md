@@ -778,3 +778,22 @@ Corrective action taken: (1) Redacted the key from the committed file using sed 
 
 Preventive rule: PR-048 — Before answering any question about what was pushed to GitHub or whether anything sensitive was exposed, I MUST run `git show master:file | grep -i keypattern` on every committed file that could contain credentials. No exceptions. Answer only AFTER verification. Never say "nothing sensitive was pushed" without running the check.
 --- END ENTRY ---
+
+--- ERROR ENTRY ---
+Date: 2026-03-27
+Agent: Rex
+Error Type: False Statement / Premature Closure
+Severity: High
+
+What happened: Told Kelly DC Data Hub was "fully restored" after testing only the root URL (HTTP 200). Kelly got 404 on actual pages. The canonical Railway URL had changed when Railway reassigned the project.
+
+Root cause: Tested only `dc-data-hub-production-cff0.up.railway.app/` (root) and assumed all pages worked. Should have tested the specific page Kelly uses and the API endpoints.
+
+How it was caught: Kelly sent screenshot showing 404 on DC Data Hub
+
+Corrective action taken: Identified correct URL: `dc-data-hub-production-cff0.up.railway.app`. Verified all key endpoints return 200.
+
+Preventive rule: PR-051 — Before reporting a service as "restored" or "working," verify: (1) root URL, (2) key API endpoints, (3) specific page the user is trying to access. Test at least 3 endpoints before declaring fix complete.
+
+Related past errors: 2026-03-26 (API key in GitHub) — same pattern of skipping verification step
+--- END ENTRY ---

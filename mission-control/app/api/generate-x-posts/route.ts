@@ -221,6 +221,23 @@ export async function POST(request: Request) {
             content = ""; // ensure we don't save it
             break;
           }
+
+          // Skip "I can't make a post" meta-responses — not real posts
+          const cantPostPatterns = [
+            /cannot fabricate/i,
+            /no compliant post/i,
+            /cannot make a post/i,
+            /sorry,? i can'?t/i,
+            /i can'?t generate/i,
+            /no post (is )?possible/i,
+            /only a (youtube|youtube) promo/i,
+          ];
+          if (cantPostPatterns.some((p) => p.test(content))) {
+            errors.push(`Unusable source @${author} — no valid post possible`);
+            skipped++;
+            content = "";
+            break;
+          }
           break; // success
         } catch (err: any) {
           errors.push(`LLM failed for @${author}: ${err.message}`);

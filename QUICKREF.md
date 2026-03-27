@@ -1,29 +1,42 @@
 # QUICKREF.md — Rex State Snapshot
 _Read this FIRST, EVERY session. No exceptions. No skimming._
-_Last updated: 2026-03-26 10:21 PM PDT_
+_Last updated: 2026-03-27 10:25 AM PDT_
 
 ## Active Right Now
-- **TASK-007** — DC Data Hub — Railway confirmed LIVE (2026-03-25). Features built through Mar 22. Railway URL: https://dc-data-hub-production-cff0.up.railway.app
-- **TASK-008** — Lex Architecture Integrations — COMPLETE (2026-03-21)
-- **Memory system overhaul** — Health scripts, entity index, recall log built (2026-03-25)
+- **TASK-009** — Ready Posts (X post queue) — DEPLOYED to Railway. Kelly browses queue, copies posts, posts manually to X himself. No X API key needed.
+- **TASK-007** — DC Data Hub — Railway live. Day 3 audit + mobile responsive pass pending.
+- **TASK-010** — Phase 1 Rules System Review — triggers: 8 HIGH/CRITICAL tasks OR April 9 OR Monday Scorecard verdict
 
 ## What's Live (permanent infrastructure)
 | Service | URL | Status |
 |---------|-----|--------|
-| Mission Control | http://100.70.46.41:3000 | LIVE (Tailscale) |
-| DC Data Hub (local dev) | http://localhost:3000 | LIVE |
+| Mission Control (Railway) | https://mission-control-production-b7e2.up.railway.app | LIVE ✅ |
+| Mission Control (local) | http://100.70.46.41:3000 | LIVE (Tailscale) |
 | DC Data Hub (Railway) | https://dc-data-hub-production-cff0.up.railway.app | LIVE ✅ |
-| X RSS Feed | Railway | LIVE |
+| DC Data Hub (local dev) | http://localhost:3000 | LIVE |
 | OpenClaw Gateway | localhost:30322 | LIVE (v2026.3.23) |
 
 ## Open Tasks
 | ID | Task | Status | Next Action |
 |----|------|--------|-------------|
-| TASK-007 | DC Data Hub | active — Railway live, Day 3 audit pending | Mobile responsive pass |
+| TASK-009 | Ready Posts (X queue) | DEPLOYED | Test generation, add more X accounts |
+| TASK-007 | DC Data Hub | active | Day 3 audit + mobile responsive pass |
+| TASK-010 | Phase 1 Rules Review | planned | Triggers: 8 tasks OR April 9 |
 | TASK-002 | Calendar focus bug | blocked | — |
 | TASK-003 | X feed RSS | blocked | — |
 
-## Last Session Summary (2026-03-26)
+## Last Session Summary (2026-03-27)
+- **Ready Posts system deployed** — TASK-009 done. `/ready-posts` on Mission Control Railway. Kelly copies posts, posts manually. No X API needed.
+- **Mission Control deployed to Railway** — `https://mission-control-production-b7e2.up.railway.app` — password: `Rexl@bacademy`
+- **Two MC directories** — Railway-linked: `/Users/rex/OpenClaw/workspace/mission-control/` → pushes to `dc-data-hub` repo. Backup: `/Users/rex/.openclaw/workspace/mission-control/` → `Rex-workspace` repo.
+- **Critic review** — All 6 fixes for Ready Posts passed. Build clean.
+- **Phase 1 rules system** — review triggers set (April 9 / 8 tasks / Monday Scorecard)
+- **Railway deploy** — Mission Control Railway service created, variables set, domain assigned
+
+## Blockers
+- Nansen API key (still pending)
+
+## Last Session Summary (2026-03-27)
 - **Rules management system Phase 1 built** — `rule-index.md` created (CRITICAL/HIGH/STANDARD rule classification by task type)
 - **`## Critical Rules Snapshot`** added to `_TEMPLATE.md` — Rex pastes full text of applicable CRITICAL rules at start of HIGH/CRITICAL tasks
 - **`## Prior Context`** added to `_TEMPLATE.md` — Rex checks relevant memory file and writes 3-5 bullets before HIGH/CRITICAL tasks
