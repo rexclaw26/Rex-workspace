@@ -84,7 +84,7 @@ Rewrite in Discover Crypto voice → post.
 ---
 
 ## Pending From Kelly
-- [x] ~~FRED API key~~ — received and verified (f9041eeee758334f327ab56eaf6413f9), stored in tasks/TASK-009-api-keys.md
+- [x] ~~FRED API key~~ — received and verified ([REDACTED-FRED-KEY]), stored in tasks/TASK-009-api-keys.md
 - [ ] X account post-only API key
 
 ---
