@@ -34,6 +34,8 @@
 ## Mission Control
 - **Status:** Running, Next.js + Convex
 - **Railway URL:** `https://mission-control-production-b7e2.up.railway.app` (public, password protected)
+- **Railway service ID:** `4f2a644d-030c-443c-9846-116f1615c46f` (project `02441900-5c37-4d67-a45e-d08f1dcadbb1`)
+- **⚠️ Railway projects index:** `memory/railway-projects.md` — full mapping of service IDs, repo sources, deployed URLs. ALWAYS check this before any Railway CLI operation.
 - **Local Tailscale:** `http://100.70.46.41:3000` (home network only)
 - **Password:** `Rexl@bacademy`
 - **Railway-linked dir:** `/Users/rex/OpenClaw/workspace/mission-control/` → pushes to `dc-data-hub` repo (this is the Railway-linked copy)

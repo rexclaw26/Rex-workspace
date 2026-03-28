@@ -797,3 +797,18 @@ Preventive rule: PR-051 — Before reporting a service as "restored" or "working
 
 Related past errors: 2026-03-26 (API key in GitHub) — same pattern of skipping verification step
 --- END ENTRY ---
+
+--- ERROR ENTRY ---
+Date: 2026-03-27
+Agent: Rex
+Error Type: Configuration Memory Error
+Severity: High
+
+What happened: Repeatedly confused two separate Railway projects — DC Data Hub (service `a98ccb85...`) and Mission Control (service `4f2a644d...`) — across multiple sessions. Provided Kelly with the wrong Railway service URL multiple times, causing confusion and wasted time. Same pattern occurred previously with DC Hub vs MC directories.
+
+Root cause: No Railway project index exists in memory. Railway project names (`dc-data-hub`) don't match service purposes (MC is deployed under the dc-data-hub project name). No documented mapping between: repo → Railway project ID → service ID → deployed URL → what it serves.
+
+[SHARED LEARNING] This is a recurring infrastructure memory failure. Rex has also confused local MC directories (.openclaw/workspace/mission-control/ vs /Users/rex/OpenClaw/workspace/mission-control/) in prior sessions.
+
+Preventive rule: PR-051 — Railway project index must exist in memory/hit-network-ops.md with service ID, repo source, and deployed URL for every deployed service.
+--- END ENTRY ---

@@ -140,6 +140,13 @@ _Created: 2026-03-26 | Maintained by: Rex (auto-add on new rules) | Source of tr
 - task_types: ALL
 - triggers: AGENTS.md, bootstrap, 20K limit, trim
 - summary: AGENTS.md must stay under 20K chars. Trim when approaching 18K.
+
+### PR-051 — Railway Service Identity Gate
+- source: rule-registry.md#PR-051
+- risk_level: CRITICAL
+- task_types: ALL
+- triggers: railway, deploy, service ID, Railway URL, railway up, railway logs, railway restart
+- summary: Before any Railway operation — read memory/railway-projects.md, state target service name + ID, confirm ID against index. Never construct Railway URLs from memory.
 - full_text: inline
 
 ---

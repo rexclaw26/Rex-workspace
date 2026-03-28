@@ -115,4 +115,14 @@ When creating or modifying a rule in AGENTS.md or this registry, Rex simultaneou
 - `PROTOCOL-DIGEST.md` — condensed LAWS text
 - `rule-registry.md` — full PR text
 
+**PR-051 — Railway Service Identity Gate (safety-critical, LAW-level):**
+Any action involving Railway (CLI commands, deploy triggers, URL sharing, log checks, status checks, giving Kelly a Railway link):
+1. State the target explicitly: "I am targeting [Mission Control / DC Data Hub]"
+2. Confirm service ID: cross-reference `memory/railway-projects.md` — never use a service ID from memory alone
+3. Confirm repo path: verify local directory and git remote match the table entry
+4. URL rule: never construct or share a Railway URL from memory — always copy from `memory/railway-projects.md`
+5. Deploy method: MC → `git push rex-workspace master` from `.openclaw/workspace/mission-control/`. DC Hub → `git push origin main` from `/Users/rex/dev/dc-data-hub/`. `railway up` only from linked directory `/Users/rex/OpenClaw/workspace/mission-control/`.
+
+Failure prevented: wrong Railway URL given to Kelly, wrong service restarted, deploy targeting wrong service.
+
 **Verification:** `wc -c AGENTS.md` must return < 20,000.

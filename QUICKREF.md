@@ -3,8 +3,7 @@ _Read this FIRST, EVERY session. No exceptions. No skimming._
 _Last updated: 2026-03-27 10:25 AM PDT_
 
 ## Active Right Now
-- **TASK-009** — Ready Posts (X post queue) — DEPLOYED to Railway. Kelly browses queue, copies posts, posts manually to X himself. No X API key needed.
-- **TASK-007** — DC Data Hub — Railway live. Day 3 audit + mobile responsive pass pending.
+- **Railway projects index** — `memory/railway-projects.md` — MANDATORY read before any Railway operation. MC service: `4f2a644d...` | DC Hub service: `a98ccb85...`
 - **TASK-010** — Phase 1 Rules System Review — triggers: 8 HIGH/CRITICAL tasks OR April 9 OR Monday Scorecard verdict
 
 ## What's Live (permanent infrastructure)

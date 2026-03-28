@@ -74,6 +74,7 @@ These are non-negotiable. Zero exceptions. Ever.
 | "force kill" | Emergency restart needed | `openclaw gateway restart` immediately |
 | "weekly scorecard" | Monday report request | Run `skills/weekly-scorecard/SKILL.md` |
 | "healthcheck" | System audit request | Run `skills/healthcheck/SKILL.md` |
+| "railway" / "deploy" / Railway URL | Railway operation | STOP. Read `memory/railway-projects.md`. State target service name + service ID. Confirm before any CLI command or URL sharing. |
 
 Full response steps → PROTOCOL-DIGEST.md.
 
