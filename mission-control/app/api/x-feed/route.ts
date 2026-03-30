@@ -90,7 +90,7 @@ const BTC_ETH_TERMS = [
 
 const ALTCOIN_TERMS = [
   "altcoin", " alts ", "alt season", "altseason",
-  "defi", "on-chain", " onchain", "on chain",
+  "defi", "on chain analytics", // "on-chain"/"onchain" removed — BTC-native, caused BTC posts to misroute
   "liquidation", "liquidations", "charles hoskinson",
   // Solana ecosystem
   "solana", " sol ", "$sol", "pump.fun", "pumpfun",
@@ -192,9 +192,9 @@ function categorize(text: string): "btc-eth" | "macro" | "altcoins" | null {
   const lower = " " + text.toLowerCase() + " ";
   const isRelevant = ALL_RELEVANT_TERMS.some((t) => lower.includes(t));
   if (!isRelevant) return null;
-  // Altcoins checked FIRST — specific coin mentions take priority over broad btc-eth match
-  if (ALTCOIN_TERMS.some((t) => lower.includes(t))) return "altcoins";
+  // BTC/ETH checked FIRST — prevents BTC on-chain posts from misrouting to altcoins
   if (BTC_ETH_TERMS.some((t) => lower.includes(t))) return "btc-eth";
+  if (ALTCOIN_TERMS.some((t) => lower.includes(t))) return "altcoins";
   if (MACRO_TERMS.some((t) => lower.includes(t))) return "macro";
   return null;
 }
