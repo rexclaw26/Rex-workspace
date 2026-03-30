@@ -1,6 +1,6 @@
 # Railway Projects Index
-_Last updated: 2026-03-27 17:27 PDT_
-_Last verified: 2026-03-27 — both services confirmed operational_
+_Last updated: 2026-03-27 21:15 PDT_
+_Last verified: 2026-03-27 21:12 — clean deploy confirmed from .openclaw source dir_
 
 ---
 
@@ -37,7 +37,7 @@ _Last verified: 2026-03-27 — both services confirmed operational_
 
 | Local Repo | GitHub Remote | Branch | Deploys To |
 |---|---|---|---|
-| `.openclaw/workspace/mission-control/` | `rex-workspace` → `rexclaw26/Rex-workspace` | `master` | MC service `4f2a644d...` |
+| `.openclaw/workspace/mission-control/` | `rex-workspace` → `rexclaw26/Rex-workspace` | `master` | MC service `4f2a644d...` | ✅ Railway CLI linked here as of 2026-03-27 |
 | `/Users/rex/dev/dc-data-hub/` | `origin` → `rexclaw26/dc-data-hub` | `main` | DC Hub service `a98ccb85...` |
 
 > ⚠️ `.openclaw/workspace/mission-control/` (capital O in OpenClaw) — this is the working directory Rex uses. The git remote `rex-workspace` is the deploy path for MC. The `origin` remote in this repo points to `openclaw-setup` — NOT for deployment.

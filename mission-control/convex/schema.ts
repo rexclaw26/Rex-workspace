@@ -18,7 +18,7 @@ const xPostQueueTable = defineTable({
   ),
   score: v.number(),
   status: v.union(v.literal("ready"), v.literal("copied"), v.literal("posted")),
-  sourceType: v.union(v.literal("x"), v.literal("market")),
+  sourceType: v.optional(v.union(v.literal("x"), v.literal("market"))),
   sourceAuthor: v.optional(v.string()),
   sourceUrl: v.optional(v.string()),
   createdAt: v.number(),

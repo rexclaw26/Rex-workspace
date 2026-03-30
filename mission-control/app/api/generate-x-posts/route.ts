@@ -140,8 +140,9 @@ export async function POST(request: Request) {
   let skipped = 0;
 
   try {
-    // 1. Fetch x-feed — use relative URL so Next.js routes it internally
-    const feedRes = await fetch(`/api/x-feed`, {
+    // 1. Fetch x-feed — use absolute URL for Railway production compatibility
+    const baseUrl = (process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000').replace(/^https/, 'http');
+    const feedRes = await fetch(`${baseUrl}/api/x-feed`, {
       signal: AbortSignal.timeout(15000),
     });
     if (!feedRes.ok) {
@@ -161,7 +162,7 @@ export async function POST(request: Request) {
     }
     const feedData: XFeedData = await feedRes.json();
 
-    // 2. Build candidate list — top 3 per category by score
+    // 2. Build candidate list — top 8 per category (balanced), up to 24 total
     const candidates: Array<{ tweet: XTweet; category: PostCategory }> = [];
 
     for (const [feedKey, category] of Object.entries(feedCategoryMap)) {
@@ -170,10 +171,11 @@ export async function POST(request: Request) {
 
       const scored = tweets
         .map((t) => ({ tweet: t, score: scoreTweet(t), category: category as PostCategory }))
+        .filter((t) => t.score >= 40)          // pre-filter low-signal before LLM
         .sort((a, b) => b.score - a.score)
-        .slice(0, 3);
+        .slice(0, 8);                           // top 8 per category
 
-      candidates.push(...scored.map((s) => ({ tweet: s.tweet, category: s.category })));
+      candidates.push(...scored.map(({ tweet, category: cat }) => ({ tweet, category: cat })));
     }
 
     // 3. Dedup + generate
@@ -181,13 +183,24 @@ export async function POST(request: Request) {
     todayStart.setUTCHours(0, 0, 0, 0);
     const dayStart = todayStart.getTime();
 
+    const MAX_PER_AUTHOR = 10; // allow up to 10 posts per author per day
+    const authorCountThisRun: Record<string, number> = {}; // track counts within this run
+
     for (const { tweet, category } of candidates) {
       const author = tweet.author;
 
-      // Dedup: skip if this author already has a post today
+      // Per-author cap: max 5 posts per author per day (across all runs today)
+      const authorRunCount = authorCountThisRun[author] ?? 0;
+      if (authorRunCount >= MAX_PER_AUTHOR) {
+        skipped++;
+        continue;
+      }
+
+      // Dedup: per tweet ID so the same tweet is never rewritten twice
+      const dedupKey = tweet.id ? `tweet:${tweet.id}` : `author:${author}:${tweet.text.slice(0, 40)}`;
       try {
         const isDupe = await convex.query(api.xPostQueue.checkDuplicate, {
-          sourceAuthor: author,
+          sourceAuthor: dedupKey,
           dayStart,
         });
         if (isDupe) {
@@ -199,13 +212,6 @@ export async function POST(request: Request) {
       }
 
       const score = scoreTweet(tweet);
-
-      // Minimum score gate — skip low-signal tweets before wasting an LLM call
-      if (score < 40) {
-        skipped++;
-        continue;
-      }
-
       const format = pickFormat(tweet);
 
       // 4. Generate post via LLM
@@ -218,8 +224,12 @@ export async function POST(request: Request) {
         try {
           const prompt = buildPrompt(tweet, format, attempt === 2);
           content = (await callLLM(prompt)).trim();
-          // Strip em dashes if LLM added any
-          content = content.replace(/\u2014/g, "-").replace(/\u2013/g, "-");
+          // Strip em dashes and any leading format label the LLM included
+          content = content
+            .replace(/\u2014/g, "-").replace(/\u2013/g, "-")
+            .replace(/^(BREAKING:|JUST IN:|DATA:|WATCHING:|SIGNAL:|THREAD:)\s*/i, "")
+            .replace(/^\[?(BREAKING|JUST IN|DATA|WATCHING|SIGNAL|THREAD)\]?[:\s\n]+/i, "")
+            .trim();
 
           // Enforce 280 char limit — retry once with stricter prompt, then skip
           if (content.length > 280) {
@@ -267,10 +277,11 @@ export async function POST(request: Request) {
           category,
           score,
           sourceType: "x",
-          sourceAuthor: author,
+          sourceAuthor: dedupKey,
           sourceUrl: tweet.url,
         });
         generated++;
+        authorCountThisRun[author] = (authorCountThisRun[author] ?? 0) + 1;
       } catch (err: any) {
         errors.push(`Save failed for @${author}: ${err.message}`);
         skipped++;

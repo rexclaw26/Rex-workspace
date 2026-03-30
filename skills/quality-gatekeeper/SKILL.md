@@ -147,8 +147,10 @@ Gate failed twice → surface to Kelly:
 
 Full verdict logs go to `memory/gates/YYYY-MM-DD-gates.md`. Never dump verdict in chat.
 
-**Mandatory gate log write (non-negotiable):**
-After every gate review — pass OR fail — append to `memory/gates/YYYY-MM-DD-gates.md`. Use this exact pattern:
+**Mandatory gate log write (non-negotiable) — TWO locations:**
+
+**Location 1 — Chronological audit log (always):**
+After every gate review — pass OR fail — append to `memory/gates/YYYY-MM-DD-gates.md`:
 ```bash
 cat >> /Users/rex/.openclaw/workspace/memory/gates/$(date +%Y-%m-%d)-gates.md << 'EOF'
 
@@ -161,6 +163,18 @@ cat >> /Users/rex/.openclaw/workspace/memory/gates/$(date +%Y-%m-%d)-gates.md <<
 EOF
 ```
 If the file doesn't exist yet for today, `cat >>` creates it. No exceptions — every gate fires a log entry.
+
+**Location 2 — Task lock file stub (when task file exists):**
+After writing to memory/gates/, also update the task lock file's ## Plan Gate or ## Output Gate section:
+```
+## Plan Gate  (or ## Output Gate)
+Status: ✅ APPROVED  (or ❌ NEEDS REVISION)
+Critic session key: [session key]
+Date reviewed: YYYY-MM-DD HH:MM
+Issues found: [none | list]
+Notes: [any context]
+```
+The task file gets a summary only — the full verdict lives in memory/gates/. Both writes are mandatory when a task lock file exists.
 
 ---
 

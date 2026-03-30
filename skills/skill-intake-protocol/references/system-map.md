@@ -1,6 +1,7 @@
 # Hit Network Skill System Map
-**Last updated:** 2026-03-14
-**Total skills installed:** 27
+**Last updated:** 2026-03-30
+**Last verified:** 2026-03-30
+**Total skills installed:** 40 (workspace) + 10 system skills
 
 ---
 
@@ -170,3 +171,4 @@ X posts driven by: `news-aggregation` (trending) + `content-strategy` (thematic 
 | 2026-03-14 | Installed 4 community skills: prompt-engineering-expert, marketing-mode (+ hierarchy rule), superdesign, frontend-design-ultimate. Total: 31 skills. |
 | 2026-03-17 | Installed lossless-claw LCM plugin (context engine, not a skill). Session reset set to 7-day idle. |
 | 2026-03-17 | Built skill-performance-tracker Phase 1 (passive execution logger). Added to always-active layer. |
+| 2026-03-30 | Full audit. Skills confirmed installed: seo-audit, content-strategy (were marked "not started" — now confirmed active). adaptive-rule-engine, content-pipeline confirmed installed. Total workspace skills: 40. System skills (coding-agent, discord, gh-issues, github, gog, healthcheck, node-connect, openai-whisper-api, skill-creator, weather) noted separately. ROUTING.md created as routing convenience layer. skill-performance-tracker schema updated with routing_source field. |

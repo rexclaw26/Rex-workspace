@@ -317,6 +317,46 @@ _Created: 2026-03-26 | Maintained by: Rex (auto-add on new rules) | Source of tr
 - summary: When claiming "no record," specify exact scope (which system, which time period)
 - full_text: inline
 
+### PR-052 — Sub-Agent Failure Recovery
+- source: rule-registry.md#PR-052
+- risk_level: HIGH
+- task_types: multi-agent, coding, infra, ALL
+- triggers: sub-agent timeout, agent failed, timed out, no output, partial results, incomplete
+- summary: Extends PR-047/PR-038 — when sub-agent fails: read partial output, assess completion, write checkpoint, decide re-spawn vs. escalate. Never summarize or guess.
+- full_text: rule-registry.md#PR-052
+
+### PR-053 — ROUTING.md Mandatory Session Read
+- source: rule-registry.md#PR-053
+- risk_level: HIGH
+- task_types: ALL
+- triggers: session start (automatic)
+- summary: ROUTING.md read at step 2 of every session startup. Max 5,000 chars. Flag stale if >7 days. Convenience layer only — AGENTS.md and system-map.md are authoritative.
+- full_text: rule-registry.md#PR-053
+
+### PR-054 — Gate Dual-Write
+- source: rule-registry.md#PR-054
+- risk_level: CRITICAL
+- task_types: ALL_DELIVERABLE
+- triggers: gate review, gatekeeper approved, gatekeeper revision, plan review, output review
+- summary: Extends PR-044 — gatekeeper writes full verdict to memory/gates/ AND summary to task lock file ## Plan Gate / ## Output Gate. Both mandatory.
+- full_text: rule-registry.md#PR-054
+
+### PR-055 — Skills Loaded Declaration
+- source: rule-registry.md#PR-055
+- risk_level: HIGH
+- task_types: ALL (Plan Mode tasks)
+- triggers: plan mode, task lock, execution plan, starting task
+- summary: Fill ## Skills Loaded in task lock file BEFORE Execution Plan. List every skill actually read with path + purpose + routing_source. Not aspirational — must reflect actual reads.
+- full_text: rule-registry.md#PR-055
+
+### PR-056 — system-map.md Staleness Rule
+- source: rule-registry.md#PR-056
+- risk_level: HIGH
+- task_types: ALL
+- triggers: session start (automatic), routing lookup, skill selection
+- summary: Check system-map.md age at session start. Flag stale if >7 days. nightly-mc-review STEP 0 includes automated check. Same rule applies to ROUTING.md.
+- full_text: rule-registry.md#PR-056
+
 ---
 
 ## Index Maintenance Protocol

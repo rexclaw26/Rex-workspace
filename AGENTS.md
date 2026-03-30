@@ -11,12 +11,18 @@ If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out w
 Before doing anything else:
 
 1. Read `QUICKREF.md` — **FIRST. ALWAYS.** State snapshot: what's live, what's blocked, what was last done.
-2. Read `SOUL.md` — this is who you are
-3. Read `USER.md` — this is who you're helping
-4. Read `memory/YYYY-MM-DD.md` (today + yesterday)
-5. **If in MAIN SESSION**: Also read `MEMORY.md`
-6. Read `memory/hit-network-ops.md` — infrastructure, integrations, active systems (X automation, Discord, Gmail, Mission Control, Railway). This is operational context that must be current every session.
-7. Read `tasks/TASK_INDEX.md` — check for active tasks
+2. Read `ROUTING.md` — skill routing table. Resolves incoming task → correct skill chain before work begins. **If ROUTING.md is more than 7 days old, flag it and do not use it as a routing reference until updated.**
+3. Read `SOUL.md` — this is who you are
+4. Read `USER.md` — this is who you're helping
+5. Read `memory/YYYY-MM-DD.md` (today + yesterday)
+6. **If in MAIN SESSION**: Also read `MEMORY.md`
+7. Read `memory/hit-network-ops.md` — infrastructure, integrations, active systems (X automation, Discord, Gmail, Mission Control, Railway). This is operational context that must be current every session.
+8. Read `tasks/TASK_INDEX.md` — check for active tasks
+
+**Also check at startup:** If `skills/skill-intake-protocol/references/system-map.md` is more than 7 days old, flag it. Do not use it as a routing reference until updated. Run `nightly-mc-review` or update manually.
+
+**LAW — Daily Memory File (always-on, no exceptions):**
+At the start of the FIRST session each day, immediately create `memory/YYYY-MM-DD.md` if it doesn't exist. Do this before any other work. Add to it throughout the day as decisions are made, work is done, and blockers emerge. Never end a session without ensuring today's file is current.
 
 **Fast-path:** `PROTOCOL-DIGEST.md` consolidates key rules. AGENTS.md is the single source of truth — if they conflict, AGENTS.md wins.
 
@@ -43,8 +49,8 @@ Always loaded — no need to read them proactively:
 - `skills/context-optimization/SKILL.md` — token budget, subagent sizing
 
 **Session startup confirmation (exact format on first response every session):**
-`🟢 QUICKREF ✅ | SOUL ✅ | USER ✅ | memory/YYYY-MM-DD ✅ | MEMORY ✅ | TASK_INDEX ✅ | active tasks: [list or "none"] | laws active`
-Name missing files as ❌ — do not fabricate a full green row.
+`🟢 QUICKREF ✅ | ROUTING ✅ | SOUL ✅ | USER ✅ | memory/YYYY-MM-DD ✅ | MEMORY ✅ | TASK_INDEX ✅ | active tasks: [list or "none"] | laws active`
+Name missing files as ❌ — do not fabricate a full green row. Flag ROUTING.md or system-map.md as ⚠️ STALE if >7 days old.
 
 ---
 
@@ -126,6 +132,11 @@ Full text for all PRs → `rule-registry.md`.
 | PR-039 | Precise search scope when claiming "no record" |
 | PR-037 | Verify before acting — check data, check if done, check for duplicates |
 | PR-038 | Sub-agent timeout protocol — pre-spawn sizing rule + continuation protocol |
+| PR-052 | Sub-agent failure recovery — partial output assessment, checkpoint, re-spawn/escalate decision (extends PR-047) |
+| PR-053 | ROUTING.md mandatory session read, max 6,500 chars, staleness flag at 7 days |
+| PR-054 | Gate dual-write — gatekeeper writes both memory/gates/ AND task lock file ## Plan Gate / ## Output Gate |
+| PR-055 | Skills Loaded declaration required before Execution Plan on all tasks |
+| PR-056 | system-map.md staleness rule — flag at session start if >7 days, nightly-mc-review freshness check |
 | PR-010/PR-014 | Telegram routing rules |
 
 ---
@@ -181,7 +192,15 @@ Plan Mode is **REQUIRED** when:
 | Previous attempt at this task failed | Stop. Re-plan. Don't push deeper. |
 | Kelly says "plan this out" | Always, no exceptions |
 
-The plan lives in the task lock file under `## Plan`, written before any execution begins. Kelly approval required for external sends, financial figures, and architectural decisions.
+The plan lives in the task lock file. Before execution begins, fill in this order:
+1. `## Skills Loaded` — declare every skill file actually read for this task (path + purpose). Do this FIRST, before planning.
+2. `## Execution Plan` — write the plan.
+3. `## Plan Gate` — spawn quality-gatekeeper sub-agent in PLAN REVIEW mode. **Work does not start until Plan Gate = APPROVED.**
+
+Kelly approval required for external sends, financial figures, and architectural decisions.
+
+Before delivering any output to Kelly:
+4. `## Output Gate` — spawn quality-gatekeeper sub-agent in OUTPUT REVIEW mode. **Delivery does not happen until Output Gate = APPROVED.**
 
 ---
 
@@ -237,6 +256,23 @@ Local WiFi IP: dynamic — detected at startup, home network only
 | Full humanization framework | `skills/humanization-voice/SKILL.md` |
 | Slide deck gate template | `skills/slide-deck-generator/SKILL.md` |
 | Task lock protocol detail | `tasks/_TEMPLATE.md` |
+
+---
+
+## Sub-Agent Failure Protocol
+_Extension of PR-047 and PR-038. Governs what to do when a sub-agent times out, fails, or returns incomplete output._
+
+**When a sub-agent times out or fails:**
+1. **Do NOT summarize or guess** — this is the failure pattern we're fixing. Incomplete work is not done.
+2. **Read partial output immediately** — check what the agent actually wrote to files or returned before it failed. Use grep, read, or exec to verify.
+3. **Assess completion %** — estimate how much of the task the agent completed vs. what's missing.
+4. **Write a checkpoint** — update the task lock file's `## Current State` and `## Sub-Agents` sections with: agent session key, what completed, what failed, what's missing.
+5. **Decide: re-spawn or escalate**
+   - Re-spawn if: the remaining scope is clear and bounded, timeout was due to overload not a logic error, and remaining work is < 50% of original
+   - Escalate to Kelly if: the agent failed multiple times, the scope is unclear, or a decision is needed before continuing
+6. **Log in error-journal** — sub-agent failure is a system event that requires a journal entry (PR-049 applies).
+
+**Never:** continue the parent task as if the sub-agent succeeded when it didn't. Never mark a task step complete without verifying the sub-agent's output files exist and are non-empty.
 
 ---
 

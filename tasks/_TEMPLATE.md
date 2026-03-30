@@ -29,7 +29,32 @@ Decisions that have been made and must NOT be re-litigated without explicit Kell
 
 ---
 
+## Skills Loaded
+_Fill this BEFORE Step 1 of Execution Plan. List every skill file actually read at task start with path. Do not list skills you know exist but did not read. This is a configuration record, not an aspiration._
+
+**Skills declared at task start:**
+| Skill | Path | Purpose for this task |
+|-------|------|----------------------|
+| [skill name] | skills/[name]/SKILL.md | [why loaded] |
+
+**Routing source:** routing_md | keyword_match | always_active | manual
+
+---
+
+## Plan Gate
+_Mandatory. Spawn a quality-gatekeeper sub-agent in PLAN REVIEW mode before beginning execution. Work does NOT start until this gate is APPROVED._
+
+**Status:** ⏳ PENDING | ✅ APPROVED | ❌ NEEDS REVISION
+**Critic session key:** [session key from sessions_spawn]
+**Date reviewed:** YYYY-MM-DD HH:MM
+**Issues found:** [none | list issues]
+**Notes:** [any context on the review]
+
+---
+
 ## Execution Plan
+_Work begins only after Plan Gate = APPROVED._
+
 Step-by-step. Update status as each step completes.
 
 - [ ] Step 1 — [description]
@@ -55,6 +80,8 @@ Any sub-agents spawned for this task.
 | Session Key | Task Given | Status | Output Location |
 |-------------|-----------|--------|-----------------|
 | [key] | [task] | running / complete / failed | [file or location] |
+
+**Sub-agent failure log:** [none | describe any timeouts, partial outputs, re-spawns]
 
 ---
 
@@ -131,3 +158,14 @@ _Fill this section when task is HIGH or CRITICAL risk. Leave empty or mark N/A f
 
 ## Handoff Notes
 Everything a fresh session needs to know that isn't obvious from the steps above. Edge cases, gotchas, decisions that were considered and rejected, quirks of the codebase, credentials needed (reference only — never write credentials here).
+
+---
+
+## Output Gate
+_Mandatory. Spawn a quality-gatekeeper sub-agent in OUTPUT REVIEW mode before delivering anything to Kelly. Delivery does NOT happen until this gate is APPROVED._
+
+**Status:** ⏳ PENDING | ✅ APPROVED | ❌ NEEDS REVISION
+**Critic session key:** [session key from sessions_spawn]
+**Date reviewed:** YYYY-MM-DD HH:MM
+**Issues found:** [none | list issues and fixes applied]
+**Notes:** [any context on the review]

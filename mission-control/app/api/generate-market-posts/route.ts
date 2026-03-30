@@ -1,15 +1,13 @@
 // app/api/generate-market-posts/route.ts
-// Generates X posts from public market data APIs (CoinGecko, Fear & Greed).
-// Falls back to DC Hub if reachable, but works independently.
-// Saved to xPostQueue with sourceType: "market".
+// Generates X posts from DC Hub headlines + Fear & Greed + BTC price.
+// Primary source: DC Hub /api/headlines (10 curated stories).
+// Secondary: alternative.me Fear & Greed, CoinGecko BTC price.
 //
 // Flow:
-//   1. Fetch Fear & Greed from alternative.me
-//   2. Fetch top crypto prices from CoinGecko
-//   3. Generate posts via OpenRouter LLM
+//   1. Fetch headlines from DC Hub (primary)
+//   2. Fetch Fear & Greed + BTC price (supplemental context)
+//   3. Generate one post per headline via LLM
 //   4. Save to xPostQueue with 24h expiry
-//
-// Returns: { generated: number, skipped: number, errors: string[] }
 
 import { NextResponse } from "next/server";
 import { ConvexHttpClient } from "convex/browser";
@@ -24,6 +22,13 @@ const DC_HUB_URL = "https://dc-data-hub-production-cff0.up.railway.app";
 
 type PostFormat = "BREAKING" | "JUST IN" | "DATA" | "WATCHING" | "SIGNAL" | "THREAD";
 type PostCategory = "btcEth" | "macro" | "altcoins" | "legislation" | "onchain";
+
+type Headline = {
+  title: string;
+  url?: string;
+  source?: string;
+  pubDate?: number;
+};
 
 // ── OpenRouter LLM ─────────────────────────────────────────────────────────────
 async function callLLM(prompt: string): Promise<string> {
@@ -49,252 +54,191 @@ async function callLLM(prompt: string): Promise<string> {
 }
 
 // ── Pick format ────────────────────────────────────────────────────────────────
-function pickFormat(text: string): PostFormat {
-  const t = text.toLowerCase();
-  if (/breaking|🚨|alert/.test(t)) return "BREAKING";
-  if (/just in|announce|confirm/.test(t)) return "JUST IN";
-  if (/data|report|numbers|cpi|gdp|jobs|payroll/.test(t)) return "DATA";
-  if (/signal|indicator|pattern|divergence/.test(t)) return "SIGNAL";
-  if (/watching|keep an eye|develop/.test(t)) return "WATCHING";
+function pickFormat(title: string): PostFormat {
+  const t = title.toLowerCase();
+  if (/breaking|🚨|urgent|alert/.test(t)) return "BREAKING";
+  if (/just in|announce|confirm|launch/.test(t)) return "JUST IN";
+  if (/data|report|numbers|cpi|gdp|jobs|payroll|fee|%/.test(t)) return "DATA";
+  if (/signal|indicator|pattern|odds|predict/.test(t)) return "SIGNAL";
+  if (/watch|eye|develop|explor/.test(t)) return "WATCHING";
   return "WATCHING";
 }
 
 // ── Pick category ─────────────────────────────────────────────────────────────
-function pickCategory(text: string): PostCategory {
-  const t = text.toLowerCase();
-  if (/bitcoin|btc|eth|ethereum|solana| XRP|bnb/.test(t)) return "btcEth";
-  if (/macro|fed|inflation|jobs|gdp|rate/.test(t)) return "macro";
-  if (/altcoin|defi|token|web3/.test(t)) return "altcoins";
+function pickCategory(title: string): PostCategory {
+  const t = title.toLowerCase();
+  if (/bitcoin|btc|ethereum|eth|solana|sol|bnb|xrp|miner/.test(t)) return "btcEth";
+  if (/sec|cftc|law|regulat|congress|legis|ban|california|govern/.test(t)) return "legislation";
+  if (/defi|altcoin|token|nft|web3|stablecoin|usdc|usdt/.test(t)) return "altcoins";
+  if (/chain|on-chain|whale|wallet|transaction/.test(t)) return "onchain";
+  if (/macro|fed|inflation|jobs|gdp|rate|nasdaq|stock|market|economy/.test(t)) return "macro";
   return "macro";
 }
 
-// ── Score candidate (0-100) ───────────────────────────────────────────────────
-function scoreCandidate(text: string): number {
-  let score = 50;
-  if (/record|ath|all.time high|historic/.test(text)) score += 20;
-  if (/crash|plunge|ban|reject|regulation/.test(text)) score += 15;
-  if (/etf|inflow|outflow|adoption|institution/.test(text)) score += 10;
-  if (/billion|trillion|\$[0-9]+[btmk]|\$[0-9]+\.[0-9]+[km]/.test(text)) score += 8;
-  if (/fed|fomc|powell|sec|cftc|treasury/.test(text)) score += 8;
-  if (text.length < 60) score -= 15;
-  return Math.max(0, Math.min(100, score));
-}
-
 // ── Build post prompt ─────────────────────────────────────────────────────────
-function buildPrompt(candidates: string[], format: PostFormat, attempt: number): string {
-  const strict = attempt > 1
-    ? "\nSTRICT: Previous output was over 280 characters. Output UNDER 280 chars. Count every character."
+function buildPrompt(headline: Headline, format: PostFormat, context: string, isRetry: boolean): string {
+  const strict = isRetry
+    ? "\nSTRICT: Your last output exceeded 280 characters. This time output UNDER 280 chars. Count every character."
     : "";
-  return `You are generating a single X post as @DiscoverCrypto (1M+ followers). Voice: sharp, conspiratorial, anti-establishment, bullish on crypto infrastructure. No hedge words. No em dashes. Use contractions. Numbers specific.
 
-Pick the strongest data point below and write ONE post:
+  return `You are writing a single X post as @DiscoverCrypto (1M+ followers). Crypto/macro audience.
 
-${candidates.map((c, i) => `${i + 1}. ${c}`).join("\n")}
+Voice: Sharp, conspiratorial, bullish on crypto infrastructure, skeptical of institutions. Direct. No hedge words. No em dashes. Use contractions. Numbers specific.
+
+NEWS HEADLINE: "${headline.title}"
+${headline.source ? `Source: ${headline.source}` : ""}
+${context ? `\nMARKET CONTEXT: ${context}` : ""}
+
+Write ONE punchy X post that:
+- Hooks with the most surprising or controversial angle of this story
+- Adds your own take or connects it to the bigger crypto narrative
+- Ends with a question or bold prediction that drives engagement
+- Uses NO em dashes, NO "I'm", NO "Let's", NO "This is huge"
+- Sounds like a sharp crypto analyst, not a news bot
 
 FORMAT: ${format}
-${format === "BREAKING" || format === "JUST IN" ? `[${format}:] [ALL CAPS HEADLINE]\n-> [data point]\n-> [consequence or bold take]` : `[Punchy opener]\n[Specific data point]\n[Closing thesis or question]`}
+${format === "BREAKING" || format === "JUST IN"
+    ? `[${format}:] [PUNCHY ALL-CAPS HEADLINE]\n-> [key data or consequence]\n-> [your take]`
+    : `[Hook — most surprising angle]\n[Specific data or implication]\n[Closing question or bold take]`}
 
-280 chars max.${strict}`;
+280 characters MAX. Output only the post, no explanations.${strict}`;
 }
 
 // ── Main handler ────────────────────────────────────────────────────────────────
 export async function POST() {
+  if (!OPENROUTER_API_KEY) {
+    return NextResponse.json({ error: "OPENROUTER_API_KEY not configured" }, { status: 500 });
+  }
+
   const errors: string[] = [];
   let generated = 0;
   let skipped = 0;
 
-  // ── Data fetching ────────────────────────────────────────────────────────
-
-  // 1. Fear & Greed from alternative.me (public, no key)
-  let fearGreed: { value: number; label: string } | null = null;
+  // ── 1. Fetch headlines from DC Hub (primary source) ───────────────────────
+  let headlines: Headline[] = [];
   try {
-    const r = await fetch("https://api.alternative.me/fng/", {
-      signal: AbortSignal.timeout(8000),
+    const r = await fetch(`${DC_HUB_URL}/api/headlines`, {
+      signal: AbortSignal.timeout(10000),
     });
     if (r.ok) {
-      const d = await r.json();
-      const item = d.data?.[0];
-      if (item) {
-        fearGreed = {
-          value: parseInt(item.value),
-          label: item.value_classification,
-        };
+      const raw = await r.text();
+      try {
+        const parsed = JSON.parse(raw);
+        // DC Hub returns an array directly
+        headlines = Array.isArray(parsed) ? parsed : (parsed.headlines ?? []);
+      } catch {
+        errors.push("Headlines: JSON parse failed");
       }
+    } else {
+      errors.push(`Headlines: DC Hub returned ${r.status}`);
     }
   } catch (e: any) {
-    errors.push(`Fear&Greed: ${e.message}`);
+    errors.push(`Headlines: ${e.message}`);
   }
 
-  // 2. BTC price from CoinGecko (public)
-  let btcPrice: number | null = null;
-  let btcChange24h: number | null = null;
-  try {
-    const r = await fetch(
-      "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true",
-      { signal: AbortSignal.timeout(8000) }
-    );
-    if (r.ok) {
-      const d = await r.json();
-      btcPrice = d.bitcoin?.usd ?? null;
-      btcChange24h = d.bitcoin?.usd_24h_change ?? null;
-    }
-  } catch (e: any) {
-    errors.push(`CoinGecko: ${e.message}`);
-  }
-
-  // 3. ETH price from CoinGecko
-  let ethPrice: number | null = null;
-  try {
-    const r = await fetch(
-      "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd&include_24hr_change=true",
-      { signal: AbortSignal.timeout(8000) }
-    );
-    if (r.ok) {
-      const d = await r.json();
-      ethPrice = d.ethereum?.usd ?? null;
-    }
-  } catch (e: any) {
-    // silent - ETH is optional
-  }
-
-  // 4. Try DC Hub for extended market data (optional — don't fail if unreachable)
-  let dcHubIntro: string | null = null;
-  try {
-    const r = await fetch(`${DC_HUB_URL}/api/market-pulse`, {
-      signal: AbortSignal.timeout(6000),
-    });
-    if (r.ok) {
-      const d = await r.json();
-      dcHubIntro = d.intro ?? null;
-    }
-  } catch {
-    // DC Hub unreachable — silent, we have Fear & Greed + prices
-  }
-
-  // ── Build candidates ──────────────────────────────────────────────────────
-  type Candidate = { text: string; format: PostFormat; category: PostCategory };
-  const candidates: Candidate[] = [];
-
-  if (fearGreed) {
-    const emoji = fearGreed.value <= 20 ? "😱" : fearGreed.value <= 40 ? "😰" : fearGreed.value <= 60 ? "😐" : "😎";
-    const fgText = `Fear & Greed: ${fearGreed.value}/100 — ${fearGreed.label}${emoji}`;
-    candidates.push({
-      text: fgText,
-      format: pickFormat(fgText),
-      category: "macro",
-    });
-  }
-
-  if (btcPrice) {
-    const change = btcChange24h ? `${btcChange24h > 0 ? "+" : ""}${btcChange24h.toFixed(2)}%` : "";
-    const btcText = `Bitcoin: $${btcPrice.toLocaleString()}${change ? ` (${change} 24h)` : ""}`;
-    candidates.push({
-      text: btcText,
-      format: pickFormat(btcText),
-      category: "btcEth",
-    });
-  }
-
-  if (ethPrice) {
-    const ethText = `Ethereum: $${ethPrice.toLocaleString()}`;
-    candidates.push({
-      text: ethText,
-      format: pickFormat(ethText),
-      category: "btcEth",
-    });
-  }
-
-  if (dcHubIntro) {
-    const introText = dcHubIntro.slice(0, 280);
-    candidates.push({
-      text: introText,
-      format: pickFormat(introText),
-      category: "macro",
-    });
-  }
-
-  if (candidates.length === 0) {
+  if (headlines.length === 0) {
     return NextResponse.json({
       generated: 0,
       skipped: 0,
-      errors: errors.length > 0 ? errors : ["No market data available"],
+      errors: errors.length > 0 ? errors : ["No headlines available from DC Hub"],
     });
   }
 
-  // Sort by score
-  candidates.sort((a, b) => scoreCandidate(b.text) - scoreCandidate(a.text));
-  const topCandidates = candidates.slice(0, 5);
+  // ── 2. Fetch supplemental context (Fear & Greed + BTC price) ──────────────
+  let marketContext = "";
+  try {
+    const [fgRes, btcRes] = await Promise.allSettled([
+      fetch("https://api.alternative.me/fng/", { signal: AbortSignal.timeout(5000) }),
+      fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true", {
+        signal: AbortSignal.timeout(5000),
+      }),
+    ]);
 
-  // ── Generate + save ──────────────────────────────────────────────────────
+    const parts: string[] = [];
+    if (fgRes.status === "fulfilled" && fgRes.value.ok) {
+      const d = await fgRes.value.json();
+      const item = d.data?.[0];
+      if (item) parts.push(`Fear & Greed: ${item.value}/100 (${item.value_classification})`);
+    }
+    if (btcRes.status === "fulfilled" && btcRes.value.ok) {
+      const d = await btcRes.value.json();
+      const price = d.bitcoin?.usd;
+      const change = d.bitcoin?.usd_24h_change;
+      if (price) parts.push(`BTC: $${price.toLocaleString()}${change ? ` (${change > 0 ? "+" : ""}${change.toFixed(1)}% 24h)` : ""}`);
+    }
+    marketContext = parts.join(" | ");
+  } catch {
+    // Context is supplemental — silent fail
+  }
+
+  // ── 3. Dedup + generate per headline ──────────────────────────────────────
   const todayStart = new Date();
   todayStart.setUTCHours(0, 0, 0, 0);
   const dayStart = todayStart.getTime();
 
-  for (const candidate of topCandidates) {
-    const candText = candidate.text;
+  for (const headline of headlines) {
+    if (!headline.title) { skipped++; continue; }
 
-    // Skip if score too low
-    if (scoreCandidate(candText) < 35) { skipped++; continue; }
+    // Dedup key per headline (by title prefix)
+    const dedupKey = `headline:${headline.title.slice(0, 60)}`;
 
-    // Dedup: check if this exact text was posted today
     try {
       const dup = await convex.query(api.xPostQueue.checkDuplicate, {
-        sourceAuthor: "market-data",
+        sourceAuthor: dedupKey,
         dayStart,
       });
       if (dup) { skipped++; continue; }
     } catch { /* convex unavailable — skip dedup */ }
 
-    // Build prompt
-    const prompt = buildPrompt([candText], candidate.format, 1);
+    const format = pickFormat(headline.title);
+    const category = pickCategory(headline.title);
 
+    // Generate with up to 2 attempts
     let content = "";
-    let attempt = 0;
-    const maxAttempts = 2;
-
-    while (attempt < maxAttempts) {
+    for (let attempt = 1; attempt <= 2; attempt++) {
       try {
-        const out = await callLLM(buildPrompt([candText], candidate.format, attempt));
-        // Strip em-dashes
-        content = out.replace(/—/g, "-").replace(/‒/g, "-").trim();
-        // Quick sanity check — must have some content
-        if (content.length < 20) throw new Error("Too short");
+        const raw = await callLLM(buildPrompt(headline, format, marketContext, attempt > 1));
+        // Strip em-dashes and remove any leading format label the LLM included
+        const stripped = raw
+          .replace(/—/g, "-").replace(/‒/g, "-")
+          .replace(/^(BREAKING:|JUST IN:|DATA:|WATCHING:|SIGNAL:|THREAD:)\s*/i, "")
+          .replace(/^\[?(BREAKING|JUST IN|DATA|WATCHING|SIGNAL|THREAD)\]?[:\s\n]+/i, "")
+          .trim();
+        // Filter meta-responses
+        if (
+          stripped.includes("I can't") ||
+          stripped.includes("I cannot") ||
+          stripped.includes("As an AI") ||
+          stripped.toLowerCase().includes("i don't have")
+        ) {
+          errors.push(`LLM meta-response for: ${headline.title.slice(0, 40)}`);
+          break;
+        }
+        if (stripped.length < 20) { throw new Error("Too short"); }
+        if (stripped.length > 280) {
+          if (attempt < 2) continue; // retry with strict instruction
+          errors.push(`Still too long (${stripped.length} chars): ${headline.title.slice(0, 40)}`);
+          break;
+        }
+        content = stripped;
         break;
       } catch (e: any) {
-        attempt++;
-        if (attempt >= maxAttempts) {
-          errors.push(`LLM failed: ${e.message}`);
-          content = "";
-        }
+        if (attempt >= 2) errors.push(`LLM failed: ${e.message}`);
       }
     }
 
     if (!content) { skipped++; continue; }
 
-    // 280-char final check
-    if (content.length > 280) {
-      // Last try with strict instruction
-      try {
-        const retry = await callLLM(buildPrompt([candText], candidate.format, 2));
-        const stripped = retry.replace(/—/g, "-").trim();
-        if (stripped.length <= 280) content = stripped;
-        else { errors.push(`Too long (${content.length} chars), skipped`); skipped++; continue; }
-      } catch {
-        errors.push(`280-char retry failed, skipped`);
-        skipped++;
-        continue;
-      }
-    }
-
-    // Save
+    // Save to xPostQueue
     try {
       await convex.mutation(api.xPostQueue.create, {
         content,
-        format: candidate.format,
-        category: candidate.category,
-        score: scoreCandidate(candText),
+        format,
+        category,
+        score: 70, // headlines are pre-curated — baseline score is high
         sourceType: "market",
-        sourceAuthor: "market-data",
+        sourceAuthor: dedupKey,
+        sourceUrl: headline.url,
       });
       generated++;
     } catch (e: any) {

@@ -214,9 +214,83 @@ Actually: OpenClaw cron minimum is every 15 min. 20-min cadence achieved via:
 
 ---
 
+## Current State
+**As of 2026-03-30:**
+- What's done: Phase 1 fully deployed — Ready Posts page live on Railway MC. Two-column layout (X Feed + Market Pulse). Generate buttons working. Copy/Mark Posted buttons working. Convex xPostQueue table deployed.
+- What's in progress: Nothing active
+- What's next: Phase 2 when FRED API key available (macro data source)
+- Blockers: FRED API key (Kelly to provide), X account post-only API key (optional Phase 3)
+
+---
+
+## Prior Context
+**Domain:** content / infrastructure
+**Memory file checked:** memory/hit-network-ops.md
+
+- Ready Posts is live on Railway MC at `https://mission-control-production-b7e2.up.railway.app/ready-posts`
+- X Feed pulls from 44 monitored accounts via Railway RSS adapter (feed-adapter-production.up.railway.app)
+- Market Pulse column pulls from CoinGecko + Fear & Greed (direct public APIs, no auth needed)
+- Dedup logic: per tweet ID per day — same tweet won't generate twice
+- Score gate: tweets must score ≥40 before LLM generation call
+- Author cap: max 10 posts per author per day
+
+---
+
+## Critical Rules Snapshot
+**Task types:** coding + external (posts touch public X content)
+**Risk level:** HIGH
+
+**CRITICAL rules:**
+- LAW-1: Humanization — all generated post copy goes through humanization-voice rules (zero em dashes, contractions, DC voice)
+- LAW-5: Anti-hallucination — post copy must be sourced from actual tweet content, not fabricated
+- LAW-6: Security — no X API keys, no FRED keys, no credentials in task file or generated output
+- LAW-7: Output gate — any new post format or major generation change requires gatekeeper review
+
+**HIGH rules:**
+- PR-041: Verify financial figures before any post about price levels
+- PR-046: Sonnet-4-6 for generation and any coding changes to this task
+
+---
+
+## Skills Loaded
+_Retroactively populated — task predates Skills Loaded protocol (2026-03-30)._
+
+| Skill | Path | Purpose for this task |
+|-------|------|----------------------|
+| x-post-automator | skills/x-post-automator/SKILL.md | Post format rules and DC voice |
+| humanization-voice | skills/humanization-voice/SKILL.md | Copy humanization |
+| coding-agent | system: coding-agent | Build sub-agent for MC implementation |
+| mission-control | skills/mission-control/SKILL.md | MC architecture patterns |
+
+**Routing source:** manual (pre-ROUTING.md)
+
+---
+
+## Plan Gate
+_Retroactive — grandfather clause (2026-03-30)._
+
+**Status:** ✅ RETROACTIVE APPROVAL
+**Critic session key:** N/A — pre-protocol
+**Date reviewed:** 2026-03-30 (retroactive)
+**Issues found:** none — task deployed and operational
+**Notes:** Grandfather clause applied per Kelly decision 2026-03-30.
+
+---
+
 ## Handoff Notes
 - No X API key needed — Kelly posts manually
 - Queue never auto-posts — always Kelly's choice
 - DC Hub X Feed is the primary data source (44 accounts, already categorized)
 - Generation is LLM (minimax) — copy generation only, ~500 calls/mo ≈ $3-5
 - Cron runs via OpenClaw, not Railway
+
+---
+
+## Output Gate
+_Retroactive — grandfather clause (2026-03-30)._
+
+**Status:** ✅ RETROACTIVE APPROVAL
+**Critic session key:** N/A — pre-protocol
+**Date reviewed:** 2026-03-30 (retroactive)
+**Issues found:** none — Ready Posts page live, generating posts, copy quality verified
+**Notes:** Grandfather clause applied per Kelly decision 2026-03-30.

@@ -45,6 +45,7 @@ One JSON object per line. Append to:
   "task_type": "article_draft",
   "outcome": "success",
   "gate_result": "pass",
+  "routing_source": "routing_md",
   "duration_ms": 45000,
   "error_notes": ""
 }
@@ -59,6 +60,7 @@ One JSON object per line. Append to:
 | `task_type` | short descriptor | e.g. `article_draft`, `email_reply`, `scorecard`, `x_post`, `sponsor_pitch` |
 | `outcome` | `success` / `fail` / `partial` | `partial` = completed but with caveats or Kelly corrections |
 | `gate_result` | `pass` / `fail` / `skipped` | Quality gate result. `skipped` if gate not applicable |
+| `routing_source` | `routing_md` / `keyword_match` / `always_active` / `manual` | How was this skill selected? `routing_md` = ROUTING.md lookup; `keyword_match` = trigger phrase; `always_active` = always-on skill; `manual` = Kelly or Rex explicitly named the skill |
 | `duration_ms` | integer | Rough wall-clock ms from skill load to completion. Estimate is fine. |
 | `error_notes` | string | Brief note if outcome is fail/partial. Empty string if success. |
 

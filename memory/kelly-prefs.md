@@ -77,6 +77,13 @@
 ## Automation Rules (standing instructions)
 - **Market report ingestion (2026-03-22, permanent):** When a new `MARKET_REPORT_YYYYMMDD.html` file arrives in `market-reports/`, immediately convert it to markdown and save as `MARKET_REPORT_YYYYMMDD.md` in the same directory. Do not wait to be asked.
 
+## Slide Deck Rules (permanent — added 2026-03-28)
+- **Trigger phrases:** "slides", "deck", "slide deck" = build a full slideshow published to the DECKS page on Mission Control
+- **Design standard:** McKinsey Meets Apple — clean, crisp, professional, succinct, visually appealing, instantly graspable
+- **Format:** Follow the exact same structure and styling as existing Mission Control decks (DC Academy, Crypto Cycle Playbook, Creator Protocol, etc.)
+- **Delivery:** Always code + push to Mission Control `/decks/[slug]` and add to the Decks page index
+- **Never:** deliver a deck as a wall of text in chat — that is not a deck
+
 ## Notes
 - Kelly's Telegram ID: `1011362712`
 - Started partnership: 2026-02-26

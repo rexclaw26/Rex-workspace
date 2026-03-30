@@ -6,7 +6,7 @@ import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
 import {
   Copy, CheckCircle2, Trash2, RefreshCw, Zap,
-  Twitter, TrendingUp, ExternalLink,
+  Twitter, TrendingUp, ExternalLink, ChevronDown, ChevronUp, Newspaper,
 } from "lucide-react";
 
 // ── Relative time ─────────────────────────────────────────────────────────────
@@ -40,7 +40,7 @@ const STATUS_PILL: Record<string, { bg: string; color: string; label: string }> 
 // ── Source type badge ───────────────────────────────────────────────────────
 const SOURCE_BADGE: Record<string, { label: string; color: string; bg: string; Icon: React.FC<{className?: string; style?: React.CSSProperties; w?: number; h?: number}> }> = {
   x:      { label: "X FEED",     color: "#1DA1F2", bg: "rgba(29,161,242,0.1)",  Icon: Twitter },
-  market: { label: "MARKET",    color: "#A78BFA", bg: "rgba(167,139,250,0.1)", Icon: TrendingUp },
+  market: { label: "HEADLINES",  color: "#A78BFA", bg: "rgba(167,139,250,0.1)", Icon: Newspaper },
 };
 
 // ── Filter tab type ─────────────────────────────────────────────────────────
@@ -303,25 +303,36 @@ function ColumnHeader({
   accentColor,
   count,
   onGenerate,
+  onClear,
   generating,
   generatingThis,
+  open,
+  onToggle,
 }: {
   label: string;
-  Icon: React.FC<{className?: string; style?: React.CSSProperties; w?: number; h?: number}>;
+  Icon: React.FC<{className?: string; style?: React.CSSProperties}>;
   accentColor: string;
   count: number;
   onGenerate: () => void;
+  onClear: () => void;
   generating: boolean;
   generatingThis: boolean;
+  open: boolean;
+  onToggle: () => void;
 }) {
+  const readyCount = count; // passed as total; caller can pass ready-only if needed
   return (
-    <div className="flex items-center justify-between gap-3 mb-3">
+    <div
+      className="flex items-center justify-between gap-3 cursor-pointer select-none"
+      style={{ paddingBottom: open ? "12px" : 0 }}
+      onClick={onToggle}
+    >
       <div className="flex items-center gap-2">
         <div
           className="w-8 h-8 rounded-lg flex items-center justify-center"
           style={{ background: `${accentColor}18`, border: `1px solid ${accentColor}33` }}
         >
-          <Icon w={4} h={4} style={{ color: accentColor }} />
+          <Icon className="w-4 h-4" style={{ color: accentColor }} />
         </div>
         <div>
           <h2
@@ -331,30 +342,57 @@ function ColumnHeader({
             {label}
           </h2>
           <p className="text-[10px]" style={{ color: "var(--text-muted)", fontFamily: "var(--font-data)" }}>
-            {count} post{count !== 1 ? "s" : ""}
+            {readyCount} post{readyCount !== 1 ? "s" : ""}
           </p>
         </div>
       </div>
-      <button
-        type="button"
-        onClick={onGenerate}
-        disabled={generating}
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all"
-        style={{
-          background: generating ? `${accentColor}15` : `${accentColor}10`,
-          border: `1px solid ${accentColor}40`,
-          color: accentColor,
-          fontFamily: "var(--font-display)",
-          letterSpacing: "0.06em",
-          cursor: generating ? "default" : "pointer",
-          opacity: generatingThis ? 0.6 : 1,
-        }}
-      >
-        {generatingThis
-          ? <><RefreshCw className="w-3 h-3 animate-spin" />Generating…</>
-          : <><Zap className="w-3 h-3" />Generate</>
-        }
-      </button>
+      <div className="flex items-center gap-2">
+        {/* Clear button */}
+        {count > 0 && (
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onClear(); }}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all"
+            style={{
+              background: "rgba(239,68,68,0.08)",
+              border: "1px solid rgba(239,68,68,0.25)",
+              color: "#EF4444",
+              fontFamily: "var(--font-display)",
+              letterSpacing: "0.06em",
+              cursor: "pointer",
+            }}
+          >
+            <Trash2 className="w-3 h-3" />Clear
+          </button>
+        )}
+        {/* Generate button — stop propagation so it doesn't toggle accordion */}
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); onGenerate(); }}
+          disabled={generating}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all"
+          style={{
+            background: generating ? `${accentColor}15` : `${accentColor}10`,
+            border: `1px solid ${accentColor}40`,
+            color: accentColor,
+            fontFamily: "var(--font-display)",
+            letterSpacing: "0.06em",
+            cursor: generating ? "default" : "pointer",
+            opacity: generatingThis ? 0.6 : 1,
+          }}
+        >
+          {generatingThis
+            ? <><RefreshCw className="w-3 h-3 animate-spin" />Generating…</>
+            : <><Zap className="w-3 h-3" />Generate</>
+          }
+        </button>
+        {/* Chevron — only shown when onToggle is meaningful (mobile) */}
+        {onToggle.toString() !== "() => {}" && (
+          open
+            ? <ChevronUp className="w-4 h-4" style={{ color: "var(--text-muted)" }} />
+            : <ChevronDown className="w-4 h-4" style={{ color: "var(--text-muted)" }} />
+        )}
+      </div>
     </div>
   );
 }
@@ -459,12 +497,16 @@ export default function ReadyPostsPage() {
   const [filter, setFilter] = useState<FilterTab>("all");
   const [generatingX, setGeneratingX] = useState(false);
   const [generatingMarket, setGeneratingMarket] = useState(false);
+  // Mobile accordion state (desktop always shows both columns)
+  const [xOpen, setXOpen] = useState(false);
+  const [marketOpen, setMarketOpen] = useState(false);
   const { msg: toastMsg, toast } = useToast();
 
   const allPosts = useQuery(api.xPostQueue.getAll) as Post[] | undefined;
 
-  const updateStatus = useMutation(api.xPostQueue.updateStatus);
-  const removePost   = useMutation(api.xPostQueue.remove);
+  const updateStatus  = useMutation(api.xPostQueue.updateStatus);
+  const removePost    = useMutation(api.xPostQueue.remove);
+  const clearBySource = useMutation(api.xPostQueue.clearBySource);
 
   // Split by source type
   const xPosts     = allPosts?.filter((p) => p.sourceType === "x")     ?? [];
@@ -535,6 +577,26 @@ export default function ReadyPostsPage() {
     }
   }, [toast]);
 
+  const handleClearX = useCallback(async () => {
+    if (!confirm("Clear all X Feed posts?")) return;
+    try {
+      await clearBySource({ sourceType: "x" });
+      toast("✓ X Feed cleared");
+    } catch (e: any) {
+      toast(`✗ Clear failed: ${e.message}`);
+    }
+  }, [clearBySource, toast]);
+
+  const handleClearMarket = useCallback(async () => {
+    if (!confirm("Clear all Headlines posts?")) return;
+    try {
+      await clearBySource({ sourceType: "market" });
+      toast("✓ Headlines cleared");
+    } catch (e: any) {
+      toast(`✗ Clear failed: ${e.message}`);
+    }
+  }, [clearBySource, toast]);
+
   const generating = generatingX || generatingMarket;
   const totalCount = {
     x: xPosts.length,
@@ -550,78 +612,93 @@ export default function ReadyPostsPage() {
         <p className="text-label">
           {allPosts === undefined
             ? "Loading…"
-            : `${xPosts.filter((p) => p.status === "ready").length} x-feed ready · ${marketPosts.filter((p) => p.status === "ready").length} market ready`}
+            : `${xPosts.filter((p) => p.status === "ready").length} X-FEED READY · ${marketPosts.filter((p) => p.status === "ready").length} HEADLINES READY`}
         </p>
       </div>
 
-      {/* ── Two-column layout (desktop) / stacked (mobile) ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* ── DESKTOP: two-column, always expanded ── */}
+      <div className="hidden md:grid grid-cols-2 gap-4">
 
-        {/* ── X FEED column ── */}
-        <div
-          className="rounded-xl p-4"
-          style={{
-            background: "rgba(29,161,242,0.03)",
-            border: "1px solid rgba(29,161,242,0.1)",
-          }}
-        >
+        {/* X FEED */}
+        <div className="rounded-xl p-4" style={{ background: "rgba(29,161,242,0.03)", border: "1px solid rgba(29,161,242,0.1)" }}>
           <ColumnHeader
-            label="X FEED"
-            Icon={Twitter}
-            accentColor="#1DA1F2"
-            count={totalCount.x}
-            onGenerate={handleGenerateX}
-            generating={generating}
-            generatingThis={generatingX}
+            label="X FEED" Icon={Twitter} accentColor="#1DA1F2"
+            count={totalCount.x} onGenerate={handleGenerateX} onClear={handleClearX}
+            generating={generating} generatingThis={generatingX}
+            open={true} onToggle={() => {}}
           />
-          {allPosts === undefined ? (
-            <div className="flex justify-center py-10">
-              <RefreshCw className="w-5 h-5 animate-spin" style={{ color: "#1DA1F2" }} />
-            </div>
-          ) : (
-            <PostColumn
-              posts={xPosts}
-              sourceType="x"
-              filter={filter}
-              onCopy={handleCopy}
-              onMarkCopied={handleMarkCopied}
-              onMarkPosted={handleMarkPosted}
-              onDelete={handleDelete}
+          {allPosts === undefined
+            ? <div className="flex justify-center py-10"><RefreshCw className="w-5 h-5 animate-spin" style={{ color: "#1DA1F2" }} /></div>
+            : <PostColumn posts={xPosts} sourceType="x" filter={filter} onCopy={handleCopy} onMarkCopied={handleMarkCopied} onMarkPosted={handleMarkPosted} onDelete={handleDelete} />
+          }
+        </div>
+
+        {/* HEADLINES */}
+        <div className="rounded-xl p-4" style={{ background: "rgba(167,139,250,0.03)", border: "1px solid rgba(167,139,250,0.1)" }}>
+          <ColumnHeader
+            label="HEADLINES" Icon={Newspaper} accentColor="#A78BFA"
+            count={totalCount.market} onGenerate={handleGenerateMarket} onClear={handleClearMarket}
+            generating={generating} generatingThis={generatingMarket}
+            open={true} onToggle={() => {}}
+          />
+          {allPosts === undefined
+            ? <div className="flex justify-center py-10"><RefreshCw className="w-5 h-5 animate-spin" style={{ color: "#A78BFA" }} /></div>
+            : <PostColumn posts={marketPosts} sourceType="market" filter={filter} onCopy={handleCopy} onMarkCopied={handleMarkCopied} onMarkPosted={handleMarkPosted} onDelete={handleDelete} />
+          }
+        </div>
+
+      </div>
+
+      {/* ── MOBILE: accordion, stacked ── */}
+      <div className="md:hidden space-y-3">
+
+        {/* X FEED accordion */}
+        <div
+          className="rounded-xl"
+          style={{ background: "rgba(29,161,242,0.03)", border: `1px solid ${xOpen ? "rgba(29,161,242,0.18)" : "rgba(29,161,242,0.08)"}`, transition: "border-color 0.2s" }}
+        >
+          <div className="p-4">
+            <ColumnHeader
+              label="X FEED" Icon={Twitter} accentColor="#1DA1F2"
+              count={totalCount.x} onGenerate={handleGenerateX} onClear={handleClearX}
+              generating={generating} generatingThis={generatingX}
+              open={xOpen} onToggle={() => setXOpen((v) => !v)}
             />
+          </div>
+          {xOpen && (
+            <div className="px-4 pb-4 border-t" style={{ borderColor: "rgba(29,161,242,0.1)" }}>
+              <div className="pt-3">
+                {allPosts === undefined
+                  ? <div className="flex justify-center py-10"><RefreshCw className="w-5 h-5 animate-spin" style={{ color: "#1DA1F2" }} /></div>
+                  : <PostColumn posts={xPosts} sourceType="x" filter={filter} onCopy={handleCopy} onMarkCopied={handleMarkCopied} onMarkPosted={handleMarkPosted} onDelete={handleDelete} />
+                }
+              </div>
+            </div>
           )}
         </div>
 
-        {/* ── MARKET PULSE column ── */}
+        {/* HEADLINES accordion */}
         <div
-          className="rounded-xl p-4"
-          style={{
-            background: "rgba(167,139,250,0.03)",
-            border: "1px solid rgba(167,139,250,0.1)",
-          }}
+          className="rounded-xl"
+          style={{ background: "rgba(167,139,250,0.03)", border: `1px solid ${marketOpen ? "rgba(167,139,250,0.18)" : "rgba(167,139,250,0.08)"}`, transition: "border-color 0.2s" }}
         >
-          <ColumnHeader
-            label="MARKET PULSE"
-            Icon={TrendingUp}
-            accentColor="#A78BFA"
-            count={totalCount.market}
-            onGenerate={handleGenerateMarket}
-            generating={generating}
-            generatingThis={generatingMarket}
-          />
-          {allPosts === undefined ? (
-            <div className="flex justify-center py-10">
-              <RefreshCw className="w-5 h-5 animate-spin" style={{ color: "#A78BFA" }} />
-            </div>
-          ) : (
-            <PostColumn
-              posts={marketPosts}
-              sourceType="market"
-              filter={filter}
-              onCopy={handleCopy}
-              onMarkCopied={handleMarkCopied}
-              onMarkPosted={handleMarkPosted}
-              onDelete={handleDelete}
+          <div className="p-4">
+            <ColumnHeader
+              label="HEADLINES" Icon={Newspaper} accentColor="#A78BFA"
+              count={totalCount.market} onGenerate={handleGenerateMarket} onClear={handleClearMarket}
+              generating={generating} generatingThis={generatingMarket}
+              open={marketOpen} onToggle={() => setMarketOpen((v) => !v)}
             />
+          </div>
+          {marketOpen && (
+            <div className="px-4 pb-4 border-t" style={{ borderColor: "rgba(167,139,250,0.1)" }}>
+              <div className="pt-3">
+                {allPosts === undefined
+                  ? <div className="flex justify-center py-10"><RefreshCw className="w-5 h-5 animate-spin" style={{ color: "#A78BFA" }} /></div>
+                  : <PostColumn posts={marketPosts} sourceType="market" filter={filter} onCopy={handleCopy} onMarkCopied={handleMarkCopied} onMarkPosted={handleMarkPosted} onDelete={handleDelete} />
+                }
+              </div>
+            </div>
           )}
         </div>
 

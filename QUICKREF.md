@@ -1,5 +1,5 @@
 # QUICKREF — Active / Blockers / Decisions
-_Last updated: 2026-03-28 13:14 PDT_
+_Last updated: 2026-03-29 20:02 PDT_
 
 ## Active
 - **TASK-009 Ready Posts** — ✅ LIVE on Railway. Two-column (X Feed + Market Pulse). Generate buttons working. Phase 2 blocked on FRED API key.
@@ -33,11 +33,11 @@ _Last updated: 2026-03-28 13:14 PDT_
 - **DC Data Hub Railway:** `a98ccb85-44f8-49e6-b314-e1d323e3695d`
 - See `memory/railway-projects.md` for full index
 
-## Last Session Summary (2026-03-28)
-- **Nansen Phase 1 built** — 6 files, clean build, post-build critic PASS. BLOCKED on x402 API wall. Options A/B/C/D in `memory/2026-03-28.md`
-- **API Cost Analysis deck** built — `/slides/api-cost-analysis` on Mission Control. CryptoQuant $99/mo, CoinGlass ~$79-149/mo, CoinGecko Analyst $129/mo
-- **DC Hub chart fix** — Binance 451 geo-block → CoinGecko free API fallback
-- **Ready Posts two-column** live on Railway — X Feed + Market Pulse, generate working
+## Last Session Summary (2026-03-29)
+- **HTML entity fix** — `&amp;` bug in DC Hub market-pulse data fixed in update script. "Fear & Greed" now renders correctly.
+- **Ready Posts overhaul** — top 8 per category (was top 10 total), author cap raised to 10/day, dedup per tweet ID, pre-filter score gate
+- **ByteRover assessment** — senior AI engineer critic: skip for now. 85% confidence. Revisit late June. Security + overlap + latency concerns.
+- **Paper Boy** — March 29 report processed, DC Hub deployed
 - **Error logged** — FRED API key committed to git (PR-050 violation), scrubbed, preventive rule added
 - **Paper Boy** ran successfully — market data current
 

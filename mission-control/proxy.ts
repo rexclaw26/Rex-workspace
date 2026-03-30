@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 const PROTECTED_PATHS = ["/calendar", "/decks", "/headlines", "/memory", "/ops", "/slides", "/tasks", "/x-feed", "/ready-posts"];
-const PUBLIC_PATHS = ["/login", "/api/auth", "/_next", "/favicon"];
+const PUBLIC_PATHS = ["/login", "/api/", "/_next", "/favicon"];
 const SESSION_COOKIE = "mc_session";
 const SESSION_VALUE = "authorized"; // Value stored in cookie when authenticated
 

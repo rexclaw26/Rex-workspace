@@ -1,5 +1,20 @@
 # Nightly MC Review — Proposal Log
 
+## [2026-03-27] — Session Handoff Panel
+Status: PROPOSED
+Critic verdict: APPROVED WITH CHANGES
+Notes: Convex side ~30min build. Real work is enforcing the session-end write via an observable event (command or cron), not a soft behavioral instruction. Use /handoff command or memory-checkpoint cron as trigger. Skip soft "before closing context" wording.
+
+## [2026-03-27] — Impact Score + Priority Queue
+Status: PROPOSED
+Critic verdict: APPROVED WITH CHANGES
+Notes: Phase 1 = simple priority enum (High/Medium/Low) + deadline field only. Full scoring formula layers in after input habit is established. Wire score recompute as async scheduled mutation, not inline action. Optional inputs in Phase 1 to avoid adoption friction.
+
+## [2026-03-27] — Agent Heartbeat Ledger
+Status: PROPOSED
+Critic verdict: APPROVED WITH CHANGES
+Notes: Use lifecycle events (spawn/done/failed logged from main agent) not in-process heartbeat loops. Avoids false-positive STUCK alerts. Zero subagent instrumentation needed. TTL for STUCK flag: 10 min. Dashboard cards reactive via useQuery.
+
 ## [2026-03-26] — Task Impact Ledger
 Status: PROPOSED
 Critic verdict: PENDING

@@ -1,15 +1,13 @@
 {
-  "lastRunDate": "2026-03-27",
-  "lastRunTime": "2026-03-27T15:34:00Z",
-  "lastMarketNotesModified": "1774625400",
-  "lastReportProcessed": "2026-03-27",
+  "lastRunDate": "2026-03-30",
+  "lastRunTime": "2026-03-30T15:35:33Z",
+  "lastMarketNotesModified": "1774884872",
+  "lastReportProcessed": "MARKET_REPORT_20260330.html",
   "filesProcessed": [
-    "MARKET_REPORT_20260327.html@1774625400",
-    "marketnotes_2026-03-27.md@1774625400",
-    "market-notes.md@1774625400",
-    "rex-notes.md@1774625400"
+    "market-notes.md@1774884872",
+    "MARKET_REPORT_20260330.html"
   ],
   "status": "success",
-  "lastMCSync": "2026-03-27T15:34:00Z",
-  "lastTelegramAlert": null
+  "lastMCSync": null,
+  "lastTelegramAlert": "2026-03-30T15:35:33Z"
 }

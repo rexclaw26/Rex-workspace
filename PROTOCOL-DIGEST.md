@@ -125,6 +125,8 @@ Full entry: `skills/error-journal/references/journal-log.md`
 
 **Startup confirmation must include:** `| last checkpoint: [HH:MM or "none"] | next due: [HH:MM]`
 
+**Daily memory file rule (ALWAYS-ON):** At the start of the FIRST session each day, create `memory/YYYY-MM-DD.md` immediately if it doesn't exist — before any other work. Add to it throughout the day.
+
 **Checkpoint write order:** (1) daily log [mandatory] → (2) QUICKREF [best-effort] → (3) rule-registry [if new PRs] → (4) decisions [if decisions made]
 
 **Session-handoff.md = end of session ONLY. Never written during checkpoints.**

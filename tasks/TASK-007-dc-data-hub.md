@@ -144,6 +144,31 @@ Planning complete. Waiting on API keys before Day 1 build starts.
 
 ---
 
+## Skills Loaded
+_Retroactively populated — task predates Skills Loaded protocol (2026-03-30)._
+
+| Skill | Path | Purpose for this task |
+|-------|------|----------------------|
+| website-design | skills/website-design/SKILL.md | Frontend architecture and build approach |
+| mission-control | skills/mission-control/SKILL.md | Dashboard patterns and Convex integration |
+| frontend-design-ultimate | skills/frontend-design-ultimate/SKILL.md | Component design and UI standards |
+| coding-agent | system: coding-agent | Sub-agent for build tasks |
+
+**Routing source:** manual (pre-ROUTING.md)
+
+---
+
+## Plan Gate
+_Retroactive — grandfather clause (2026-03-30). Task was planned and executed before mandatory gate protocol._
+
+**Status:** ✅ RETROACTIVE APPROVAL
+**Critic session key:** N/A — pre-protocol
+**Date reviewed:** 2026-03-30 (retroactive)
+**Issues found:** none — task fully deployed and operational
+**Notes:** Grandfather clause applied per Kelly decision 2026-03-30. DC Data Hub live at Railway.
+
+---
+
 ## Prior Context
 
 **Domain:** infrastructure
@@ -202,3 +227,14 @@ PR-031: Never touch infrastructure files (docker-compose, models.json, .env, age
 - Mission Control patterns to reuse: data fetching patterns, card component styles, color tokens
 - Bull/Bear score is rules-based v1 — document the thresholds clearly so Kelly can tune them
 - Watching This Week section intentionally manual — Kelly's market report emails are the source of truth
+
+---
+
+## Output Gate
+_Retroactive — grandfather clause (2026-03-30). Task was delivered before mandatory gate protocol._
+
+**Status:** ✅ RETROACTIVE APPROVAL
+**Critic session key:** N/A — pre-protocol
+**Date reviewed:** 2026-03-30 (retroactive)
+**Issues found:** none — DC Data Hub fully live, deployed to Railway, serving daily market data
+**Notes:** Grandfather clause applied per Kelly decision 2026-03-30.

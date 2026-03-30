@@ -26,6 +26,21 @@ export interface DeckGroup {
 
 export const DECK_GROUPS: DeckGroup[] = [
   {
+    id: "api-cost-analysis-march-2026",
+    title: "DC Data Hub — API Integration Cost Analysis",
+    description: "11-slide decision framework for CoinGlass, CryptoQuant, and price chart integrations. Budget caps $150/$100. Recommended path: CryptoQuant Professional $99/mo + free charts.",
+    date: "March 28, 2026",
+    accentColor: "#F97316",
+    decks: [
+      {
+        title: "DC Data Hub: API Cost Analysis",
+        slug: "api-cost-analysis",
+        description: "CoinGlass vs CryptoQuant vs free charts. Budget scenarios, tier breakdowns, and a 3-phase action plan.",
+        status: "ready",
+      },
+    ],
+  },
+  {
     id: "paperclip-assessment-march-2026",
     title: "Paperclip Assessment — Should We Implement?",
     description: "15-slide first-principles analysis of Paperclip (agent org-chart orchestrator). Verdict: NOT YET. Real value at 10+ agents. Selective adoption plan included. Confidence: 72%.",

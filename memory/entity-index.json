@@ -1,7 +1,7 @@
 {
-  "updated": "2026-03-27T13:00:04.249361+00:00",
+  "updated": "2026-03-28T13:00:04.458557+00:00",
   "file_refreshes": {},
-  "entity_count": 139,
+  "entity_count": 151,
   "entities": [
     {
       "type": "blocker",
@@ -9,7 +9,7 @@
       "content": "- **Blocked:** hitnetwork.io domain not verified in Resend",
       "source": "memory/hit-network-ops.md",
       "tags": "",
-      "a_mac_score": 0.485,
+      "a_mac_score": 0.5,
       "_occurrence_count": 1
     },
     {
@@ -18,7 +18,7 @@
       "content": "- **Fallback:** Calendar invites work, but email sends blocked until domain verified",
       "source": "memory/hit-network-ops.md",
       "tags": "",
-      "a_mac_score": 0.485,
+      "a_mac_score": 0.5,
       "_occurrence_count": 1
     },
     {
@@ -27,7 +27,7 @@
       "content": "| 2026-03-14 | Sub-agent timeout config: announceTimeoutMs 600000, runTimeoutSeconds 300 | PR-038 root cause fix | ACTIVE |",
       "source": "decisions/2026-03.md",
       "tags": "",
-      "a_mac_score": 0.55,
+      "a_mac_score": 0.535,
       "_occurrence_count": 1
     },
     {
@@ -36,7 +36,7 @@
       "content": "| 2026-03-12 | Infrastructure files permanently off-limits to Rex (PR-031) | After docker-compose outage | ACTIVE |",
       "source": "decisions/2026-03.md",
       "tags": "PR",
-      "a_mac_score": 0.56,
+      "a_mac_score": 0.545,
       "_occurrence_count": 1
     },
     {
@@ -45,7 +45,7 @@
       "content": "| 2026-03-13 | Chat output stays minimal regardless of gate verbosity (PR-033) | Kelly preference | ACTIVE |",
       "source": "decisions/2026-03.md",
       "tags": "PR",
-      "a_mac_score": 0.46,
+      "a_mac_score": 0.445,
       "_occurrence_count": 1
     },
     {
@@ -54,7 +54,7 @@
       "content": "| 2026-03-19 | Research + large file write (>10KB) must always split into separate agents | PR-038 extension | ACTIVE |",
       "source": "decisions/2026-03.md",
       "tags": "PR",
-      "a_mac_score": 0.56,
+      "a_mac_score": 0.545,
       "_occurrence_count": 1
     },
     {
@@ -63,7 +63,7 @@
       "content": "| 2026-03-14 | Sub-agent timeout config: announceTimeoutMs 600000, runTimeoutSeconds 300 | PR-038 root cause fix | ACTIVE |",
       "source": "decisions/2026-03.md",
       "tags": "PR",
-      "a_mac_score": 0.46,
+      "a_mac_score": 0.445,
       "_occurrence_count": 1
     },
     {
@@ -231,10 +231,10 @@
     {
       "type": "project",
       "name": "Add Farside",
-      "content": "- [ ] Add Farside/SoSoValue ETF flow data",
+      "content": "- [ ] Add Farside/SoSoValue ETF flow data to scoring engine",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.475,
+      "a_mac_score": 0.49,
       "_occurrence_count": 1
     },
     {
@@ -243,7 +243,7 @@
       "content": "- Altcoin Season Index: **49/100** (Not Altcoin Season — BTC dominance elevated)",
       "source": "memory/crypto-market.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.48,
+      "a_mac_score": 0.465,
       "_occurrence_count": 1
     },
     {
@@ -252,7 +252,7 @@
       "content": "- **Preferred model:** Anthropic Claude Sonnet 4-6 (primary), Claude Haiku 3-5 (fallback)",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.425,
+      "a_mac_score": 0.41,
       "_occurrence_count": 1
     },
     {
@@ -261,7 +261,7 @@
       "content": "**Stack:** Next.js App Router + Convex + Tailwind CSS + React",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.495,
+      "a_mac_score": 0.51,
       "_occurrence_count": 1
     },
     {
@@ -270,7 +270,7 @@
       "content": "- **Bearer Token:** Kelly's Railway env var — never stored in Rex files (LAW 6)",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.655,
+      "a_mac_score": 0.67,
       "_occurrence_count": 1
     },
     {
@@ -279,7 +279,7 @@
       "content": "**Brands:** Discover Crypto · Blockchain Basement",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.5248,
+      "a_mac_score": 0.5398,
       "_occurrence_count": 3
     },
     {
@@ -288,7 +288,7 @@
       "content": "- **Blockchain Basement:** Technical/DeFi-focused audience",
       "source": "memory/crypto-market.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.47,
+      "a_mac_score": 0.455,
       "_occurrence_count": 1
     },
     {
@@ -297,7 +297,7 @@
       "content": "- Hit Network brands: Discover Crypto, Blockchain Basement",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.435,
+      "a_mac_score": 0.42,
       "_occurrence_count": 1
     },
     {
@@ -306,8 +306,26 @@
       "content": "- **Discord:** 3,700 members (Discover Crypto + Blockchain Basement)",
       "source": "memory/content-pipeline.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.4051,
+      "a_mac_score": 0.3901,
       "_occurrence_count": 2
+    },
+    {
+      "type": "project",
+      "name": "Breaking Take",
+      "content": "- **6 post formats:** Thread Starter, Breaking Take, Watch List, Thread Summary, Education, Data Drop",
+      "source": "memory/hit-network-ops.md",
+      "tags": "named-initiative",
+      "a_mac_score": 0.5751,
+      "_occurrence_count": 2
+    },
+    {
+      "type": "project",
+      "name": "Built Ready Posts",
+      "content": "- [x] Built Ready Posts page on Mission Control (`/ready-posts`)",
+      "source": "memory/hit-network-ops.md",
+      "tags": "named-initiative",
+      "a_mac_score": 0.51,
+      "_occurrence_count": 1
     },
     {
       "type": "project",
@@ -315,7 +333,7 @@
       "content": "- **\"Leaving house\" trigger:** Check Mac reachable, send Tailscale IP to Kelly",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.485,
+      "a_mac_score": 0.5,
       "_occurrence_count": 1
     },
     {
@@ -324,7 +342,7 @@
       "content": "5. **Crypto asset legislation** — US regulatory landscape (Clarity Act, SEC, CFTC), international (FATF, EU MiCA)",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.5248,
+      "a_mac_score": 0.5398,
       "_occurrence_count": 3
     },
     {
@@ -333,7 +351,7 @@
       "content": "| 2026-03-21 | Claude Code CLI uses kelly@bitlabacademy.com OAuth, NOT API credits | Documented after credit depletion | ACTIVE |",
       "source": "decisions/2026-03.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.5151,
+      "a_mac_score": 0.5001,
       "_occurrence_count": 2
     },
     {
@@ -342,7 +360,7 @@
       "content": "- **Preferred model:** Anthropic Claude Sonnet 4-6 (primary), Claude Haiku 3-5 (fallback)",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.425,
+      "a_mac_score": 0.41,
       "_occurrence_count": 1
     },
     {
@@ -351,7 +369,7 @@
       "content": "- Switched from Anthropic API ($200/mo) to Claude Max subscription token",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.415,
+      "a_mac_score": 0.4,
       "_occurrence_count": 1
     },
     {
@@ -360,7 +378,7 @@
       "content": "1. AI Content Pipeline (5+ pieces/week)",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.445,
+      "a_mac_score": 0.43,
       "_occurrence_count": 1
     },
     {
@@ -369,7 +387,7 @@
       "content": "| `~/OpenClaw/openclaw/docker-compose.yml` | Controls Docker container env — removing API key passthrough kills all models |",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.495,
+      "a_mac_score": 0.51,
       "_occurrence_count": 1
     },
     {
@@ -378,7 +396,7 @@
       "content": "| 2 — Crypto Tier-1 | CoinDesk, The Block, Decrypt, Cointelegraph, **@coinbureau, @kobeissiletter, @BullTheoryio** | Yes |",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.505,
+      "a_mac_score": 0.52,
       "_occurrence_count": 1
     },
     {
@@ -387,7 +405,7 @@
       "content": "| Tool | Current Version | Status | Cron ID | Watch Since |",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.495,
+      "a_mac_score": 0.52,
       "_occurrence_count": 1
     },
     {
@@ -396,7 +414,25 @@
       "content": "- **Headlines pipeline:** Daily Insight + What We're Watching (collapsible sections)",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.495,
+      "a_mac_score": 0.53,
+      "_occurrence_count": 1
+    },
+    {
+      "type": "project",
+      "name": "Data Drop",
+      "content": "- **6 post formats:** Thread Starter, Breaking Take, Watch List, Thread Summary, Education, Data Drop",
+      "source": "memory/hit-network-ops.md",
+      "tags": "named-initiative",
+      "a_mac_score": 0.5751,
+      "_occurrence_count": 2
+    },
+    {
+      "type": "project",
+      "name": "Data Hub",
+      "content": "- DC Data Hub `/api/headlines` — categorized news headlines",
+      "source": "memory/hit-network-ops.md",
+      "tags": "named-initiative",
+      "a_mac_score": 0.54,
       "_occurrence_count": 1
     },
     {
@@ -405,17 +441,8 @@
       "content": "| 2026-03-21 | DC Data Hub password: dcgodmode26 | Set at Phase 1 build | ACTIVE |",
       "source": "decisions/2026-03.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.5483,
+      "a_mac_score": 0.5333,
       "_occurrence_count": 5
-    },
-    {
-      "type": "project",
-      "name": "Data Hub",
-      "content": "- DC Data Hub `/api/headlines` — categorized news headlines",
-      "source": "memory/hit-network-ops.md",
-      "tags": "named-initiative",
-      "a_mac_score": 0.525,
-      "_occurrence_count": 1
     },
     {
       "type": "project",
@@ -423,7 +450,7 @@
       "content": "3. Digital Products (ebook + TradingView indicator)",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.445,
+      "a_mac_score": 0.43,
       "_occurrence_count": 1
     },
     {
@@ -432,7 +459,7 @@
       "content": "**Brands:** Discover Crypto · Blockchain Basement",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.5433,
+      "a_mac_score": 0.5583,
       "_occurrence_count": 5
     },
     {
@@ -441,7 +468,7 @@
       "content": "- **Discover Crypto:** YouTube-first crypto education/news channel, retail investor audience",
       "source": "memory/crypto-market.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.47,
+      "a_mac_score": 0.455,
       "_occurrence_count": 1
     },
     {
@@ -450,7 +477,7 @@
       "content": "- Hit Network brands: Discover Crypto, Blockchain Basement",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.435,
+      "a_mac_score": 0.42,
       "_occurrence_count": 1
     },
     {
@@ -459,7 +486,7 @@
       "content": "- **Discord:** 3,700 members (Discover Crypto + Blockchain Basement)",
       "source": "memory/content-pipeline.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.4051,
+      "a_mac_score": 0.3901,
       "_occurrence_count": 2
     },
     {
@@ -468,7 +495,7 @@
       "content": "- Fear & Greed at **14** (Extreme Fear) — near COVID-era lows",
       "source": "memory/crypto-market.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.48,
+      "a_mac_score": 0.465,
       "_occurrence_count": 1
     },
     {
@@ -477,7 +504,7 @@
       "content": "- Farside Investors (free) — daily BTC/ETH ETF inflows/outflows",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.495,
+      "a_mac_score": 0.51,
       "_occurrence_count": 1
     },
     {
@@ -486,7 +513,7 @@
       "content": "- FRED API (free) — CPI, PPI, jobs, Fed Funds Rate, Treasury yields. Get key at: fred.stlouisfed.org",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.495,
+      "a_mac_score": 0.51,
       "_occurrence_count": 1
     },
     {
@@ -495,7 +522,7 @@
       "content": "| 3 — Institutional X | BlackRock, SEC, Fed Reserve, Fidelity | Yes |",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.505,
+      "a_mac_score": 0.52,
       "_occurrence_count": 1
     },
     {
@@ -504,7 +531,7 @@
       "content": "- Franklin Templeton + Ondo tokenized ETFs advancing (institutional crypto infrastructure)",
       "source": "memory/crypto-market.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.46,
+      "a_mac_score": 0.445,
       "_occurrence_count": 1
     },
     {
@@ -513,7 +540,7 @@
       "content": "- OpenClaw Gateway Port: `30322`",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.495,
+      "a_mac_score": 0.51,
       "_occurrence_count": 1
     },
     {
@@ -522,7 +549,7 @@
       "content": "- **Data sources:** CoinGecko (primary), CoinMarketCap (verification), X API v2 (social sentiment), Fear & Greed Index",
       "source": "memory/crypto-market.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.46,
+      "a_mac_score": 0.445,
       "_occurrence_count": 1
     },
     {
@@ -531,7 +558,7 @@
       "content": "2. **Fear & Greed 14 Historical Precedent** — Last time: 2023 bear market bottom → multi-month accumulation followed",
       "source": "memory/crypto-market.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.48,
+      "a_mac_score": 0.465,
       "_occurrence_count": 1
     },
     {
@@ -540,7 +567,7 @@
       "content": "- **Title:** Head of AI & Product Development, Hit Network",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.4501,
+      "a_mac_score": 0.4351,
       "_occurrence_count": 2
     },
     {
@@ -549,7 +576,7 @@
       "content": "- **Step-by-step task presentation (permanent):** When presenting steps for a task Kelly needs to do — ask \"Want to proceed?\" first. If Kelly says yes/let's go/let's do it → walk through it one step at a time, clearly and simply. Never dump all steps at once and expect Kelly to figure it out.",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.585,
+      "a_mac_score": 0.57,
       "_occurrence_count": 1
     },
     {
@@ -558,7 +585,16 @@
       "content": "- If Mission Control goes down accidentally: `cd ~/.openclaw/workspace/mission-control && npm run dev > /tmp/mission-control.log 2>&1 &`",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.525,
+      "a_mac_score": 0.54,
+      "_occurrence_count": 1
+    },
+    {
+      "type": "project",
+      "name": "If Phase",
+      "content": "**If Phase 3 (automated posting) added:**",
+      "source": "memory/hit-network-ops.md",
+      "tags": "named-initiative",
+      "a_mac_score": 0.51,
       "_occurrence_count": 1
     },
     {
@@ -567,7 +603,16 @@
       "content": "1. **Iran Ceasefire Stability** — Any escalation reverses entire narrative within 48 hours",
       "source": "memory/crypto-market.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.48,
+      "a_mac_score": 0.465,
+      "_occurrence_count": 1
+    },
+    {
+      "type": "project",
+      "name": "Local Tailscale",
+      "content": "- **Local Tailscale:** `http://100.70.46.41:3000` (home network only)",
+      "source": "memory/hit-network-ops.md",
+      "tags": "named-initiative",
+      "a_mac_score": 0.53,
       "_occurrence_count": 1
     },
     {
@@ -576,7 +621,7 @@
       "content": "| 2026-03-21 | Market Drivers card = equities/macro only (SPY QQQ NVDA TSLA MSTR GLD SLV UUP USO) | Kelly confirmed | ACTIVE |",
       "source": "decisions/2026-03.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.55,
+      "a_mac_score": 0.535,
       "_occurrence_count": 1
     },
     {
@@ -585,7 +630,7 @@
       "content": "4. Members Community App MVP",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.445,
+      "a_mac_score": 0.43,
       "_occurrence_count": 1
     },
     {
@@ -594,8 +639,8 @@
       "content": "**Mission Control MUST always be running on port 3000. Non-negotiable.**",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.7203,
-      "_occurrence_count": 8
+      "a_mac_score": 0.7469,
+      "_occurrence_count": 11
     },
     {
       "type": "project",
@@ -603,8 +648,17 @@
       "content": "| 2026-03-07 | Mission Control lives at port 3000 permanently | Infrastructure decision at build | ACTIVE |",
       "source": "decisions/2026-03.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.6898,
+      "a_mac_score": 0.6748,
       "_occurrence_count": 3
+    },
+    {
+      "type": "project",
+      "name": "Mission Control Railway",
+      "content": "| Mission Control Railway | already deployed |",
+      "source": "memory/hit-network-ops.md",
+      "tags": "named-initiative",
+      "a_mac_score": 0.52,
+      "_occurrence_count": 1
     },
     {
       "type": "project",
@@ -612,7 +666,7 @@
       "content": "- **Weekly reports:** Community health metrics for Monday Scorecard",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.495,
+      "a_mac_score": 0.51,
       "_occurrence_count": 1
     },
     {
@@ -621,7 +675,7 @@
       "content": "- **PR-036 — No Filler Narration (2026-03-13, permanent):** Never use filler narration that contradicts what was actually done.",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.585,
+      "a_mac_score": 0.57,
       "_occurrence_count": 1
     },
     {
@@ -630,7 +684,7 @@
       "content": "- Altcoin Season Index: **49/100** (Not Altcoin Season — BTC dominance elevated)",
       "source": "memory/crypto-market.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.48,
+      "a_mac_score": 0.465,
       "_occurrence_count": 1
     },
     {
@@ -639,7 +693,7 @@
       "content": "| Cognee (topoteretes/cognee) | v0.5.4 (2026-03-05) | Not Ready — Python-only, async bug #2120, pre-1.0 | 9c90dcd0 | 2026-03-13 |",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.495,
+      "a_mac_score": 0.52,
       "_occurrence_count": 1
     },
     {
@@ -648,7 +702,7 @@
       "content": "2. Paid Newsletter ($10K MRR by June 1)",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.445,
+      "a_mac_score": 0.43,
       "_occurrence_count": 1
     },
     {
@@ -657,7 +711,7 @@
       "content": "- **Rock 3:** Digital products (ebook + TradingView Pine Script indicator)",
       "source": "memory/content-pipeline.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.41,
+      "a_mac_score": 0.395,
       "_occurrence_count": 1
     },
     {
@@ -666,7 +720,7 @@
       "content": "- **Title:** Head of AI & Product Development, Hit Network",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.425,
+      "a_mac_score": 0.41,
       "_occurrence_count": 1
     },
     {
@@ -675,7 +729,7 @@
       "content": "- **Budget-conscious:** Willing to spend on proven ROI ($100/mo X API, Railway Pro)",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.415,
+      "a_mac_score": 0.4,
       "_occurrence_count": 1
     },
     {
@@ -684,7 +738,7 @@
       "content": "| Railway Redis | ~$10 |",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.485,
+      "a_mac_score": 0.51,
       "_occurrence_count": 1
     },
     {
@@ -693,8 +747,26 @@
       "content": "| 4 — Influencer | Saylor, Raoul Pal (500K+), @cointelegraph | Needs corroboration |",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.505,
+      "a_mac_score": 0.52,
       "_occurrence_count": 1
+    },
+    {
+      "type": "project",
+      "name": "Ready Posts",
+      "content": "**Phase 1 — Ready Posts (COMPLETE 2026-03-27):**",
+      "source": "memory/hit-network-ops.md",
+      "tags": "named-initiative",
+      "a_mac_score": 0.5751,
+      "_occurrence_count": 2
+    },
+    {
+      "type": "project",
+      "name": "Ready Posts Phase",
+      "content": "Ready Posts Phase 1 uses NO X API. Phase 3 (automated posting) needs X post-only scoped key. Current X API Basic plan has post limits — verify cap before Phase 3 launch.",
+      "source": "memory/hit-network-ops.md",
+      "tags": "named-initiative",
+      "a_mac_score": 0.5251,
+      "_occurrence_count": 2
     },
     {
       "type": "project",
@@ -702,7 +774,7 @@
       "content": "- **NEVER:** Reference Docker commands (docker compose up/down/exec) — Docker is gone",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.485,
+      "a_mac_score": 0.5,
       "_occurrence_count": 1
     },
     {
@@ -711,7 +783,7 @@
       "content": "- **Rock 1:** AI avatar video pipeline (5+ pieces/week)",
       "source": "memory/content-pipeline.md",
       "tags": "rock",
-      "a_mac_score": 0.41,
+      "a_mac_score": 0.395,
       "_occurrence_count": 1
     },
     {
@@ -720,7 +792,7 @@
       "content": "- **Rock 2:** Paid newsletter launch (target $10K MRR by June 1)",
       "source": "memory/content-pipeline.md",
       "tags": "rock",
-      "a_mac_score": 0.41,
+      "a_mac_score": 0.395,
       "_occurrence_count": 1
     },
     {
@@ -729,7 +801,7 @@
       "content": "- **Rock 3:** Digital products (ebook + TradingView Pine Script indicator)",
       "source": "memory/content-pipeline.md",
       "tags": "rock",
-      "a_mac_score": 0.41,
+      "a_mac_score": 0.395,
       "_occurrence_count": 1
     },
     {
@@ -738,7 +810,7 @@
       "content": "- **Rock 4:** Members community app MVP",
       "source": "memory/content-pipeline.md",
       "tags": "rock",
-      "a_mac_score": 0.41,
+      "a_mac_score": 0.395,
       "_occurrence_count": 1
     },
     {
@@ -747,7 +819,7 @@
       "content": "- **PR-035 — Root Cause Analysis (2026-03-13, permanent):** When any error occurs, especially if we have to fix the same issue more than once:",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.645,
+      "a_mac_score": 0.63,
       "_occurrence_count": 1
     },
     {
@@ -756,7 +828,7 @@
       "content": "| 2026-03-21 | 7 Lex architecture integrations approved for implementation | TASK-008 | ACTIVE |",
       "source": "decisions/2026-03.md",
       "tags": "task",
-      "a_mac_score": 0.49,
+      "a_mac_score": 0.475,
       "_occurrence_count": 1
     },
     {
@@ -765,8 +837,35 @@
       "content": "| 2 — Crypto Tier-1 | CoinDesk, The Block, Decrypt, Cointelegraph, **@coinbureau, @kobeissiletter, @BullTheoryio** | Yes |",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.505,
+      "a_mac_score": 0.52,
       "_occurrence_count": 1
+    },
+    {
+      "type": "project",
+      "name": "Thread Starter",
+      "content": "- **6 post formats:** Thread Starter, Breaking Take, Watch List, Thread Summary, Education, Data Drop",
+      "source": "memory/hit-network-ops.md",
+      "tags": "named-initiative",
+      "a_mac_score": 0.5751,
+      "_occurrence_count": 2
+    },
+    {
+      "type": "project",
+      "name": "Thread Summary",
+      "content": "- **6 post formats:** Thread Starter, Breaking Take, Watch List, Thread Summary, Education, Data Drop",
+      "source": "memory/hit-network-ops.md",
+      "tags": "named-initiative",
+      "a_mac_score": 0.5751,
+      "_occurrence_count": 2
+    },
+    {
+      "type": "project",
+      "name": "Total Phase",
+      "content": "| **Total Phase 1** | **~$1-3/mo** |",
+      "source": "memory/hit-network-ops.md",
+      "tags": "named-initiative",
+      "a_mac_score": 0.5451,
+      "_occurrence_count": 2
     },
     {
       "type": "project",
@@ -774,8 +873,8 @@
       "content": "- Twelve Data API — gold/silver (Kelly confirmed already set up)",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.5701,
-      "_occurrence_count": 2
+      "a_mac_score": 0.56,
+      "_occurrence_count": 1
     },
     {
       "type": "project",
@@ -783,8 +882,17 @@
       "content": "- **PR-037 — Verify Before Acting (2026-03-13, permanent):** Before any external send, task status declaration, or data request to Kelly: (1) check the actual data/DNS/file/config, (2) check if the task was already completed, (3) check for duplicate prior sends. Never act on documentation state alon",
       "source": "memory/kelly-prefs.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.585,
+      "a_mac_score": 0.57,
       "_occurrence_count": 1
+    },
+    {
+      "type": "project",
+      "name": "Watch List",
+      "content": "- **6 post formats:** Thread Starter, Breaking Take, Watch List, Thread Summary, Education, Data Drop",
+      "source": "memory/hit-network-ops.md",
+      "tags": "named-initiative",
+      "a_mac_score": 0.5751,
+      "_occurrence_count": 2
     },
     {
       "type": "project",
@@ -792,7 +900,7 @@
       "content": "| Tool | Current Version | Status | Cron ID | Watch Since |",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.495,
+      "a_mac_score": 0.52,
       "_occurrence_count": 1
     },
     {
@@ -801,7 +909,7 @@
       "content": "| 2026-03-21 | Watching This Week: show stale data with \"Last updated: [date]\" badge | UX decision during revisions | ACTIVE |",
       "source": "decisions/2026-03.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.49,
+      "a_mac_score": 0.475,
       "_occurrence_count": 1
     },
     {
@@ -810,7 +918,7 @@
       "content": "- **Headlines pipeline:** Daily Insight + What We're Watching (collapsible sections)",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.495,
+      "a_mac_score": 0.53,
       "_occurrence_count": 1
     },
     {
@@ -819,7 +927,7 @@
       "content": "| File | Why It's Off-Limits |",
       "source": "memory/hit-network-ops.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.495,
+      "a_mac_score": 0.51,
       "_occurrence_count": 1
     },
     {
@@ -828,7 +936,7 @@
       "content": "4. **30-Year Mortgage Above 7%** — Consumer stress visible, inflation expectations affected",
       "source": "memory/crypto-market.md",
       "tags": "named-initiative",
-      "a_mac_score": 0.48,
+      "a_mac_score": 0.465,
       "_occurrence_count": 1
     },
     {
@@ -837,7 +945,7 @@
       "content": "**Em dash rule:** Zero em dashes anywhere. Always \"-\" never \"—\". Em dash = AI fingerprint.",
       "source": "memory/content-pipeline.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.53,
+      "a_mac_score": 0.515,
       "_occurrence_count": 1
     },
     {
@@ -846,7 +954,7 @@
       "content": "**Mission Control MUST always be running on port 3000. Non-negotiable.**",
       "source": "memory/hit-network-ops.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.645,
+      "a_mac_score": 0.66,
       "_occurrence_count": 1
     },
     {
@@ -855,7 +963,7 @@
       "content": "- **Always evaluate the approach:** Is the method used to fix it sound? Is there a better route?",
       "source": "memory/kelly-prefs.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.485,
+      "a_mac_score": 0.47,
       "_occurrence_count": 1
     },
     {
@@ -864,7 +972,7 @@
       "content": "- **Approval flow:** Rex drafts → Kelly reviews → Kelly posts (never automated)",
       "source": "memory/content-pipeline.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.37,
+      "a_mac_score": 0.355,
       "_occurrence_count": 1
     },
     {
@@ -873,7 +981,7 @@
       "content": "- **Auto-posting:** Never post X content without explicit approval",
       "source": "memory/kelly-prefs.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.615,
+      "a_mac_score": 0.6,
       "_occurrence_count": 1
     },
     {
@@ -882,7 +990,7 @@
       "content": "- **Bearer Token:** Kelly's Railway env var — never stored in Rex files (LAW 6)",
       "source": "memory/hit-network-ops.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.655,
+      "a_mac_score": 0.67,
       "_occurrence_count": 1
     },
     {
@@ -891,7 +999,7 @@
       "content": "- **Broken links:** Always verify URLs before linking",
       "source": "memory/kelly-prefs.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.455,
+      "a_mac_score": 0.44,
       "_occurrence_count": 1
     },
     {
@@ -900,7 +1008,7 @@
       "content": "- **Content approval:** Kelly manually posts ALL X content (never automated)",
       "source": "memory/kelly-prefs.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.485,
+      "a_mac_score": 0.47,
       "_occurrence_count": 1
     },
     {
@@ -909,7 +1017,7 @@
       "content": "- **Email signatures:** Always sign as \"Rex\" — never use codename \"Forge\" in email signatures",
       "source": "memory/kelly-prefs.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.645,
+      "a_mac_score": 0.63,
       "_occurrence_count": 1
     },
     {
@@ -918,7 +1026,7 @@
       "content": "- **Gmail sends:** Must pass LAW 7 proofreading before sending",
       "source": "memory/kelly-prefs.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.645,
+      "a_mac_score": 0.63,
       "_occurrence_count": 1
     },
     {
@@ -927,7 +1035,7 @@
       "content": "- **Hallucinated stats:** Always cite sources for specific numbers",
       "source": "memory/kelly-prefs.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.455,
+      "a_mac_score": 0.44,
       "_occurrence_count": 1
     },
     {
@@ -936,7 +1044,7 @@
       "content": "- **Market report ingestion (2026-03-22, permanent):** When a new `MARKET_REPORT_YYYYMMDD.html` file arrives in `market-reports/`, immediately convert it to markdown and save as `MARKET_REPORT_YYYYMMDD.md` in the same directory. Do not wait to be asked.",
       "source": "memory/kelly-prefs.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.575,
+      "a_mac_score": 0.56,
       "_occurrence_count": 1
     },
     {
@@ -945,7 +1053,7 @@
       "content": "- **NEVER:** Reference Docker commands (docker compose up/down/exec) — Docker is gone",
       "source": "memory/hit-network-ops.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.485,
+      "a_mac_score": 0.5,
       "_occurrence_count": 1
     },
     {
@@ -954,7 +1062,7 @@
       "content": "- **Never auto-send:** No outreach without human approval",
       "source": "memory/sponsors.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.28,
+      "a_mac_score": 0.265,
       "_occurrence_count": 1
     },
     {
@@ -963,7 +1071,7 @@
       "content": "- **Never fix a symptom.** Always identify the root cause first.",
       "source": "memory/kelly-prefs.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.485,
+      "a_mac_score": 0.47,
       "_occurrence_count": 1
     },
     {
@@ -972,7 +1080,7 @@
       "content": "- **Never treat a failure as an isolated bug to fix.** Always step back and question what the root cause is.",
       "source": "memory/kelly-prefs.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.485,
+      "a_mac_score": 0.47,
       "_occurrence_count": 1
     },
     {
@@ -981,7 +1089,7 @@
       "content": "- **Note:** ATLAS and LEDGER were planned agents that were never built. All sponsor work is handled directly by Rex using the sponsor-outreach and financial-analysis skills.",
       "source": "memory/sponsors.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.44,
+      "a_mac_score": 0.425,
       "_occurrence_count": 1
     },
     {
@@ -990,7 +1098,7 @@
       "content": "- **Refresh policy:** This file must be updated at least once daily from market-notes.md",
       "source": "memory/crypto-market.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.62,
+      "a_mac_score": 0.605,
       "_occurrence_count": 1
     },
     {
@@ -999,16 +1107,7 @@
       "content": "- **Restart method:** `npx openclaw gateway --port 30322` (Docker removed 2026-03-12 — never use Docker commands)",
       "source": "memory/hit-network-ops.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.655,
-      "_occurrence_count": 1
-    },
-    {
-      "type": "rule",
-      "name": "- **Run on Railway** — new service `x-poster-worker`, always-on, 15-min polling",
-      "content": "- **Run on Railway** — new service `x-poster-worker`, always-on, 15-min polling",
-      "source": "memory/hit-network-ops.md",
-      "tags": "rule-keyword",
-      "a_mac_score": 0.475,
+      "a_mac_score": 0.67,
       "_occurrence_count": 1
     },
     {
@@ -1017,7 +1116,7 @@
       "content": "- **Sponsor outreach:** Rex drafts, Kelly reviews and sends (never automated)",
       "source": "memory/kelly-prefs.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.485,
+      "a_mac_score": 0.47,
       "_occurrence_count": 1
     },
     {
@@ -1026,7 +1125,7 @@
       "content": "- **Sponsor spam:** Never send outreach without human review",
       "source": "memory/kelly-prefs.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.615,
+      "a_mac_score": 0.6,
       "_occurrence_count": 1
     },
     {
@@ -1035,7 +1134,7 @@
       "content": "- **Step-by-step task presentation (permanent):** When presenting steps for a task Kelly needs to do — ask \"Want to proceed?\" first. If Kelly says yes/let's go/let's do it → walk through it one step at a time, clearly and simply. Never dump all steps at once and expect Kelly to figure it out.",
       "source": "memory/kelly-prefs.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.585,
+      "a_mac_score": 0.57,
       "_occurrence_count": 1
     },
     {
@@ -1044,7 +1143,7 @@
       "content": "- **Tailscale IP:** `100.70.46.41` (permanent)",
       "source": "memory/hit-network-ops.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.645,
+      "a_mac_score": 0.66,
       "_occurrence_count": 1
     },
     {
@@ -1053,7 +1152,16 @@
       "content": "- **Unverified data:** Never present estimates as facts",
       "source": "memory/kelly-prefs.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.615,
+      "a_mac_score": 0.6,
+      "_occurrence_count": 1
+    },
+    {
+      "type": "rule",
+      "name": "- **⚠️ Railway projects index:** `memory/railway-projects.md` — full mapping of service IDs, repo so",
+      "content": "- **⚠️ Railway projects index:** `memory/railway-projects.md` — full mapping of service IDs, repo sources, deployed URLs. ALWAYS check this before any Railway CLI operation.",
+      "source": "memory/hit-network-ops.md",
+      "tags": "rule-keyword",
+      "a_mac_score": 0.53,
       "_occurrence_count": 1
     },
     {
@@ -1062,7 +1170,7 @@
       "content": "- All sponsor content must pass LAW 1 humanization check",
       "source": "memory/sponsors.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.44,
+      "a_mac_score": 0.425,
       "_occurrence_count": 1
     },
     {
@@ -1071,7 +1179,7 @@
       "content": "- Always 2 lines: one punchy statement + one rhetorical question on separate lines",
       "source": "memory/content-pipeline.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.37,
+      "a_mac_score": 0.355,
       "_occurrence_count": 1
     },
     {
@@ -1080,7 +1188,7 @@
       "content": "- Always draft 3 X post versions for Kelly to choose from",
       "source": "memory/content-pipeline.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.4,
+      "a_mac_score": 0.385,
       "_occurrence_count": 1
     },
     {
@@ -1089,7 +1197,7 @@
       "content": "- Any new dev server, data hub, or project **must use a different port** (3001, 3002, etc.)",
       "source": "memory/hit-network-ops.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.525,
+      "a_mac_score": 0.54,
       "_occurrence_count": 1
     },
     {
@@ -1098,7 +1206,7 @@
       "content": "- Mission Control runs at `http://100.70.46.41:3000` (Tailscale IP, permanent)",
       "source": "memory/hit-network-ops.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.685,
+      "a_mac_score": 0.7,
       "_occurrence_count": 1
     },
     {
@@ -1107,7 +1215,7 @@
       "content": "- Never auto-post without explicit approval",
       "source": "memory/content-pipeline.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.56,
+      "a_mac_score": 0.545,
       "_occurrence_count": 1
     },
     {
@@ -1116,7 +1224,7 @@
       "content": "- Never run `npm run dev` for any non-Mission Control project without specifying an alternate port: `npm run dev -- -p 3001`",
       "source": "memory/hit-network-ops.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.685,
+      "a_mac_score": 0.7,
       "_occurrence_count": 1
     },
     {
@@ -1125,7 +1233,7 @@
       "content": "- Tailscale must be ON on iPhone for remote access",
       "source": "memory/hit-network-ops.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.655,
+      "a_mac_score": 0.67,
       "_occurrence_count": 1
     },
     {
@@ -1134,7 +1242,7 @@
       "content": "1. **URL fingerprint** — never post same source URL twice",
       "source": "memory/hit-network-ops.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.635,
+      "a_mac_score": 0.65,
       "_occurrence_count": 1
     },
     {
@@ -1143,7 +1251,7 @@
       "content": "5. Kelly sends (never automated)",
       "source": "memory/sponsors.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.28,
+      "a_mac_score": 0.265,
       "_occurrence_count": 1
     },
     {
@@ -1152,7 +1260,7 @@
       "content": "Every generated post MUST:",
       "source": "memory/hit-network-ops.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.475,
+      "a_mac_score": 0.49,
       "_occurrence_count": 1
     },
     {
@@ -1161,7 +1269,7 @@
       "content": "- **🚨 INFRASTRUCTURE FILES (added 2026-03-12 — PR-031):** NEVER edit `docker-compose.yml`, `models.json`, `auth-profiles.json`, `.env` files, or anything in `~/.openclaw/agents/`. Rex edited `docker-compose.yml` as part of an \"improvement plan\" and caused a 4-hour outage. These files keep Rex alive ",
       "source": "memory/kelly-prefs.md",
       "tags": "PR,rule-keyword",
-      "a_mac_score": 0.575,
+      "a_mac_score": 0.56,
       "_occurrence_count": 1
     },
     {
@@ -1170,7 +1278,7 @@
       "content": "- **PR-033 (2026-03-13):** NEVER dump raw JSON, config files, or system internals into chat. Status = plain English summary only. Never show raw contents of openclaw.json, models.json, auth-profiles.json, or any config file unless Kelly explicitly asks for the raw file.",
       "source": "memory/kelly-prefs.md",
       "tags": "PR,rule-keyword",
-      "a_mac_score": 0.575,
+      "a_mac_score": 0.56,
       "_occurrence_count": 1
     },
     {
@@ -1179,7 +1287,7 @@
       "content": "- **PR-035 — Root Cause Analysis (2026-03-13, permanent):** When any error occurs, especially if we have to fix the same issue more than once:",
       "source": "memory/kelly-prefs.md",
       "tags": "PR,rule-keyword",
-      "a_mac_score": 0.575,
+      "a_mac_score": 0.56,
       "_occurrence_count": 1
     },
     {
@@ -1188,7 +1296,7 @@
       "content": "- **PR-036 — No Filler Narration (2026-03-13, permanent):** Never use filler narration that contradicts what was actually done.",
       "source": "memory/kelly-prefs.md",
       "tags": "PR,rule-keyword",
-      "a_mac_score": 0.575,
+      "a_mac_score": 0.56,
       "_occurrence_count": 1
     },
     {
@@ -1197,7 +1305,7 @@
       "content": "- **PR-037 — Verify Before Acting (2026-03-13, permanent):** Before any external send, task status declaration, or data request to Kelly: (1) check the actual data/DNS/file/config, (2) check if the task was already completed, (3) check for duplicate prior sends. Never act on documentation state alon",
       "source": "memory/kelly-prefs.md",
       "tags": "PR,rule-keyword",
-      "a_mac_score": 0.575,
+      "a_mac_score": 0.56,
       "_occurrence_count": 1
     },
     {
@@ -1206,7 +1314,7 @@
       "content": "Rex caused a 4-hour outage by editing `docker-compose.yml`. These files are NEVER to be touched:",
       "source": "memory/hit-network-ops.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.635,
+      "a_mac_score": 0.65,
       "_occurrence_count": 1
     },
     {
@@ -1215,7 +1323,7 @@
       "content": "| **BREAKING:** | Confirmed event only — SEC filing, official announcement, on-chain confirmation. Never price moves alone. | \"BREAKING: SEC approves spot Bitcoin ETF options\" |",
       "source": "memory/hit-network-ops.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.645,
+      "a_mac_score": 0.66,
       "_occurrence_count": 1
     },
     {
@@ -1224,7 +1332,7 @@
       "content": "| 2026-03-07 | Mission Control lives at port 3000 permanently | Infrastructure decision at build | ACTIVE |",
       "source": "decisions/2026-03.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.65,
+      "a_mac_score": 0.635,
       "_occurrence_count": 1
     },
     {
@@ -1233,7 +1341,7 @@
       "content": "| 2026-03-12 | Infrastructure files permanently off-limits to Rex (PR-031) | After docker-compose outage | ACTIVE |",
       "source": "decisions/2026-03.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.65,
+      "a_mac_score": 0.635,
       "_occurrence_count": 1
     },
     {
@@ -1242,7 +1350,7 @@
       "content": "| 2026-03-19 | Research + large file write (>10KB) must always split into separate agents | PR-038 extension | ACTIVE |",
       "source": "decisions/2026-03.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.65,
+      "a_mac_score": 0.635,
       "_occurrence_count": 1
     },
     {
@@ -1251,7 +1359,7 @@
       "content": "| Any `.env` file anywhere on system | Credential store — Rex never touches these |",
       "source": "memory/hit-network-ops.md",
       "tags": "rule-keyword",
-      "a_mac_score": 0.655,
+      "a_mac_score": 0.67,
       "_occurrence_count": 1
     }
   ]

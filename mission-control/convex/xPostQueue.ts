@@ -58,6 +58,8 @@ export const checkDuplicate = query({
   },
 });
 
+
+
 // ── Mutations ─────────────────────────────────────────────────────────────────
 
 export const create = mutation({
@@ -72,7 +74,7 @@ export const create = mutation({
       v.literal("legislation"), v.literal("onchain")
     ),
     score: v.number(),
-    sourceType: v.union(v.literal("x"), v.literal("market")),
+    sourceType: v.optional(v.union(v.literal("x"), v.literal("market"))),
     sourceAuthor: v.optional(v.string()),
     sourceUrl: v.optional(v.string()),
   },
@@ -80,6 +82,7 @@ export const create = mutation({
     const now = Date.now();
     return await ctx.db.insert("xPostQueue", {
       ...args,
+      sourceType: args.sourceType ?? "x",
       status: "ready",
       createdAt: now,
       expiresAt: now + 24 * 60 * 60 * 1000, // 24h TTL
@@ -104,5 +107,20 @@ export const remove = mutation({
   args: { id: v.id("xPostQueue") },
   handler: async (ctx, args) => {
     await ctx.db.delete(args.id);
+  },
+});
+
+// Delete all posts for a given sourceType ("x" or "market")
+export const clearBySource = mutation({
+  args: {
+    sourceType: v.union(v.literal("x"), v.literal("market")),
+  },
+  handler: async (ctx, args) => {
+    const posts = await ctx.db
+      .query("xPostQueue")
+      .filter((q) => q.eq(q.field("sourceType"), args.sourceType))
+      .collect();
+    await Promise.all(posts.map((p) => ctx.db.delete(p._id)));
+    return { deleted: posts.length };
   },
 });

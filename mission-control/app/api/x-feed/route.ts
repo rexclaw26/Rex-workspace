@@ -92,13 +92,78 @@ const ALTCOIN_TERMS = [
   "altcoin", " alts ", "alt season", "altseason",
   "defi", "on-chain", " onchain", "on chain",
   "liquidation", "liquidations", "charles hoskinson",
-  "cardano", " ada ", "solana", " sol ", " xrp", "ripple", " bnb",
-  "binance", "dogecoin", " doge", "shiba inu", "avalanche", " avax",
-  "chainlink", " link ", "polygon", " matic", "polkadot", " dot ",
-  "uniswap", " uni ", " aave ", "compound", "maker dao", "hyperliquid",
-  " dex ", "nft", "memecoin", "meme coin", "stablecoin",
+  // Solana ecosystem
+  "solana", " sol ", "$sol", "pump.fun", "pumpfun",
+  // BNB / XRP
+  " bnb", " xrp", "ripple", "binance",
+  // Cardano
+  "cardano", " ada ", "$ada",
+  // Bittensor / TAO
+  "bittensor", " tao ", "$tao",
+  // Chainlink
+  "chainlink", " link ", "$link",
+  // Avalanche
+  "avalanche", " avax", "$avax",
+  // AAVE / Curve / DeFi tokens
+  " aave", "$aave", " crv ", "$crv", "curve finance",
+  // Dogecoin / Memecoins
+  "dogecoin", " doge", "$doge", "shiba inu", " shib",
+  "pepe", "$pepe", " pengu", "$pengu", "memecoin", "meme coin",
+  // Hyperliquid
+  "hyperliquid", " hype ", "$hype",
+  // Monero / Privacy coins
+  "monero", " xmr", "$xmr", "zcash", " zec", "$zec",
+  // Litecoin
+  "litecoin", " ltc", "$ltc",
+  // Hedera
+  "hedera", " hbar", "$hbar",
+  // TON
+  "toncoin", " $ton", " ton coin",
+  // Tron
+  "tron network", " trx", "$trx",
+  // Uniswap / DEX tokens
+  "uniswap", " uni ", "$uni",
+  // NEAR
+  " near ", "$near",
+  // ONDO
+  " ondo", "$ondo",
+  // ICP
+  " icp", "$icp", "internet computer",
+  // Polygon
+  "polygon", " pol ", "$pol", " matic",
+  // Kaspa
+  "kaspa", " kas ", "$kas",
+  // Render
+  "render network", "$render", " rndr",
+  // Cosmos
+  "cosmos", " atom ", "$atom",
+  // Ethena
+  "ethena", " ena ", "$ena",
+  // Algorand
+  "algorand", " algo", "$algo",
+  // Worldcoin
+  "worldcoin", " wld", "$wld",
+  // Aptos
+  "aptos", " apt ", "$apt",
+  // Filecoin
+  "filecoin", " fil ", "$fil",
+  // Morpho
+  "morpho", "$morpho",
+  // VeChain
+  "vechain", " vet", "$vet",
+  // Virtuals
+  "virtuals", "$virtual",
+  // Stacks
+  " stx", "$stx", "stacks",
+  // Canton / Aster (smaller)
+  "canton network", "aster network",
+  // General DeFi / altcoin terms
+  "polkadot", " dot ", " dex ", "nft", "stablecoin",
   " usdt", " usdc", "tether", "defi tvl", " tvl", "open interest",
-  "perpetual", " perp", "tao ", "bittensor", "rlusd",
+  "perpetual", " perp", "rlusd",
+  // Uniswap v4 / L2 general
+  "layer 2", " l2 ", "rollup", "arbitrum", " arb ", "optimism", " op ",
+  "base chain", "zksync",
 ];
 
 const MACRO_TERMS = [
@@ -127,8 +192,9 @@ function categorize(text: string): "btc-eth" | "macro" | "altcoins" | null {
   const lower = " " + text.toLowerCase() + " ";
   const isRelevant = ALL_RELEVANT_TERMS.some((t) => lower.includes(t));
   if (!isRelevant) return null;
-  if (BTC_ETH_TERMS.some((t) => lower.includes(t))) return "btc-eth";
+  // Altcoins checked FIRST — specific coin mentions take priority over broad btc-eth match
   if (ALTCOIN_TERMS.some((t) => lower.includes(t))) return "altcoins";
+  if (BTC_ETH_TERMS.some((t) => lower.includes(t))) return "btc-eth";
   if (MACRO_TERMS.some((t) => lower.includes(t))) return "macro";
   return null;
 }

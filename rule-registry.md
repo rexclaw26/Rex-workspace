@@ -126,3 +126,57 @@ Any action involving Railway (CLI commands, deploy triggers, URL sharing, log ch
 Failure prevented: wrong Railway URL given to Kelly, wrong service restarted, deploy targeting wrong service.
 
 **Verification:** `wc -c AGENTS.md` must return < 20,000.
+
+---
+
+## PR-052 — Sub-Agent Failure Recovery (2026-03-30, permanent)
+_Extends PR-047 and PR-038. Governs what to do when a sub-agent times out, fails, or returns incomplete output._
+
+**Problem:** When sub-agents timed out, Rex was summarizing or guessing from partial output instead of recovering properly. Complex tasks (Railway deploys, DC Hub builds) went in circles because the failure recovery protocol was undefined.
+
+**Rule:**
+1. Do NOT summarize or guess from partial sub-agent output — incomplete work is not done.
+2. Immediately read/grep what the agent actually wrote to files before it failed.
+3. Estimate completion % — what completed vs. what's missing.
+4. Write a checkpoint to the task lock file (## Current State + ## Sub-Agents sections).
+5. Decide: re-spawn if scope is clear and remaining work <50% of original. Escalate to Kelly if agent failed multiple times or a decision is needed.
+6. Log in error-journal — sub-agent failure is a system event.
+
+Never mark a task step complete without verifying the sub-agent's output files exist and are non-empty.
+
+---
+
+## PR-053 — ROUTING.md Mandatory Session Read (2026-03-30, permanent)
+
+**Problem:** No routing signal at session start. Skill selection was entirely memory-dependent, causing inconsistent chains and wrong skill selection.
+
+**Rule:** ROUTING.md must be read at every session start (step 2 in startup sequence, after QUICKREF). Max size: 6,500 chars. If ROUTING.md is more than 7 days old, flag it stale at session start and do not use it as a routing reference until updated. ROUTING.md is a convenience layer — AGENTS.md and system-map.md are authoritative when conflicts arise.
+
+---
+
+## PR-054 — Gate Dual-Write (2026-03-30, permanent)
+_Extends PR-044._
+
+**Problem:** quality-gatekeeper was writing gate logs to memory/gates/ only. Task lock files had no gate record, making it impossible to know at task pickup whether a gate had been run.
+
+**Rule:** After every gate review (pass OR fail), the gatekeeper writes to TWO locations:
+1. `memory/gates/YYYY-MM-DD-gates.md` — full verdict, chronological audit log
+2. Task lock file `## Plan Gate` or `## Output Gate` section — summary only (status + session key + date + issues found)
+
+Both writes are mandatory when a task lock file exists.
+
+---
+
+## PR-055 — Skills Loaded Declaration (2026-03-30, permanent)
+
+**Problem:** No audit trail for which skills were loaded for a task. Rex could not demonstrate which skill chain was used or whether the correct skills were consulted. Phase 2 of skill-performance-tracker could not distinguish correct routing from lucky guesses.
+
+**Rule:** For every task using Plan Mode, fill `## Skills Loaded` in the task lock file BEFORE writing the Execution Plan. List every skill file actually read (path + purpose). Include `routing_source` field. Do not list skills you know exist but did not read. This is a configuration record, not an aspiration.
+
+---
+
+## PR-056 — system-map.md Staleness Rule (2026-03-30, permanent)
+
+**Problem:** system-map.md was 16 days old and missing 13 skills. Routing decisions made from it were increasingly unreliable.
+
+**Rule:** At session start, check system-map.md modification date. If >7 days old, flag it stale and do not use it as routing reference. nightly-mc-review STEP 0 includes an automated freshness check that appends a warning to the Telegram report footer when stale. Same rule applies to ROUTING.md (PR-053).

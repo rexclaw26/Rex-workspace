@@ -24,6 +24,43 @@ Mission Control is a Next.js + Convex app at `/Users/rex/.openclaw/workspace/mis
 
 ## Pipeline Steps
 
+### STEP 0 — Pre-flight Checks (inline, no sub-agent needed)
+
+Run before spawning any agents. These are local file checks, not network calls.
+
+**a) System-map freshness check:**
+```bash
+MAP_FILE="$HOME/.openclaw/workspace/skills/skill-intake-protocol/references/system-map.md"
+MAP_MTIME=$(stat -f %m "$MAP_FILE" 2>/dev/null || echo 0)
+MAP_AGE_DAYS=$(( ( $(date +%s) - $MAP_MTIME ) / 86400 ))
+if [ $MAP_AGE_DAYS -gt 7 ]; then
+  echo "⚠️ STALE: system-map.md is ${MAP_AGE_DAYS} days old — routing reference unreliable. Update before next session."
+  SYSTEM_MAP_WARNING="⚠️ system-map.md is ${MAP_AGE_DAYS} days old — update needed"
+else
+  SYSTEM_MAP_WARNING=""
+fi
+```
+
+**b) ROUTING.md freshness check:**
+```bash
+ROUTING_FILE="$HOME/.openclaw/workspace/ROUTING.md"
+if [ -f "$ROUTING_FILE" ]; then
+  ROUTING_MTIME=$(stat -f %m "$ROUTING_FILE" 2>/dev/null || echo 0)
+  ROUTING_AGE_DAYS=$(( ( $(date +%s) - $ROUTING_MTIME ) / 86400 ))
+  if [ $ROUTING_AGE_DAYS -gt 7 ]; then
+    ROUTING_WARNING="⚠️ ROUTING.md is ${ROUTING_AGE_DAYS} days old — update needed"
+  else
+    ROUTING_WARNING=""
+  fi
+else
+  ROUTING_WARNING="⚠️ ROUTING.md does not exist — create it"
+fi
+```
+
+Append any warnings to the Telegram report footer in STEP 4.
+
+---
+
 ### STEP 1 — Spawn 4 Assessment Agents (parallel)
 
 Spawn all 4 simultaneously. Wait for all to complete before proceeding to Step 2. Timeout per agent: 240 seconds. If an agent times out or errors, use a placeholder result: `[AGENT TIMED OUT — no findings available]`.
