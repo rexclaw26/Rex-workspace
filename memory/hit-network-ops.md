@@ -247,6 +247,22 @@ Rex caused a 4-hour outage by editing `docker-compose.yml`. These files are NEVE
 
 **Rule:** Rex suggests changes with exact diffs. Kelly applies them. No exceptions.
 
+## Skill Routing System (Deployed 2026-03-30)
+
+Key files for understanding how Rex selects skills:
+
+| File | Purpose |
+|------|---------|
+| `ROUTING.md` | Routing convenience layer — 16 task types → skill chains. Read at every session start (step 2). Staleness flag at 7 days. |
+| `rule-index.md` | All PRs classified by risk level and task type. Rex-maintained. |
+| `rule-registry.md` | Full text of every PR. Source of truth. |
+| `tasks/_TEMPLATE.md` | Task lock template — includes Skills Loaded, Plan Gate, Output Gate. |
+| `skills/skill-intake-protocol/references/system-map.md` | Full inventory of all installed skills. Staleness flag at 7 days. |
+
+**New PRs as of 2026-03-30:** PR-052 (sub-agent failure recovery), PR-053 (ROUTING.md read), PR-054 (gate dual-write), PR-055 (Skills Loaded declaration), PR-056 (system-map staleness).
+
+---
+
 ## Notes
 - OpenClaw Gateway Port: `30322`
 - **Restart method:** `npx openclaw gateway --port 30322` (Docker removed 2026-03-12 — never use Docker commands)
