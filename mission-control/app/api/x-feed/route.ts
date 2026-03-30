@@ -101,7 +101,7 @@ const ALTCOIN_TERMS = [
   // Bittensor / TAO
   "bittensor", " tao ", "$tao",
   // Chainlink
-  "chainlink", " link ", "$link",
+  "chainlink", "$link",  // " link " removed — common English word,
   // Avalanche
   "avalanche", " avax", "$avax",
   // AAVE / Curve / DeFi tokens
@@ -124,7 +124,7 @@ const ALTCOIN_TERMS = [
   // Uniswap / DEX tokens
   "uniswap", " uni ", "$uni",
   // NEAR
-  " near ", "$near",
+  "near protocol", "$near",
   // ONDO
   " ondo", "$ondo",
   // ICP
@@ -136,7 +136,7 @@ const ALTCOIN_TERMS = [
   // Render
   "render network", "$render", " rndr",
   // Cosmos
-  "cosmos", " atom ", "$atom",
+  "cosmos", "$atom",
   // Ethena
   "ethena", " ena ", "$ena",
   // Algorand
@@ -144,7 +144,7 @@ const ALTCOIN_TERMS = [
   // Worldcoin
   "worldcoin", " wld", "$wld",
   // Aptos
-  "aptos", " apt ", "$apt",
+  "aptos", "$apt", // " apt " removed,
   // Filecoin
   "filecoin", " fil ", "$fil",
   // Morpho
@@ -158,11 +158,11 @@ const ALTCOIN_TERMS = [
   // Canton / Aster (smaller)
   "canton network", "aster network",
   // General DeFi / altcoin terms
-  "polkadot", " dot ", " dex ", "nft", "stablecoin",
+  "polkadot", "$dot", " dex ", "nft", "stablecoin",
   " usdt", " usdc", "tether", "defi tvl", " tvl", "open interest",
   "perpetual", " perp", "rlusd",
   // Uniswap v4 / L2 general
-  "layer 2", " l2 ", "rollup", "arbitrum", " arb ", "optimism", " op ",
+  "layer 2", " l2 ", "rollup", "arbitrum", "$arb", "optimism", "$op",
   "base chain", "zksync",
 ];
 
