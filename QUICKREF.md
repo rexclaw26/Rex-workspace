@@ -1,5 +1,5 @@
 # QUICKREF — Active / Blockers / Decisions
-_Last updated: 2026-03-29 20:02 PDT_
+_Last updated: 2026-03-30 10:05 PDT_
 
 ## Active
 - **TASK-009 Ready Posts** — ✅ LIVE on Railway. Two-column (X Feed + Market Pulse). Generate buttons working. Phase 2 blocked on FRED API key.
@@ -33,13 +33,18 @@ _Last updated: 2026-03-29 20:02 PDT_
 - **DC Data Hub Railway:** `a98ccb85-44f8-49e6-b314-e1d323e3695d`
 - See `memory/railway-projects.md` for full index
 
-## Last Session Summary (2026-03-29)
-- **HTML entity fix** — `&amp;` bug in DC Hub market-pulse data fixed in update script. "Fear & Greed" now renders correctly.
-- **Ready Posts overhaul** — top 8 per category (was top 10 total), author cap raised to 10/day, dedup per tweet ID, pre-filter score gate
-- **ByteRover assessment** — senior AI engineer critic: skip for now. 85% confidence. Revisit late June. Security + overlap + latency concerns.
-- **Paper Boy** — March 29 report processed, DC Hub deployed
-- **Error logged** — FRED API key committed to git (PR-050 violation), scrubbed, preventive rule added
-- **Paper Boy** ran successfully — market data current
+## Last Session Summary (2026-03-30)
+- **Skill routing system built** — ROUTING.md created (16 task types, skill chains, hierarchy). Mandatory session read (step 2).
+- **Task template upgraded** — ## Skills Loaded + ## Plan Gate + ## Output Gate now mandatory in all task lock files
+- **Sub-agent failure protocol** — added to AGENTS.md as formal section (extends PR-047/PR-038)
+- **Dual-gate enforcement** — quality-gatekeeper now writes to both memory/gates/ AND task lock file
+- **PR-052 through PR-056** — added to rule-registry.md and rule-index.md
+- **system-map.md** — updated 2026-03-30, 40 skills verified
+- **nightly-mc-review** — STEP 0 freshness checks added (system-map + ROUTING.md)
+- **TASK-007, TASK-009** — retroactive Skills Loaded + grandfather gates applied
+- **TASK-010** — lock file created (planned state)
+- **Full backup** — Desktop at `openclaw-backup-20260330_093021` (1GB)
+- **Git commit** — `4abae2f` on Rex-workspace master
 
 ## Previous Session Summary (2026-03-27)
 - **Railway deployment fix** — rogue nested dir deleted, `.railwayignore` added, CLI re-linked to correct source dir, clean deploy `4c8ed401` confirmed SUCCESS at 21:12
