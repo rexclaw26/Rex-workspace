@@ -1,5 +1,5 @@
 # ROUTING.md — Skill Routing Table
-_Last Verified: 2026-03-30 | Max size: 6,500 chars | Flag stale if >7 days old_
+_Last Verified: 2026-03-30 | Max size: 4,000 chars | Flag stale if >7 days old_
 _This file is a routing convenience layer. It is derived from system-map.md (inventory) and AGENTS.md (rules). When they conflict, those are authoritative. Do not treat ROUTING.md as source of truth for rule definitions._
 
 ---
@@ -127,10 +127,3 @@ When multiple design skills could apply, use this hierarchy:
 | Marketing overlap | `marketing-mode` is the strategic layer; load specific skill (seo-audit, x-post-automator) for execution |
 
 ---
-
-## Critic Trigger
-
-Critic trigger follows **LAW 7 and PR-044** — not a threshold defined here.
-- PLAN REVIEW fires on: any plan with 3+ steps (per quality-gatekeeper SKILL.md)
-- OUTPUT REVIEW fires on: ALL written deliverables before Kelly sees them — no exceptions
-- ROUTING.md does not define exceptions or thresholds. Those rules are absolute.

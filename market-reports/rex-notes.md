@@ -1,3 +1,258 @@
+## 2026-04-03 — Daily Market Notes (Good Friday — US Markets Closed)
+
+### SNAPSHOT
+**Fear & Greed:** 9/100 (Extreme Fear)
+
+**Key Prices:** BTC $66,867 (-2.22%) | ETH $2,061 (-4.34%) | SOL $78.98 (-4.47%) | XRP $1.32 (-2.78%) | LINK $8.63 (-4.31%) | TAO $300 (-4.12%) | Gold $4,662 (-3.14%) | Silver $71.26 (-6.33%) | SPX 6,583 (+0.11% Thu close) | TSLA $360.59 (-5.42% Thu close) | MSTR $119.83 (-2.40% Thu close) | COIN $171.46 (-0.88% Thu close)
+
+### MACRO
+- Iran War Escalation: Iran shot down US F-15E fighter jet — first since war started. US C-130 and Black Hawks conducting SAR over Iran. Trump announced strikes on Iranian bridges and power plants (post-Thursday close, impact on Monday April 6 open). Macron warns military strikes won't resolve situation.
+- Labor Market Deterioration: February US job growth revised sharply down from -92K to -133K — biggest monthly loss since Dec 2020. Unemployment 4.3% vs 4.4% expected (slight beat). Former JPMorgan strategist Kolanovic warns recession unavoidable.
+- US Treasury $15B buyback — largest ever (per Barchart). Turkish Lira at all-time low. S&P 500 below 200-day MA for 11th straight day.
+- US equities and bond markets closed for Good Friday.
+
+### BITCOIN
+- BTC $66,867 (-2.22%). Crypto selling pressure continues through Good Friday.
+- MARA sold 15,133 BTC ($1.1B) + announced 15% layoffs + AI pivot. Riot sold 3,778 BTC. Miner capitulation in progress.
+- Whale addresses accumulated 270,000 BTC in the largest buying spree since 2013.
+- Exchange reserves hit 7-year low at 2.21M BTC — potential supply squeeze signal.
+- ETF flows: Q1 net -$500M but March recovery +$1.3B.
+
+### ETHEREUM
+- ETH $2,061 (-4.34%). Risk-off selling continues alongside broader crypto weakness.
+
+### INSTITUTIONAL
+- ETF flows: Q1 net -$500M; March recovery +$1.3B.
+- OCC digital asset rule live (Bulletin 2026-4). Fannie Mae crypto-backed mortgages (50-60% haircut approved).
+
+### POLICY
+- DOJ charges 10 in wash trading sting using FBI fake token.
+- Crypto kill switch deployed on X.
+- Australia implementing comprehensive crypto licensing framework.
+- OCC Bulletin 2026-4: Digital asset rule live.
+- Fannie Mae: crypto-backed mortgages approved with 50-60% haircut.
+
+### KEY_NARRATIVE
+Good Friday with US markets closed. Miner capitulation accelerating (MARA, Riot dumps) while whales absorb at record pace (270K BTC since 2013). Exchange reserves at 7-year lows signal supply squeeze potential. Iran escalation intensified (US jet shot down) with Monday open risk elevated. Labor market deteriorating faster than reported (-133K Feb revision). Market in Extreme Fear at F&G=9 — historic contrarian signal zone.
+
+### CONTENT_ANGLES
+1. **Miner Capitulation vs Whale Accumulation Divergence** — What it means when miners dump and whales buy simultaneously at record levels
+2. **Exchange Reserves at 7-Year Low** — Supply squeeze mechanics and what 2.21M BTC left on exchanges means for price
+3. **Good Friday Crypto Patterns** — Historical behavior when US markets are closed and crypto trades in isolation
+4. **Iran War Monday Risk** — Pre-market analysis for April 6 open after Iranian jet shootdown + Trump strike announcement
+5. **MARA AI Pivot** — Why the #1 Bitcoin miner is laying off 15% and pivoting to AI: signal or desperation?
+6. **F&G=9: Extreme Fear Historically** — What happened to BTC the last 5 times fear hit single digits
+
+## 2026-04-02 — Trump Escalates Iran, Tariff Shock Anniversary, Morgan Stanley MSBT Imminent
+
+### SNAPSHOT
+**Fear & Greed:** 12/100 (Extreme Fear)
+
+**Key Prices:** BTC $66,212 (-2.88%) | ETH $2,035 (-3.98%) | SOL $77.66 (-6.08%) | XRP $1.29 (-4.40%) | LINK $8.49 (-5.22%) | TAO $300 (-4.83%) | BNB $572.78 (-6.26%) | DOGE $0.0897 (-2.90%) | ADA $0.2366 (-4.31%) | UNI $3.12 (-13.25%) | Gold $4,659 (-3.20%) | Silver $71.20 (-6.42%) | SPX 6,514 (-0.92%) | MSTR $117.84 (-4.02%) | COIN $164.57 (-4.87%) | TSLA $364.08 (-4.51%)
+
+### MACRO
+- Iran War Escalation: Trump primetime address promised "extremely hard" strikes in 2-3 weeks, reversing de-escalation trade. Oil surged above $106/barrel (+13% in 12 hours), crypto liquidations cascading.
+- Tariff Shock One Year Anniversary: April 2 marks one year since original tariff shock. Supreme Court struck down some IEEPA tariffs but avg rate holds ~10% (4x pre-tariff). 89K manufacturing jobs lost. $151B tariff revenue. New 25% steel/aluminum tariffs announced.
+- GENIUS Act Stablecoin Rules: US Treasury proposed first regulation under GENIUS Act. 60-day comment period. Stablecoin market $250-320B.
+- S&P 500 Liquidity Collapse: S&P futures liquidity at $5.1M near Liberation Day lows. Top-of-book depth -80% YTD.
+- Blue Owl Capital: $5.4B redemption requests in Q1, tech-lending fund 40.7% requested for withdrawal.
+- Oil at $112 WTI: Up 13% in 12 hours. US loaning 10M barrels from SPR. Hormuz transit at $1/barrel payable in yuan or stablecoins.
+- US Jobless Claims: 202K actual vs 212K forecast — labor market still tight.
+- Almost $1 trillion wiped at US market open. SPX -0.92%, Nasdaq -1.30%, Russell -1.31%. Gold reversed -3.20%.
+
+### BITCOIN
+- BTC $66,212 (-2.88%). Range-bound $60K-$73K for 5 weeks.
+- Strategy underwater: 762,099 BTC at $75,694 avg cost — ~$9,200 above spot. $57.69B treasury at a loss. Paused 13-week buying streak.
+- Metaplanet becomes #3 corporate BTC holder: added 5,075 BTC in Q1 ($398M at ~$78,400 avg). Total 40,177 BTC. Target: 210,000 BTC by end 2027. Surpassed MARA.
+
+### ETHEREUM
+- ETH $2,035 (-3.98%). Risk-off selling continues.
+
+### INSTITUTIONAL
+- Morgan Stanley MSBT ETF Imminent: Amendment No. 4 filed April 1. Ticker MSBT on NYSE Arca. 0.14% fee — lowest in $83B+ spot Bitcoin ETF market. BNY Mellon custody, Coinbase cold storage. Bloomberg's Seyffart: "last filing before launch."
+- ETF Snap Losing Streak: March 2026 was first monthly inflow since Oct (+$1.3B). Q1 ended -$500M net. Total AUM ~$86.9B.
+
+### POLICY
+- GENIUS Act stablecoin regulation: First US Treasury proposal. 60-day comment period.
+- New 25% steel/aluminum product tariffs announced on tariff shock anniversary.
+- Iran invites countries to Hormuz transit talks. Warns of "bigger, more damaging attacks."
+
+### KEY_NARRATIVE
+Broad risk-off selloff triggered by Trump's Iran escalation speech. Oil surged past $106/barrel, nearly $1 trillion wiped from US markets. BTC range-bound while Morgan Stanley MSBT ETF filing signals imminent institutional product launch. Fear & Greed holds at 12 as macro headwinds dominate.
+
+### CONTENT_ANGLES
+1. Morgan Stanley MSBT: lowest-fee spot BTC ETF imminent — what it means for the $86.9B market
+2. Strategy underwater — 762K BTC now sitting at a $9,200/coin loss; what happens next?
+3. Metaplanet overtakes MARA as #3 corporate BTC holder — the global corporate treasury race
+4. Oil above $106 on Iran escalation — how energy shocks historically affect crypto markets
+5. One year since Liberation Day tariffs — $151B collected, 89K jobs lost, what's changed?
+6. GENIUS Act stablecoin regulation: first rules proposed — 60-day window for input
+
+---
+
+## 2026-04-01 — Bitcoin-Backed Bonds Get Moody's Rating, F&G Crashes to 8, ETFs Flip
+
+### SNAPSHOT
+**Fear & Greed:** 8/100 (Extreme Fear) — Lowest since October 2023. Nearly half of all BTC in circulation now trading at a loss.
+
+**Key Prices:** BTC $68,461 (+1.35%) | ETH $2,124 (+2.01%) | SOL $83.19 (+1.27%) | XRP $1.35 (+1.54%) | LINK $8.98 (+2.37%) | TAO $323 (+4.95%) | BNB $613 (-0.17%) | AVAX $9.19 (+3.03%) | HBAR $0.090 (+4.85%) | XMR $335 (+3.61%) | HYPE $36.86 (+0.55%) | POL $0.094 (+5.30%) | Gold $4,770 (+1.95%) | Silver $75.16 (+0.32%) | SPX 6,567 (+0.58%) | RUT 2,522 (+1.01%) | NVDA $175.82 (+0.79%) | GOOG $293 (+2.26%) | TSLA $377 (+1.49%) | COIN $173.56 (-0.60%) | MSTR $123.03 (-1.44%)
+
+### MACRO
+1. **Moody's Rates First Bitcoin-Backed Bond** — NH $100M bitcoin-backed municipal bond earns Ba2 rating, first rated crypto bond in public finance history. Opens new institutional asset class.
+2. **F&G Crashes to 8** — Lowest since Oct 2023. Bitcoin Impact Index at 57.4. Historically, readings <10 produce +12.4% median 14-day gains.
+3. **ETF Flow Reversal** — Bitcoin spot ETFs reaccumulated 38,000 BTC in March, first monthly inflows since October. BlackRock IBIT confirmation signal pending.
+4. **Strategy Pauses Buying** — Broke 13-week consecutive buying streak. Holdings: 762,099 BTC (90,831 BTC accumulated since December).
+5. **BTC Hashrate Decline** — First Q1 decline in 6 years, -4% YTD. Mining costs ~$90K/BTC exceed spot. Miners pivoting to AI infrastructure.
+6. **Grayscale TAO ETF Filing** — First Bittensor ETF in US, fueling 73% monthly TAO rally. Validates decentralized AI as investable thesis.
+7. **Gold $4,769** — Surging on geopolitical tensions. Trump claims Iran war ends in 2-3 weeks but Iran rejects ceasefire claims.
+8. **RWA Tokenization $12B TVL** — BlackRock BUIDL $1.9B, tokenized US Treasuries $5.8B.
+9. **ADP Jobs Report** — 62K vs 41K expected. ISM Manufacturing PMI 52.7% vs 52.5% expected. Retail Sales MoM 0.6% vs 0.5%.
+10. **Iran Ceasefire Drama** — Trump says Iran asked for ceasefire, conditions on opening Hormuz Strait. Iran Foreign Ministry rejects claims. Iran + Oman to control Hormuz post-war.
+
+### OVERVIEW
+Bitcoin climbed 2.88% to $68,511 on Iran ceasefire hopes, while the Fear & Greed Index crashed to 8 — the lowest since October 2023. Historically, readings below 10 have produced positive 14-day forward returns in 78% of instances since 2020. ETH led with +4.82% bounce. Gold surged past $4,769 on continued Iran conflict safe-haven demand. Bitcoin spot ETFs reaccumulated 38,000 BTC in March, marking the first monthly inflows since October — a potential inflection in institutional sentiment. Strategy paused its 13-week buying streak but holds 762,099 BTC. BTC hashrate posted its first Q1 decline in 6 years as mining costs (~$90K/BTC) exceed spot price. Trump claims Iran conflict will end within 2-3 weeks, but Iran rejects ceasefire claims.
+
+### X_HIGHLIGHTS
+- @coinbureau: Iran REJECTS Trump ceasefire claims; ISM Manufacturing PMI 52.7% (above est); Trump speaks on Hormuz Strait ceasefire conditions; ADP Jobs 62K vs 41K expected; Chainlink + FinChain expanding payments in Asia
+- @KobeissiLetter: Liberation Day anniversary analysis; S&P 500 erased $4.5T since Iran War; Brent crude above $115/barrel; 37% recession odds per Polymarket; Key events this week — Consumer Confidence, JOLTS, ADP, Retail Sales, Jobs Report
+- @Barchart: Ground Beef hits new all-time high; Diamond prices fallen to lowest level this century; Small Cap Short Interest hits highest level in at least 12 years (Russell 2000)
+- @BullTheoryio: Iran says Hormuz controlled by Iran + Oman post-war; ISM Manufacturing 52.7%; Trump says Iran asked for ceasefire; Retail Sales 0.6% vs 0.5%; ADP Employment 62K vs 40K
+
+### CONTENT_ANGLES
+1. Moody's Rates First Bitcoin-Backed Bond
+2. F&G Crashes to 8
+3. ETF Flow Reversal
+4. Strategy Pauses Buying
+5. BTC Hashrate Decline
+6. Grayscale TAO ETF Filing
+
+---
+
+## 2026-03-31 — FTX $2.2B Payout Day, Liberation Day Eve, Q1 Closes in Extreme Fear
+
+### SNAPSHOT
+**Fear & Greed:** 11/100 (Extreme Fear) — 60+ consecutive days in extreme fear, longest streak since 2018.
+
+**Key Prices:** BTC $66,968 (-0.78%) | ETH $2,063 (-0.21%) | SOL $81.13 (-3.54%) | XRP $1.32 (-1.41%) | LINK $8.68 (-1.49%) | TAO $303.61 (-2.41%) | BNB $609.64 (-1.04%) | DOGE $0.0909 (-2.01%) | ADA $0.2397 (-3.32%) | HYPE $36.06 (-5.54%) | RENDER $6.80 (-2.04%) | Gold $4,650 (+2.03%) | Silver $74.08 (+4.97%) | SPX 6,431 (+1.37%) | RUT 2,461 (+1.95%) | NVDA $170.25 (+3.08%) | GOOG $280.92 (+2.85%) | TSLA $363.66 (+2.36%) | COIN $166.24 (+3.39%) | MSTR $119.91 (-1.26%)
+
+### MACRO
+1. **FTX $2.2B Payout Today** — Total >$10B distributed, Class 7 creditors at 120% recovery. Watch for on-chain capital deployment and potential market absorption vs capitulation selling.
+2. **Liberation Day April 2** — Trump's reciprocal tariffs against 15+ countries imminent. Markets pricing in significant uncertainty. S&P 500 breadth at worst since May (<43% above 200-day MA).
+3. **Strategy Breaks Buying Streak** — Zero BTC purchases week ending Mar 28, breaking 13-week consecutive buying streak. Institutional conviction may be wavering.
+4. **Q1 Closes in Extreme Fear** — 60+ days of extreme fear, ~3% BTC quarterly loss. Worst sustained fear since 2018.
+5. **Crypto Regulatory Progress** — 16 cryptos classified as CFTC commodities, 91 ETF rulings pending, stablecoin bill 72% Polymarket odds. CLARITY Act markup confirmed for April in US Senate.
+6. **BlackRock IBIT ETF Outflow** — $202M single-day outflows Mar 27, $296M weekly net outflows. Institutional rotation away from risk assets.
+7. **Iran Negotiations** — Hegseth: "Iran talks are very real, ongoing, active, and gaining strength." Brent crude above $115/barrel. US gas prices $4.03/gallon national avg.
+8. **BTC 47.2% Below ATH** — Bitcoin at $66,968 vs ATH $126,350. MSTR 73% decline from $457 to $122 — significant capitulation in BTC proxy equities.
+9. **US Gas Prices Surge** — National avg $4.03/gallon, first time above $4 since 2022, up $1.06 from Feb 28, 40% higher since Iran conflict.
+10. **Market Breadth Collapse** — Fewer than 43% of S&P 500 stocks above 200-day MA, worst since May. CNN Fear & Greed at 9 (extreme fear). 37% recession odds per Polymarket.
+
+### OVERVIEW
+Q1 2026 closes under a cloud of extreme fear with the Fear & Greed Index at 11/100 for 60+ consecutive days — the longest sustained extreme fear streak since 2018. BTC posted a ~3% quarterly loss while traditional safe havens surged (Gold +2.03% to $4,650, Silver +4.97% to $74.08). The S&P 500 has erased $4.5 trillion in market cap since the Iran War began on February 28th. Liberation Day tariffs on April 2 loom as the next major catalyst with reciprocal tariffs against 15+ countries. Institutional outflows continue: BlackRock IBIT saw $202M single-day outflows on Mar 27 and $296M weekly net outflows. Strategy broke its 13-week consecutive BTC buying streak with zero purchases week ending Mar 28. FTX distributes $2.2B today (total >$10B, Class 7 at 120% recovery) — watch for on-chain capital absorption or potential liquidation pressure.
+
+### X_HIGHLIGHTS
+- @coinbureau: US gas prices surge past $4/gallon (first since 2022), Chicago PMI 52.8 (below est 55.0), Hegseth says Iran talks "very real," Pentagon "success matters" in Iran war
+- @KobeissiLetter: Key events this week — Consumer Confidence, JOLTS, ADP, Retail Sales, Jobs Report; S&P 500 erased $4.5T since Iran War; Brent crude above $115/barrel; 37% recession odds per Polymarket
+- @Barchart: <43% S&P 500 stocks above 200-day MA (worst breadth since May), Fear & Greed at 9 (most fear since Nov), India Rupee all-time low vs USD
+- @BullTheoryio: US Senate confirmed April markup for CLARITY Act (final passage targeted May), JOLTs 6.882M (below est), $1T added to US stocks today (S&P +1.27%, Nasdaq +1.35%), consumer confidence 91.8 vs 87.8
+
+### CONTENT_ANGLES
+1. FTX $2.2B Payout Today
+2. Liberation Day April 2
+3. Strategy Breaks Buying Streak
+4. Q1 Closes in Extreme Fear
+5. Crypto Regulatory Progress
+6. BlackRock IBIT ETF Outflow
+
+---
+
+## 2026-03-30 — Hormuz Deadline LOOMS, Bitfinex Longs 28-Month HIGH, Goldman Calls BOTTOM
+
+### SNAPSHOT
+**Fear & Greed:** 8/100 (Extreme Fear) — 59 consecutive days
+
+### MACRO
+
+### OVERVIEW
+
+### X_HIGHLIGHTS
+
+### CONTENT_ANGLES
+
+---
+
+## 2026-03-29 — DAILY UPDATE (EXTREME FEAR 9 + WHALE ACCUMULATION 270K BTC)
+
+### SNAPSHOT
+
+### MACRO
+**Iran Hormuz Toll Week 4 — Shipping Costs Spike $5B:**
+- Iran's "Hormuz Law" toll system enters Week 4, adding ~$5B in global shipping fuel costs
+- Hormuz throughput collapsed to ~1M barrels/day from pre-crisis levels
+- WTI crude at $101.17, Iran earning $140M/day in oil revenue despite blockade
+- Houthis now threatening Bab al-Mandab strait (12% of global trade)
+
+**Whale Accumulation Intensifies — 270K BTC in 30 Days:**
+- Bitcoin whales accumulate 270,000 BTC over past 30 days during extreme fear
+- Exchange reserves hit 7-year low at 2.21M BTC, supply squeeze building
+- Bitfinex BTC longs reach 79,343 — institutional conviction despite retail fear
+- Contrasts sharply with $12B short interest vs only $3B long
+
+**BTC Triple-Red Q1 — Worst Quarter Since FTX:**
+- BTC posts -24.16% Q1 performance, 6th consecutive red month
+- Worst quarterly performance since FTX collapse in late 2022
+- BTC network activity cooling with active addresses down 30%
+- Miners face $79,995 average cost basis, pivoting to AI compute revenue
+
+**ICE Acquires Polymarket for $600M:**
+- Intercontinental Exchange (NYSE parent) acquires prediction market Polymarket for $600M
+- Signals major institutional validation of on-chain prediction markets
+- Regulatory implications for DeFi prediction market sector
+
+**JPMorgan Projects $77K BTC on CLARITY Act:**
+- JPMorgan analysts model $77K BTC price target if CLARITY Act passes
+- Washington state sues Kalshi prediction market — regulatory pushback on crypto betting
+- Canada introduces Bill C-25 for crypto framework — international regulatory momentum
+
+**ETH Tests $2K — DeFi TVL Holds:**
+- Ethereum testing critical $2,000 support level
+- DeFi TVL at $206.2B with ETH commanding 61% of tokenized assets
+- Worldcoin sold $63M WLD tokens, adding sell pressure
+- BNP Paribas launches 6 BTC/ETH ETNs — European institutional adoption
+
+**Mag 7 Meltdown Deepens:**
+- Magnificent 7 losses accelerating: MSFT -34%, META -31%, TSLA -25%, GOOG -20%, AMZN -20%, NVDA -19%, AAPL -12%
+- Microsoft worst quarter with -25% decline
+- Anthropic Mythos AI model launch slumps cybersecurity stocks
+- Global investor cash holdings at lowest this century (JPMorgan)
+
+**Global Bond Market Stress:**
+- Global long-term bonds see -$4.7B outflows (2nd largest ever recorded)
+- France 10-year yield hits 4% — highest since 2009
+- Philippines declares energy emergency, inflation at 5.1%
+- Japanese Yen at 21-month low vs USD — importing inflation via energy costs
+
+**Private Credit Defaults Hit ATH:**
+- Private credit default rate reaches 9.2% (Fitch) — all-time high
+- Gold stocks in ~95% bear market territory (GDX)
+- Corporate insiders dumping stocks at elevated pace
+- Berkshire Hathaway on 8-session losing streak
+
+**Geopolitical Escalation — Ground Invasion Prep:**
+- USS Tripoli with 3,500 Marines deployed to region
+- Trump approved ground invasion plans per WSJ/WaPo (2 months prep)
+- North Korea conducts missile test — multi-front tensions
+- Ukraine strikes Russia's 2nd largest refinery (Kirishi, 420K b/d capacity)
+
+### OVERVIEW
+Bitcoin trades at ~$66,809 (+0.72%) as extreme fear deepens to 9/100, marking 70 consecutive days of fear-dominated sentiment. Whales accumulate 270,000 BTC in 30 days while exchange reserves hit 7-year low of 2.21M BTC. BTC posts triple-red Q1 at -24.16% — worst quarterly performance since FTX collapse. Short interest dominates at $12B vs $3B long. ICE acquires Polymarket for $600M signaling institutional prediction market interest. JPMorgan projects $77K BTC if CLARITY Act passes. ETH tests $2K support as DeFi TVL holds at $206.2B with 61% tokenized asset dominance. Gold reaches new ATH at $4,508. Miners face $79,995 average cost basis, pivoting to AI compute. WTI oil at $101.17 as Hormuz toll system enters Week 4.
+
+### X_HIGHLIGHTS
+
+### CONTENT_ANGLES
+
+---
+
 ## 2026-03-28 — DAILY UPDATE (EXTREME FEAR 12 + WEEKEND CONSOLIDATION)
 
 **Date**: March 28, 2026

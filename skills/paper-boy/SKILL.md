@@ -86,6 +86,29 @@ After creating lock: all subsequent steps must `rm -f "$LOCK_FILE"` before any `
 
 ---
 
+### STEP 0.5 — SAME-DAY SUPPRESSION CHECK
+
+```bash
+# Check if Paper Boy already ran successfully today
+# If so, exit early — prevents 10 AM cron from firing if Kelly manually ran earlier
+STATE_FILE=/Users/rex/.openclaw/workspace/market-reports/paperboy-state.json
+if [ -f "$STATE_FILE" ]; then
+    last_run_date=$(python3 -c "import json,sys; d=json.load(open('$STATE_FILE')); print(d.get('lastRunDate',''))" 2>/dev/null || echo "")
+    last_status=$(python3 -c "import json,sys; d=json.load(open('$STATE_FILE')); print(d.get('status',''))" 2>/dev/null || echo "")
+    today=$(date +%Y-%m-%d)
+    if [ "$last_run_date" = "$today" ] && [ "$last_status" = "success" ]; then
+        # Already ran today successfully — suppress this cron run
+        echo "[Paper Boy] Already ran successfully today ($today). Suppressing 10 AM cron."
+        rm -f "$LOCK_FILE"
+        exit 0
+    fi
+fi
+```
+
+**Note:** This fires for the 10 AM cron. If Kelly manually runs Paper Boy before 10 AM and it succeeds, the 10 AM cron sees `lastRunDate = today` and exits silently — no duplicate run.
+
+---
+
 ### STEP 1 — MC STATUS CHECK
 
 ```bash

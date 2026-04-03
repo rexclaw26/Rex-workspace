@@ -812,3 +812,24 @@ Root cause: No Railway project index exists in memory. Railway project names (`d
 
 Preventive rule: PR-051 — Railway project index must exist in memory/hit-network-ops.md with service ID, repo source, and deployed URL for every deployed service.
 --- END ENTRY ---
+
+--- ERROR ENTRY ---
+Date: 2026-03-30
+Agent: Rex (main session / Gmail watchdog cron)
+Error Type: Hallucination | Data Error
+Severity: Critical
+
+What happened: Rex sent Kelly a Telegram message ("Market Report — Mon Mar 30, 2:02 PM") stating BTC price was $107,848.21. Actual BTC price at the time was ~$66,708 (CoinGecko confirmed). The figure was fabricated — a hallucination combining "$107" (oil price per barrel from market notes) with a plausible BTC price format.
+
+Root cause: LLM context contamination. The market notes contain "Oil above $107/barrel" in multiple places. When generating the market briefing without strict live-API price fetching, the model extracted "$107" from context and synthesized "$107,848.21" as a BTC price. The 7 AM daily briefing cron was failing (error: reasoning required for this model), so no verified live price was fetched. The briefing was generated from LLM memory + document context instead of live API data.
+
+What was affected: Kelly received a wrong BTC price publicly via Telegram. If acted upon, $41,000 price discrepancy could cause financial decisions.
+
+How it was caught: Kelly spotted the discrepancy and flagged it immediately.
+
+Corrective action taken: Root cause identified. Error logged. 7 AM briefing cron failure diagnosed (reasoning requirement error). Immediate fix needed: disable 7AM briefing cron OR fix the model/reasoning config. Add strict live-price-fetch requirement before ANY price is sent.
+
+Preventive rule: PR-057 — NEVER send a price figure in any Telegram message unless it was fetched from a live API in the SAME execution run. Prices from market notes, context window, or LLM memory are BANNED from outbound messages. All price Telegram sends must include [Source: CoinGecko — live] or equivalent.
+
+Related past errors: PR-041 (verify financial figures before rewriting), PR-040 (no fabrication)
+--- END ENTRY ---
